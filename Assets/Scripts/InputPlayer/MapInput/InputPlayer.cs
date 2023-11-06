@@ -53,6 +53,33 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseLeftButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d4ea16a-7d43-4b6b-85fb-264788987ddf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseMiddleButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""59d77ace-75bb-4068-b0ae-40b218775ce5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseRightButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""1bcb9a40-41a7-4ea0-8315-aaeba551e8b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,6 +190,39 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3dc778fa-cab8-41ef-9115-d34a71567390"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseLeftButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4582dd2d-2e25-4c52-985d-9589dfd9bba2"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseMiddleButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e50a5853-8f67-4c97-9739-5f0388243231"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseRightButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -398,6 +458,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         m_KeyMap_WASD = m_KeyMap.FindAction("WASD", throwIfNotFound: true);
         m_KeyMap_Look = m_KeyMap.FindAction("Look", throwIfNotFound: true);
         m_KeyMap_Shoot = m_KeyMap.FindAction("Shoot", throwIfNotFound: true);
+        m_KeyMap_MouseLeftButton = m_KeyMap.FindAction("MouseLeftButton", throwIfNotFound: true);
+        m_KeyMap_MouseMiddleButton = m_KeyMap.FindAction("MouseMiddleButton", throwIfNotFound: true);
+        m_KeyMap_MouseRightButton = m_KeyMap.FindAction("MouseRightButton", throwIfNotFound: true);
         // UIMap
         m_UIMap = asset.FindActionMap("UIMap", throwIfNotFound: true);
         m_UIMap_WASDUI = m_UIMap.FindAction("WASDUI", throwIfNotFound: true);
@@ -467,6 +530,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyMap_WASD;
     private readonly InputAction m_KeyMap_Look;
     private readonly InputAction m_KeyMap_Shoot;
+    private readonly InputAction m_KeyMap_MouseLeftButton;
+    private readonly InputAction m_KeyMap_MouseMiddleButton;
+    private readonly InputAction m_KeyMap_MouseRightButton;
     public struct KeyMapActions
     {
         private @InputPlayer m_Wrapper;
@@ -474,6 +540,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         public InputAction @WASD => m_Wrapper.m_KeyMap_WASD;
         public InputAction @Look => m_Wrapper.m_KeyMap_Look;
         public InputAction @Shoot => m_Wrapper.m_KeyMap_Shoot;
+        public InputAction @MouseLeftButton => m_Wrapper.m_KeyMap_MouseLeftButton;
+        public InputAction @MouseMiddleButton => m_Wrapper.m_KeyMap_MouseMiddleButton;
+        public InputAction @MouseRightButton => m_Wrapper.m_KeyMap_MouseRightButton;
         public InputActionMap Get() { return m_Wrapper.m_KeyMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -492,6 +561,15 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @MouseLeftButton.started += instance.OnMouseLeftButton;
+            @MouseLeftButton.performed += instance.OnMouseLeftButton;
+            @MouseLeftButton.canceled += instance.OnMouseLeftButton;
+            @MouseMiddleButton.started += instance.OnMouseMiddleButton;
+            @MouseMiddleButton.performed += instance.OnMouseMiddleButton;
+            @MouseMiddleButton.canceled += instance.OnMouseMiddleButton;
+            @MouseRightButton.started += instance.OnMouseRightButton;
+            @MouseRightButton.performed += instance.OnMouseRightButton;
+            @MouseRightButton.canceled += instance.OnMouseRightButton;
         }
 
         private void UnregisterCallbacks(IKeyMapActions instance)
@@ -505,6 +583,15 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @MouseLeftButton.started -= instance.OnMouseLeftButton;
+            @MouseLeftButton.performed -= instance.OnMouseLeftButton;
+            @MouseLeftButton.canceled -= instance.OnMouseLeftButton;
+            @MouseMiddleButton.started -= instance.OnMouseMiddleButton;
+            @MouseMiddleButton.performed -= instance.OnMouseMiddleButton;
+            @MouseMiddleButton.canceled -= instance.OnMouseMiddleButton;
+            @MouseRightButton.started -= instance.OnMouseRightButton;
+            @MouseRightButton.performed -= instance.OnMouseRightButton;
+            @MouseRightButton.canceled -= instance.OnMouseRightButton;
         }
 
         public void RemoveCallbacks(IKeyMapActions instance)
@@ -589,6 +676,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         void OnWASD(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnMouseLeftButton(InputAction.CallbackContext context);
+        void OnMouseMiddleButton(InputAction.CallbackContext context);
+        void OnMouseRightButton(InputAction.CallbackContext context);
     }
     public interface IUIMapActions
     {

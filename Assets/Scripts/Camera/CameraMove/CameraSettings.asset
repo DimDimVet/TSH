@@ -9,17 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db7cabc85ac3e2d4eb5aef5d5f969bf7, type: 3}
-  m_Name: MoveSettings
+  m_Script: {fileID: 11500000, guid: a5c5d8350cf373d4da0595bc27b46fdd, type: 3}
+  m_Name: CameraSettings
   m_EditorClassIdentifier: 
-  SpeedForward: 4
-  SpeedBack: 2
-  SpeedTurn: 25
-  Weight: 50
-  ForceMove: 50000
-  ForceTurn: 30000
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  ShootDelay: 1
+  AxesX: 0
+  AxesY: 20
+  AxesZ: -30.7
+  LimitZ: 10
+  LimitX: 10
+  SpeedMove: 5
   IsUpDate: 0
