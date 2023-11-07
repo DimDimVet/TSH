@@ -9,4 +9,5 @@ public struct Construction
     public HealtPlayer HealtPlayer;
     public MovePlayer MovePlayer;
     public CameraMove CameraMove;
+    public Camera CameraComponent;
 }

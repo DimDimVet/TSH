@@ -12,10 +12,6 @@ public class MoveSettings : ScriptableObject
 
     [Header("Вес машины(реком. 50)")]
     public float Weight = 50f;
-    [Header("Сила движения(зависимость от веса)")]
-    public float ForceMove = 50000f;
-    [Header("Сила поворота(зависимость от веса)")]
-    public float ForceTurn = 40000f;
 
     [Header("Указать слой GND")]
     public LayerMask GroundLayer;

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Composites;
 
 public class GetInputPlayer : MonoBehaviour
 {
@@ -63,8 +62,4 @@ public class GetInputPlayer : MonoBehaviour
         //остановим 
         inputActions.Disable();
     }
-    //private void Update()
-    //{
-    //    print(inputData.MouseLeftButton);
-    //}
 }

@@ -1177,7 +1177,6 @@ GameObject:
   - component: {fileID: 1673387973}
   - component: {fileID: 1673387972}
   - component: {fileID: 1673387974}
-  - component: {fileID: 1673387975}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1200,7 +1199,6 @@ Transform:
   m_Children:
   - {fileID: 821419622}
   - {fileID: 1768091087}
-  - {fileID: 1819771015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1673387966
@@ -1343,7 +1341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becfb2069882e04429ff36fc1869ff25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerTransform: {fileID: 1768091087}
   moveSettings: {fileID: 11400000, guid: 6f194ac43625cf142ae55fb973182906, type: 2}
 --- !u!114 &1673387973
 MonoBehaviour:
@@ -1370,21 +1367,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsData: {fileID: 11400000, guid: 06c6f9a5e301a1141b8fef76af257d92, type: 2}
---- !u!114 &1673387975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673387964}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc507ab7f86a4b946862baf90bbeb6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotSpeed: 10
-  towerTransform: {fileID: 1768091087}
 --- !u!1 &1735519628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,12 +1512,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768091086}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2147931b03097e4cb22f011dfd63221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCamera: {fileID: 330585545}
   turnSettings: {fileID: 11400000, guid: 9298e445c9012474690164661378537b, type: 2}
 --- !u!1 &1802160974
 GameObject:
@@ -1568,37 +1549,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1819771014
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1819771015}
-  m_Layer: 0
-  m_Name: SetPlayerCameraPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1819771015
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819771014}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 20, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1673387965}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1001 &4622101022696171280
 PrefabInstance:
   m_ObjectHideFlags: 0

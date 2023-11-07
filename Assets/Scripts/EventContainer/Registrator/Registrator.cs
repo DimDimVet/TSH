@@ -11,6 +11,7 @@ public class Registrator : ListDataBase
             HealtPlayer = GetComponent<HealtPlayer>(),
             MovePlayer = GetComponent<MovePlayer>(),
             CameraMove= GetComponent<CameraMove>(),
+            CameraComponent=GetComponent<Camera>()
         };
         SetData(registrator);
     }
