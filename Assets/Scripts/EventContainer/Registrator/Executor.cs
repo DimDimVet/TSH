@@ -7,6 +7,7 @@ public class Executor : ListDataBase
     private void OnEnable()
     {
         OnGetObjectHash += SetObjectHash;
+        OnIsActivObjectHash += SetIsActivObjectHash;
         OnGetList += SetList;
         OnGetPlayer += SetPlayer;
         OnGetCamera += SetCamera;
@@ -14,6 +15,7 @@ public class Executor : ListDataBase
     private void OnDisable()
     {
         OnGetObjectHash -= SetObjectHash;
+        OnIsActivObjectHash -= SetIsActivObjectHash;
         OnGetList -= SetList;
         OnGetPlayer -= SetPlayer;
         OnGetCamera -= SetCamera;
@@ -23,6 +25,19 @@ public class Executor : ListDataBase
     {
         listData = GetData();
         return listData;
+    }
+    //Найдем и отдадим bool dead
+    private bool SetIsActivObjectHash(int hash)
+    {
+        listData = GetData();
+        for (int i = 0; i < listData.Count; i++)
+        {
+            if (listData[i].Hash == hash)
+            {
+                return listData[i].IsDead;
+            }
+        }
+        return false;
     }
     //Найдем и отдадим объект из листа по хешу
     private Construction SetObjectHash(int hash)

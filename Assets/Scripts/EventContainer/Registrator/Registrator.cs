@@ -7,9 +7,10 @@ public class Registrator : ListDataBase
         Construction registrator = new Construction
         {
             Hash = gameObject.GetHashCode(),
+            IsDead =false,
             Transform = gameObject.transform,
             HealtPlayer = GetComponent<HealtPlayer>(),
-            MovePlayer = GetComponent<MovePlayer>(),
+            MovePlayer = GetComponent<MoveBodyPlayer>(),
             CameraMove= GetComponent<CameraMove>(),
             CameraComponent=GetComponent<Camera>()
         };

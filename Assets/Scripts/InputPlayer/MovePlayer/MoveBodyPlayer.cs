@@ -1,6 +1,7 @@
 using UnityEngine;
+using static EventManager;
 
-public class MovePlayer : GetInputPlayer
+public class MoveBodyPlayer : GetInputPlayer
 {
     [SerializeField] private MoveSettings moveSettings;
     private bool NotActionClass = false;
@@ -13,15 +14,13 @@ public class MovePlayer : GetInputPlayer
 
     void Start()
     {
-        if (moveSettings == null) { print($"Не установлен Settings в MovePlayer"); NotActionClass = true; }
+        if (moveSettings == null) { print($"Не установлен Settings в MovePlayer"); NotActionClass = true; return; }
         GetIsRun();
         GetSetting();
     }
 
     private void GetSetting()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
-
         speedForward = moveSettings.SpeedForward;
         speedBack = moveSettings.SpeedBack;
         speedTurn = moveSettings.SpeedTurn;
@@ -32,9 +31,10 @@ public class MovePlayer : GetInputPlayer
 
     private void GetIsRun()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (IsActivObjectHash(gameObject.GetHashCode())) { }
 
         rigidbodyGameObject = gameObject.GetComponent<Rigidbody>();
+
         if (!(rigidbodyGameObject is Rigidbody))
         {
             rigidbodyGameObject = gameObject.AddComponent<Rigidbody>();
@@ -65,7 +65,7 @@ public class MovePlayer : GetInputPlayer
 
             if (InputData.Move.x > 0)
             {
-                transform.Rotate(transform.up  * Time.deltaTime * speedTurn);//поворот мышью
+                transform.Rotate(transform.up * Time.deltaTime * speedTurn);//поворот мышью
             }
             if (InputData.Move.x < 0)
             {

@@ -10,6 +10,13 @@ public class EventManager
         return (List<Construction>)OnGetList?.Invoke();//запросим из пространства лист
     }
 
+    //запрос готовности объекта по hash
+    public static Func<int, bool> OnIsActivObjectHash;
+    public static bool IsActivObjectHash(int hash)
+    {
+        return (bool)OnIsActivObjectHash?.Invoke(hash);//запросим из пространства лист
+    }
+
     //запрос листа объекта по hash
     public static Func<int, Construction> OnGetObjectHash;
     public static Construction GetObjectHash(int hash)

@@ -48,6 +48,8 @@ public class MoveTurnPlayer : GetInputPlayer
                 {
                     targetDirection = hitInfo.point - gameObject.transform.position;
                     targetRotation = Quaternion.LookRotation(targetDirection);
+                    targetRotation.x = 0;
+                    targetRotation.z = 0;
                     Debug.DrawRay(gameObject.transform.position, targetDirection, Color.blue);
                     gameObject.transform.rotation =
                         Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * speedTurn);
@@ -62,6 +64,11 @@ public class MoveTurnPlayer : GetInputPlayer
         if (turnSettings.IsUpDate)
         {
             GetSetting();
+        }
+        if (!isRun)//если общее разрешение на запуск false
+        {
+            GetIsRun();
+            return;
         }
         TurnMove();
     }
