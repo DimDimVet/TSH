@@ -39,7 +39,7 @@ public class MoveTurnPlayer : GetInputPlayer
     {
         if (isRun)
         {
-            if (InputData.MouseLeftButton != 0)
+            if (InputData.MouseRightButton != 0)
             {
                 currentMousePosition = new Vector3(InputData.MousePosition.x, InputData.MousePosition.y, 0);
                 ray = cameraMain.CameraComponent.ScreenPointToRay(currentMousePosition);//луч...до мышки

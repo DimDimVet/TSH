@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3850555399707555046}
   - component: {fileID: 3993164485596218054}
   - component: {fileID: 7123335918692645625}
+  - component: {fileID: 5317875599497161399}
   m_Layer: 0
   m_Name: EventContainer
   m_TagString: Untagged
@@ -58,3 +59,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDate: 0
+--- !u!114 &5317875599497161399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862445587483719244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bd476ed6491394b919a4d6203cf7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _BullBB: {fileID: 0}
+  ContainerBullBB: {fileID: 0}

@@ -15,7 +15,7 @@ public class Pool : MonoBehaviour
     }
     private Element CreatObject(bool isSetActiv = false)
     {
-        GameObject temp = GameObject.Instantiate(prefab, containerTransform);
+        GameObject temp = GameObject.Instantiate(prefab, containerTransform.position,Quaternion.identity);
         temp.SetActive(isSetActiv);
         Element element = new Element
         {
@@ -36,8 +36,8 @@ public class Pool : MonoBehaviour
     public GameObject GetObject()
     {
         int index = GetQueue();
+        SetTransform(containerObject[index]);
         containerObject[index].Object.gameObject.SetActive(true);
-
         return containerObject[index].Object;
     }
     private int GetQueue()

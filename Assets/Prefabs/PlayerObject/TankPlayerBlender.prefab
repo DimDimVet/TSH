@@ -83,6 +83,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &843720923118282899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6870855573494367559}
+  m_Layer: 0
+  m_Name: PointOutSleeve
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6870855573494367559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843720923118282899}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.74, z: -1.54}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3427710097762933143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055096804358065376
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +149,8 @@ Transform:
   m_Children:
   - {fileID: 5435082119369532320}
   - {fileID: 7435060639251857417}
+  - {fileID: 8874210717382226208}
+  - {fileID: 6870855573494367559}
   m_Father: {fileID: 6257224021949369725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9152164305717856638
@@ -471,6 +504,7 @@ GameObject:
   - component: {fileID: 2807595270097689479}
   - component: {fileID: 6209589644094401697}
   - component: {fileID: 4286329805561696180}
+  - component: {fileID: 93887302806007179}
   - component: {fileID: 4293753351778983899}
   m_Layer: 0
   m_Name: TankPlayerBlender
@@ -596,7 +630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70a0a9f600873f4eae8c011cb10dff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partSettings: {fileID: 0}
   partDinamic: {fileID: 0}
   partIdle: {fileID: 0}
 --- !u!54 &7070071120764387684
@@ -672,6 +705,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSettings: {fileID: 11400000, guid: 6f194ac43625cf142ae55fb973182906, type: 2}
+--- !u!114 &93887302806007179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637375663211714923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d66ec6a47f99f14995e27a89305298d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootSettings: {fileID: 11400000, guid: 37166526b672a244aadc715cebcb96bf, type: 2}
 --- !u!114 &4293753351778983899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11036,6 +11082,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &6020433800446140215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8874210717382226208}
+  m_Layer: 0
+  m_Name: PointOutBull
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8874210717382226208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6020433800446140215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.735, z: 6.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3427710097762933143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6711303734541462156
 GameObject:
   m_ObjectHideFlags: 0
