@@ -1,18 +1,21 @@
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public abstract class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     //[SerializeField] private ParticleSystem particle;
     //[SerializeField] private TrailRenderer trailRender;
     [SerializeField] private BulletSettings bullSettings;
-
+    [SerializeField] private bool typeSleeve=false;
+    [SerializeField] private Rigidbody body;
     private bool NotActionClass = false;
     //кэш
     private float speedBullet;
     private float killTime, defaultTime;
-    private bool isBullKill = true;
+    private bool isBullKill = true,isShootTriger=true;
     private bool isRun = false;
-    void Start()
+
+    void Awake()
     {
         if (bullSettings == null) { print($"Не установлен {bullSettings.name} в Bullet"); NotActionClass = true; }
         if (NotActionClass) { return; }//Проверка разрешнения
@@ -49,15 +52,29 @@ public abstract class Bullet : MonoBehaviour
     }
     private void RunBullet()
     {
-        if (isRun)
+        if (isRun && !typeSleeve)
         {
             gameObject.transform.Translate(Vector3.forward * speedBullet * Time.deltaTime);
-            isBullKill=true;
+
+            isBullKill = true;
             if (KillTimeBullet())
-            { ReternBullet(); }
+            { ReternBullet();}
+        }
+        else if(typeSleeve)
+        {
+            if (isShootTriger) { body.AddForce(body.position * speedBullet, ForceMode.Acceleration); }
+
+            isShootTriger =false;
+            isBullKill = true;
+            if (KillTimeBullet())
+            { isShootTriger=true; ShootSleeve(); }
         }
     }
     public virtual void ReternBullet()
+    {
+        //
+    }
+    public virtual void ShootSleeve()
     {
         //
     }
@@ -68,6 +85,7 @@ public abstract class Bullet : MonoBehaviour
         if (bullSettings.IsUpDate)
         {
             GetSetting();
+            bullSettings.IsUpDate=false;
         }
         if (!isRun)//если общее разрешение на запуск false
         {

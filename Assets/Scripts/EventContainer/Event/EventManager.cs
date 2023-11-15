@@ -37,6 +37,12 @@ public class EventManager
     {
         return (Construction)OnGetCamera?.Invoke();//запросим из пространства лист
     }
-
+    //спецюсобытия
+    //событие выстрела игроком
+    public static Action<bool> OnIsActivGunPlayerShoot;
+    public static void IsActivGunPlayerShoot(bool isShootGunPlayer)
+    {
+        OnIsActivGunPlayerShoot?.Invoke(isShootGunPlayer);
+    }
 
 }

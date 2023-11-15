@@ -1,12 +1,13 @@
 using UnityEngine;
+using static EventManager;
 
-public class ShootPlayer : GetInputPlayer
+public class Shoot : GetInputPlayer
 {
     [SerializeField] private ShootSettings shootSettings;
     private bool NotActionClass = false;
     //êýø
     private float currentTime, defaultTime;
-    private bool isBullReLoad = false;
+    private bool isBullReLoad = false, isTrigerSleeve=true;
     private bool isRun = false;
     void Start()
     {
@@ -27,7 +28,6 @@ public class ShootPlayer : GetInputPlayer
         {
             isRun = true;
             //
-
         }
     }
     private bool ReLoadBullet()
@@ -35,24 +35,39 @@ public class ShootPlayer : GetInputPlayer
         if (isBullReLoad) 
         {
             currentTime -= Time.deltaTime;
+            if (currentTime <= 2 && isTrigerSleeve)
+            {
+                ShootBulletSleeve();
+                isTrigerSleeve=false;
+            }
             if (currentTime <= 0)
             { 
-                currentTime = defaultTime; isBullReLoad = false; return true; 
+                currentTime = defaultTime; isBullReLoad = false; isTrigerSleeve = true;
+                return true; 
             }
             return false;
         }
         return true;
     }
-    private void Shoot()
+    private void ShootActiv()
     {
         if (isRun && ReLoadBullet())
         {
             if (InputData.MouseLeftButton != 0)
             {
-                Pools.BullBB.GetObject();
-                isBullReLoad=true;
+                ShootBullet();
+                IsActivGunPlayerShoot(true);
+                isBullReLoad =true;
             }
         }
+    }
+    public virtual void ShootBullet()
+    {
+        //
+    }
+    public virtual void ShootBulletSleeve()
+    {
+        //
     }
     private void FixedUpdate()
     {
@@ -67,6 +82,6 @@ public class ShootPlayer : GetInputPlayer
             GetIsRun();
             return;
         }
-        Shoot();
+        ShootActiv();
     }
 }

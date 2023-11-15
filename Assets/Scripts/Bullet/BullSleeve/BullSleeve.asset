@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7454fa5adf898c0488987c5cef9ddea3, type: 3}
-  m_Name: ShootSettings
+  m_Script: {fileID: 11500000, guid: 5312a5230e117854ab09bc3992cd688d, type: 3}
+  m_Name: BullSleeve
   m_EditorClassIdentifier: 
-  CurrentTime: 3
+  SpeedBullet: 1
+  KillTime: 3
   IsUpDate: 0
