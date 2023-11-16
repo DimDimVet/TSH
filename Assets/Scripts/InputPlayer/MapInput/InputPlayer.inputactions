@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Mode",
+                    "type": "Button",
+                    "id": "6beaac2e-8c46-43e5-a2f7-f018cbe33a19",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MouseLeftButton",
                     "type": "Button",
                     "id": "6d4ea16a-7d43-4b6b-85fb-264788987ddf",
@@ -201,6 +210,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseRightButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f902cca-d128-409f-a1f8-e295c9423e64",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

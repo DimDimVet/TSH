@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using static EventManager;
 
@@ -23,7 +20,7 @@ public class ParticleControllerShootPlayer : MonoBehaviour
 
     void Start()
     {
-        if (partShoot == null ) { print($"Не установлен ParticleSystem в ParticleControllerShootPlayer"); NotActionClass = true; }
+        if (partShoot == null) { print($"Не установлен ParticleSystem в ParticleControllerShootPlayer"); NotActionClass = true; }
         if (NotActionClass) { return; }//Проверка разрешнения
     }
 

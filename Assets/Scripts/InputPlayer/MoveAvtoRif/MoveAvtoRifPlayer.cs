@@ -1,11 +1,11 @@
 using UnityEngine;
 using static EventManager;
 
-public class MoveTurnPlayer : GetInputPlayer
+public class MoveAvtoRifPlayer : GetInputPlayer
 {
-    [SerializeField] private TurnSettings turnSettings;
+    [SerializeField] private TurnSettings avtoRifSettings;
     private bool NotActionClass = false;
-    private Mode mode=Mode.Turn;
+    private Mode mode = Mode.AvtoRif;
     //кэш
     private Construction cameraMain;
     private Vector3 currentMousePosition;
@@ -17,15 +17,15 @@ public class MoveTurnPlayer : GetInputPlayer
 
     void Start()
     {
-        if (turnSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); NotActionClass = true; }
+        if (avtoRifSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); NotActionClass = true; }
         if (NotActionClass) { return; }//Проверка разрешнения
         GetIsRun();
         GetSetting();
     }
     private void GetSetting()
     {
-        speedTurn = turnSettings.SpeedTurn;//
-        turnSettings.IsUpDate = false;
+        speedTurn = avtoRifSettings.SpeedTurn;//
+        avtoRifSettings.IsUpDate = false;
     }
     private void GetIsRun()
     {
@@ -40,7 +40,7 @@ public class MoveTurnPlayer : GetInputPlayer
     {
         if (isRun)
         {
-            if (InputData.MouseRightButton != 0 && InputData.ModeAction== mode)
+            if (InputData.MouseRightButton != 0 && InputData.ModeAction == mode)
             {
                 currentMousePosition = new Vector3(InputData.MousePosition.x, InputData.MousePosition.y, 0);
                 ray = cameraMain.CameraComponent.ScreenPointToRay(currentMousePosition);//луч...до мышки
@@ -62,7 +62,7 @@ public class MoveTurnPlayer : GetInputPlayer
     {
         if (NotActionClass) { return; }//Проверка разрешнения
 
-        if (turnSettings.IsUpDate)
+        if (avtoRifSettings.IsUpDate)
         {
             GetSetting();
         }
@@ -73,5 +73,4 @@ public class MoveTurnPlayer : GetInputPlayer
         }
         TurnMove();
     }
-
 }

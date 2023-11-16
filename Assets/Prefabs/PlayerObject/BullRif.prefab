@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2999350274319095407}
   - component: {fileID: 2153011845619117092}
   - component: {fileID: 1780160203102681810}
+  - component: {fileID: 776977028205329394}
   m_Layer: 0
   m_Name: BullRif
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &776977028205329394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734328804877840724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64604157f3009147a1dea17df0b4835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullSettings: {fileID: 11400000, guid: 4cf4f3b7a0f8a1143aaec76a6b03c103, type: 2}
+  typeSleeve: 0
+  body: {fileID: 0}

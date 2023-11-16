@@ -1,10 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum Mode
+{
+    Turn,
+    AvtoRif
+}
 public class GetInputPlayer : MonoBehaviour
 {
+    //Назначим в массив вариации режимов
+    private Mode[] mode = { Mode.Turn, Mode.AvtoRif };
+    private int countMode = 0;
+    private bool isTrigerClick=true;
+
     private InputData inputData;//кэш структура хранения всех данных ввода
-    public InputData InputData { get { return inputData; } /*set { inputData = value; } */}
+    public InputData InputData { get { return inputData; } /*set { inputData = value; }*/ }
     private InputPlayer inputActions;//кэш MapInput
     void OnEnable()
     {
@@ -37,6 +47,10 @@ public class GetInputPlayer : MonoBehaviour
                 inputActions.KeyMap.Shoot.started += context => { inputData.Shoot = context.ReadValue<float>(); };
                 inputActions.KeyMap.Shoot.performed += context => { inputData.Shoot = context.ReadValue<float>(); };
                 inputActions.KeyMap.Shoot.canceled += context => { inputData.Shoot = context.ReadValue<float>(); };
+
+                inputActions.KeyMap.Mode.started += context => { inputData.Mode = context.ReadValue<float>(); SelectMoveMode(); };
+                inputActions.KeyMap.Mode.performed += context => { inputData.Mode = context.ReadValue<float>(); };
+                inputActions.KeyMap.Mode.canceled += context => { inputData.Mode = context.ReadValue<float>(); };
             }
             //Карта UI
             {
@@ -62,4 +76,26 @@ public class GetInputPlayer : MonoBehaviour
         //остановим 
         inputActions.Disable();
     }
+    private void SelectMoveMode()
+    {
+        if (inputData.Mode != 0)
+        {
+            if (isTrigerClick)
+            {
+                isTrigerClick = false;
+                countMode++;
+                if (countMode >= mode.Length) { countMode = 0; }
+                
+                for (int i = 0; i < mode.Length; i++)
+                {
+                    if ((int)mode[i] == countMode)
+                    {
+                        inputData.ModeAction = (Mode)countMode;
+                    }
+                }
+                isTrigerClick = true;
+            }
+        }
+    }
+
 }

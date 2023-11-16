@@ -8,4 +8,9 @@ public struct InputData//храним все данные ввода
     public float MouseMiddleButton;//мыш колесо
     public float MouseRightButton;//мыш правая
     public float Shoot;
+    public float Mode;
+
+    //Поле для установки режимов
+    public Mode ModeAction { get; set; }
+
 }

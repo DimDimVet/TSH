@@ -55,6 +55,15 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Mode"",
+                    ""type"": ""Button"",
+                    ""id"": ""6beaac2e-8c46-43e5-a2f7-f018cbe33a19"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""MouseLeftButton"",
                     ""type"": ""Button"",
                     ""id"": ""6d4ea16a-7d43-4b6b-85fb-264788987ddf"",
@@ -223,6 +232,17 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseRightButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f902cca-d128-409f-a1f8-e295c9423e64"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -458,6 +478,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         m_KeyMap_WASD = m_KeyMap.FindAction("WASD", throwIfNotFound: true);
         m_KeyMap_Look = m_KeyMap.FindAction("Look", throwIfNotFound: true);
         m_KeyMap_Shoot = m_KeyMap.FindAction("Shoot", throwIfNotFound: true);
+        m_KeyMap_Mode = m_KeyMap.FindAction("Mode", throwIfNotFound: true);
         m_KeyMap_MouseLeftButton = m_KeyMap.FindAction("MouseLeftButton", throwIfNotFound: true);
         m_KeyMap_MouseMiddleButton = m_KeyMap.FindAction("MouseMiddleButton", throwIfNotFound: true);
         m_KeyMap_MouseRightButton = m_KeyMap.FindAction("MouseRightButton", throwIfNotFound: true);
@@ -530,6 +551,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyMap_WASD;
     private readonly InputAction m_KeyMap_Look;
     private readonly InputAction m_KeyMap_Shoot;
+    private readonly InputAction m_KeyMap_Mode;
     private readonly InputAction m_KeyMap_MouseLeftButton;
     private readonly InputAction m_KeyMap_MouseMiddleButton;
     private readonly InputAction m_KeyMap_MouseRightButton;
@@ -540,6 +562,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         public InputAction @WASD => m_Wrapper.m_KeyMap_WASD;
         public InputAction @Look => m_Wrapper.m_KeyMap_Look;
         public InputAction @Shoot => m_Wrapper.m_KeyMap_Shoot;
+        public InputAction @Mode => m_Wrapper.m_KeyMap_Mode;
         public InputAction @MouseLeftButton => m_Wrapper.m_KeyMap_MouseLeftButton;
         public InputAction @MouseMiddleButton => m_Wrapper.m_KeyMap_MouseMiddleButton;
         public InputAction @MouseRightButton => m_Wrapper.m_KeyMap_MouseRightButton;
@@ -561,6 +584,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Mode.started += instance.OnMode;
+            @Mode.performed += instance.OnMode;
+            @Mode.canceled += instance.OnMode;
             @MouseLeftButton.started += instance.OnMouseLeftButton;
             @MouseLeftButton.performed += instance.OnMouseLeftButton;
             @MouseLeftButton.canceled += instance.OnMouseLeftButton;
@@ -583,6 +609,9 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Mode.started -= instance.OnMode;
+            @Mode.performed -= instance.OnMode;
+            @Mode.canceled -= instance.OnMode;
             @MouseLeftButton.started -= instance.OnMouseLeftButton;
             @MouseLeftButton.performed -= instance.OnMouseLeftButton;
             @MouseLeftButton.canceled -= instance.OnMouseLeftButton;
@@ -676,6 +705,7 @@ public partial class @InputPlayer: IInputActionCollection2, IDisposable
         void OnWASD(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnMode(InputAction.CallbackContext context);
         void OnMouseLeftButton(InputAction.CallbackContext context);
         void OnMouseMiddleButton(InputAction.CallbackContext context);
         void OnMouseRightButton(InputAction.CallbackContext context);

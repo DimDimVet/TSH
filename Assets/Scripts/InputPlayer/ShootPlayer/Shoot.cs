@@ -1,5 +1,4 @@
 using UnityEngine;
-using static EventManager;
 
 public class Shoot : GetInputPlayer
 {
@@ -56,7 +55,6 @@ public class Shoot : GetInputPlayer
             if (InputData.MouseLeftButton != 0)
             {
                 ShootBullet();
-                IsActivGunPlayerShoot(true);
                 isBullReLoad =true;
             }
         }
