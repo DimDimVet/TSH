@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Registrator : ListDataBase
 {
@@ -12,7 +13,8 @@ public class Registrator : ListDataBase
             HealtPlayer = GetComponent<HealtPlayer>(),
             MovePlayer = GetComponent<MoveBodyPlayer>(),
             CameraMove= GetComponent<CameraMove>(),
-            CameraComponent=GetComponent<Camera>()
+            CameraComponent=GetComponent<Camera>(),
+            NavMeshAgent=GetComponent<NavMeshAgent>()
         };
         SetData(registrator);
     }

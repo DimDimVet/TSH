@@ -4,35 +4,43 @@ using static EventManager;
 public class ParticleControllerShootPlayer : MonoBehaviour
 {
     private bool NotActionClass = false;
-    //кэш
+    //пїЅпїЅпїЅ
     [SerializeField] private ParticleSystem partShoot;
+    public ParticleSystem PartSht{get{return partShoot;}set{value=partShoot;}}
     private bool isRun = false;
 
     private void OnEnable()
     {
-        OnIsActivGunPlayerShoot += PartShoot;
-        partShoot.Stop();
+        SetEventOnEneble();
     }
     private void OnDisable()
     {
-        OnIsActivGunPlayerShoot -= PartShoot;
+        SetEventOnDisable();
     }
-
+    public virtual void SetEventOnEneble()
+    {
+    //OnIsActivGunPlayerShoot += PartShoot;
+            //partShoot.Stop();
+    }
+    public virtual void SetEventOnDisable()
+    {
+        //OnIsActivGunPlayerShoot -= PartShoot;
+    }
     void Start()
     {
-        if (partShoot == null) { print($"Не установлен ParticleSystem в ParticleControllerShootPlayer"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (partShoot == null) { print($"пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ParticleSystem пїЅ ParticleControllerShootPlayer"); NotActionClass = true; }
+        if (NotActionClass) { return; }//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ false
         {
             isRun = true;
             //
         }
     }
-    private void PartShoot(bool isActiv)
+    public void PartShoot(bool isActiv)
     {
         if (isActiv)
         {
@@ -49,9 +57,9 @@ public class ParticleControllerShootPlayer : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (NotActionClass) { return; }//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ false
         {
             GetIsRun();
             return;

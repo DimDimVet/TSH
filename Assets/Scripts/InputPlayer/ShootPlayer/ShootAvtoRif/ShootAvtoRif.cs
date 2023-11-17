@@ -7,6 +7,7 @@ public class ShootAvtoRif : Shoot
         if (InputData.ModeAction == mode)
         {
             Pools.BullRif.GetObject();
+            IsActivAvtoRifPlayerShoot(true);
         }
     }
     public override void ShootBulletSleeve()

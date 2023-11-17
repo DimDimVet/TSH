@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public struct Construction
 {
@@ -10,4 +11,5 @@ public struct Construction
     public MoveBodyPlayer MovePlayer;
     public CameraMove CameraMove;
     public Camera CameraComponent;
+    public NavMeshAgent NavMeshAgent;
 }

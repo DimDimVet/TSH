@@ -3,46 +3,51 @@ using System.Collections.Generic;
 
 public class EventManager
 {
-    //запрос листа объекта
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public static Func<List<Construction>> OnGetList;
     public static List<Construction> GetList()
     {
-        return (List<Construction>)OnGetList?.Invoke();//запросим из пространства лист
+        return (List<Construction>)OnGetList?.Invoke();//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     }
 
-    //запрос готовности объекта по hash
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ hash
     public static Func<int, bool> OnIsActivObjectHash;
     public static bool IsActivObjectHash(int hash)
     {
-        return (bool)OnIsActivObjectHash?.Invoke(hash);//запросим из пространства лист
+        return (bool)OnIsActivObjectHash?.Invoke(hash);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     }
 
-    //запрос листа объекта по hash
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ hash
     public static Func<int, Construction> OnGetObjectHash;
     public static Construction GetObjectHash(int hash)
     {
-        return (Construction)OnGetObjectHash?.Invoke(hash);//запросим из пространства лист
+        return (Construction)OnGetObjectHash?.Invoke(hash);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     }
 
-    //запрос листа Player
-    public static Func<Construction> OnGetPlayer;//запросим из пространства лист
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ Player
+    public static Func<Construction> OnGetPlayer;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     public static Construction GetPlayer()
     {
-        return (Construction)OnGetPlayer?.Invoke();//запросим из пространства лист
+        return (Construction)OnGetPlayer?.Invoke();//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     }
 
-    //запрос листа Camera
-    public static Func<Construction> OnGetCamera;//запросим из пространства лист
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ Camera
+    public static Func<Construction> OnGetCamera;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     public static Construction GetCamera()
     {
-        return (Construction)OnGetCamera?.Invoke();//запросим из пространства лист
+        return (Construction)OnGetCamera?.Invoke();//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     }
-    //спецюсобытия
-    //событие выстрела игроком
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public static Action<bool> OnIsActivGunPlayerShoot;
     public static void IsActivGunPlayerShoot(bool isShootGunPlayer)
     {
         OnIsActivGunPlayerShoot?.Invoke(isShootGunPlayer);
+    }
+     public static Action<bool> OnIsActivAvtoRifPlayerShoot;
+    public static void IsActivAvtoRifPlayerShoot(bool isShootAvtoRifPlayer)
+    {
+        OnIsActivAvtoRifPlayerShoot?.Invoke(isShootAvtoRifPlayer);
     }
 
 }
