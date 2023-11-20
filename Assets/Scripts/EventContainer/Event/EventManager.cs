@@ -37,8 +37,9 @@ public class EventManager
     {
         return (Construction)OnGetCamera?.Invoke();//�������� �� ������������ ����
     }
-    //������������
-    //������� �������� �������
+    //Особые события
+    //События активности Player
+
     public static Action<bool> OnIsActivGunPlayerShoot;
     public static void IsActivGunPlayerShoot(bool isShootGunPlayer)
     {
@@ -49,5 +50,6 @@ public class EventManager
     {
         OnIsActivAvtoRifPlayerShoot?.Invoke(isShootAvtoRifPlayer);
     }
+    //События активности Enemy
 
 }

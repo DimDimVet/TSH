@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using static EventManager;
 
 public class LogicMoveEnemy : MonoBehaviour
@@ -11,6 +12,8 @@ public class LogicMoveEnemy : MonoBehaviour
     public float AgentVelocity { get { return agentVelocity; } }
     private float speedMove, speedAngle, acceleration, stopDistance;
     private Construction thisObject;
+    private Vector3 tempPosition;
+    private bool isTriger=true;
     private bool isRun = false;
     void Start()
     {
@@ -48,10 +51,31 @@ public class LogicMoveEnemy : MonoBehaviour
         if (isRun)
         {
             {
+                //tempPosition = TempTarget.transform.position+new Vector3(Random.value*15,0,Random.value*15);
+                
+                if (isTriger)
+                {
+                    thisObject.NavMeshAgent.stoppingDistance = 15;
+                    
+                    tempPosition = new Vector3(TempTarget.transform.position.x + (Random.value * 15), 0, TempTarget.transform.position.z + (Random.value * 15));
+                    thisObject.NavMeshAgent.destination = tempPosition;
+                    isTriger = false;
+                }
+                else
+                {
+                    if (Mathf.Abs(TempTarget.transform.position.magnitude- tempPosition.magnitude) >=30f && thisObject.NavMeshAgent.velocity.magnitude ==0)
+                    {
+                        isTriger = true;
+                    }
+                    else
+                    {
+                        //thisObject.NavMeshAgent.destination = tempPosition;
+                    }
+                }
 
-                thisObject.NavMeshAgent.destination = TempTarget.transform.position;
-                //if dead
-                //    agent.enabled = false;
+                print($"{thisObject.NavMeshAgent.remainingDistance} " +
+                    $"{tempPosition.magnitude} {TempTarget.transform.position.magnitude}");
+
             }
 
             {

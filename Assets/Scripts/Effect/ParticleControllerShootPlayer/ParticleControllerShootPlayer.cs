@@ -1,5 +1,4 @@
 using UnityEngine;
-using static EventManager;
 
 public class ParticleControllerShootPlayer : MonoBehaviour
 {

@@ -1,8 +1,8 @@
 using static EventManager;
 
-public class ParticleGunShootPlayer : ParticleControllerShootPlayer 
+public class ParticleGunShootPlayer : ParticleControllerShootPlayer
 {
-public override void SetEventOnEneble()
+    public override void SetEventOnEneble()
     {
         OnIsActivGunPlayerShoot += PartShoot;
         PartSht.Stop();

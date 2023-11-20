@@ -12,4 +12,5 @@ public struct Construction
     public CameraMove CameraMove;
     public Camera CameraComponent;
     public NavMeshAgent NavMeshAgent;
+    public LogicMoveEnemy LogicMoveEnemy;
 }

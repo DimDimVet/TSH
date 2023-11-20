@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d9ea26078bc42549a3115f9984bed69, type: 3}
-  m_Name: LogicMoveEnemyTankSettings
+  m_Script: {fileID: 11500000, guid: 18d3fcfe1cb60684baf273ef1dcf2f67, type: 3}
+  m_Name: MoveEnemyTankSettings
   m_EditorClassIdentifier: 
-  SpeedMove: 5
-  Acceleration: 7
-  SpeedAngle: 40
-  StopDistance: 0
+  SpeedAnim: 1
+  TankEnemyTrackBack: TankEnemyTrackBack
+  TankEnemyTrackForward: TankEnemyTrackForward
+  TankEnemyTrackLeft: TankEnemyTrackLeft
+  TankEnemyTrackRight: TankEnemyTrackRight
   IsUpDate: 0

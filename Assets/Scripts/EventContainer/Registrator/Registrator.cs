@@ -14,7 +14,8 @@ public class Registrator : ListDataBase
             MovePlayer = GetComponent<MoveBodyPlayer>(),
             CameraMove= GetComponent<CameraMove>(),
             CameraComponent=GetComponent<Camera>(),
-            NavMeshAgent=GetComponent<NavMeshAgent>()
+            NavMeshAgent=GetComponent<NavMeshAgent>(),
+            LogicMoveEnemy=GetComponent<LogicMoveEnemy>(),
         };
         SetData(registrator);
     }

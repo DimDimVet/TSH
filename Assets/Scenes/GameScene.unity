@@ -1815,6 +1815,7 @@ GameObject:
   - component: {fileID: 3469287838102608034}
   - component: {fileID: 1711813855180532840}
   - component: {fileID: 5866666020349054333}
+  - component: {fileID: 5866666020349054339}
   - component: {fileID: 5866666020349054337}
   - component: {fileID: 5866666020349054338}
   - component: {fileID: 5866666020349054335}
@@ -3047,7 +3048,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -3099,6 +3100,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TempTarget: {fileID: 562554628}
   moveEnemySettings: {fileID: 11400000, guid: 12020e44af0f5fb4192164e9155551f7, type: 2}
+--- !u!114 &5866666020349054339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147494620605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3cd6a316523e2458ea3b85ac036704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animSettings: {fileID: 11400000, guid: aed37b4094b599142ae03e245762d520, type: 2}
 --- !u!1 &5904632054193494016
 GameObject:
   m_ObjectHideFlags: 0
