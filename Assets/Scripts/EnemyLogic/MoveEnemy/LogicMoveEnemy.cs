@@ -73,8 +73,8 @@ public class LogicMoveEnemy : MonoBehaviour
                     }
                 }
 
-                print($"{thisObject.NavMeshAgent.remainingDistance} " +
-                    $"{tempPosition.magnitude} {TempTarget.transform.position.magnitude}");
+                //print($"{thisObject.NavMeshAgent.remainingDistance} " +
+                //    $"{tempPosition.magnitude} {TempTarget.transform.position.magnitude}");
 
             }
 
