@@ -1,5 +1,8 @@
+using Codice.Utils;
+using System;
 using UnityEngine;
 using static EventManager;
+using static PlasticGui.LaunchDiffParameters;
 
 public class ScanEnemy : MonoBehaviour
 {
@@ -7,13 +10,20 @@ public class ScanEnemy : MonoBehaviour
     [SerializeField] private ScanEnemySettings scanEnemySettings;
     private bool NotActionClass = false;
     //кэш
-    private float dimCollider;
+    private float dimCollider, kfCollider;
     private int hashGetObject;
     private Construction objectGetScaner;
-    private Construction[] objects;
+    private Construction[] players, enemys;
+
     private bool isRun = false;
+
     void Start()
     {
+        int thisHash = this.gameObject.GetHashCode();
+        Construction thisObject = GetObjectHash(thisHash);
+        CreatEnemy(thisObject);
+        print(thisObject.Hash);
+
         if (scanEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
         if (NotActionClass) { return; }//Проверка разрешнения
         GetSetting();
@@ -22,6 +32,7 @@ public class ScanEnemy : MonoBehaviour
     private void GetSetting()
     {
         dimCollider = scanEnemySettings.DimCollider;
+        kfCollider = scanEnemySettings.KfCollider;
     }
     private void GetIsRun()
     {
@@ -34,25 +45,91 @@ public class ScanEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         hashGetObject = other.gameObject.GetHashCode();
+        BuildScanObject(hashGetObject);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        hashGetObject = other.gameObject.GetHashCode();
+        ReBuildScanObject(hashGetObject);
+    }
+    private void BuildScanObject(int hashGetObject)
+    {
+        objectGetScaner = GetObjectHash(hashGetObject);
+        if (objectGetScaner.HealtPlayer != null)
+        {
+            ProcessingPlayer(objectGetScaner);
+        }
+        if (objectGetScaner.HealtEnemy != null)
+        {
+            ProcessingEnemy(objectGetScaner);
+        }
+        if (players != null) { GetTargetPlayer(players, enemys); }
+    }
+    private void ReBuildScanObject(int hashGetObject)
+    {
+
+    }
+    private void ProcessingEnemy(Construction objectGetScaner)
+    {
+        if (enemys != null)
+        {
+            for (int i = 0; i < enemys.Length; i++)
+            {
+                if (enemys[i].Hash == objectGetScaner.Hash)
+                {
+                    break;
+                }
+            }
+            CreatEnemy(objectGetScaner);
+        }
+        else { CreatEnemy(objectGetScaner); }
+    }
+    private void ProcessingPlayer(Construction objectGetScaner)
+    {
+        if (players != null)
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].Hash == objectGetScaner.Hash)
+                {
+                    break;
+                }
+            }
+            CreatPlayer(objectGetScaner);
+        }
+        else { CreatPlayer(objectGetScaner); }
+    }
+    private void CreatEnemy(Construction objectGetScaner)
+    {
+        if (enemys != null)
+        {
+            int newLength = enemys.Length + 1;
+            Array.Resize(ref enemys, newLength);
+            enemys[newLength - 1] = objectGetScaner;
+        }
+        else
+        {
+            enemys = new Construction[] { objectGetScaner };
+        }
+    }
+    private void CreatPlayer(Construction objectGetScaner)
+    {
+        if (players != null)
+        {
+            int newLength = players.Length + 1;
+            Array.Resize(ref players, newLength);
+            players[newLength - 1] = objectGetScaner;
+        }
+        else
+        {
+            players = new Construction[] { objectGetScaner };
+        }
     }
     private void EnemyScan()
     {
         if (isRun)
         {
-            if (objects != null)
-            {
-                for (int i = 0; i < objects.Length; i++)
-                {
-                    if (objects[i].Hash != hashGetObject) 
-                    {
-                        objectGetScaner = GetObjectHash(hashGetObject);
-                        
-                    }
-                };
-            }
-
-            
-            print($"{gameObject.GetHashCode()} - {scanCollider.GetHashCode()}");
+            //print($"{gameObject.GetHashCode()} - {scanCollider.GetHashCode()}");
             //print($"{gameObject.GetHashCode()} - {scanCollider.GetHashCode()}");
         }
     }

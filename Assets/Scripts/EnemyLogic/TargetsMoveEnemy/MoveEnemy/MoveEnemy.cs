@@ -1,20 +1,26 @@
 using UnityEngine;
-using UnityEngine.AI;
 using static EventManager;
+using static UnityEngine.GraphicsBuffer;
 
-public class LogicMoveEnemy : MonoBehaviour
+public class MoveEnemy : TargetsMoveEnemy
 {
-    public GameObject TempTarget;
-    [SerializeField] private LogicMoveEnemySettings moveEnemySettings;
+    [SerializeField] private MoveEnemySettings moveEnemySettings;
     private bool NotActionClass = false;
     //кэш
+    private float speedMove, speedAngle, acceleration, stopDistance;
+    private int countTarget=0;
+    private Transform currentTarget;
+    private Construction thisObject;
+
     private float agentVelocity;
     public float AgentVelocity { get { return agentVelocity; } }
-    private float speedMove, speedAngle, acceleration, stopDistance;
-    private Construction thisObject;
+    
+    
     private Vector3 tempPosition;
-    private bool isTriger=true;
+    private bool isTriger = true,gg;
     private bool isRun = false;
+
+
     void Start()
     {
         if (moveEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
@@ -33,8 +39,7 @@ public class LogicMoveEnemy : MonoBehaviour
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            int hash = this.gameObject.GetHashCode();
-            thisObject = GetObjectHash(hash);//получаем данные из листа
+            thisObject = GetObjectHash(ThisHash);//получаем данные из листа
             if (thisObject.NavMeshAgent != null) { isRun = true; SetNavComponent(); }
             else { isRun = false; print($"{gameObject.name} не получил NavMeshAgent"); }
         }
@@ -46,32 +51,53 @@ public class LogicMoveEnemy : MonoBehaviour
         thisObject.NavMeshAgent.acceleration = acceleration;
         thisObject.NavMeshAgent.stoppingDistance = stopDistance;
     }
-    private void EnemyMove()
+    private void EnemyMove(Transform currentTarget)
+    {
+        //thisObject.NavMeshAgent.destination = currentTarget.position;
+        thisObject.NavMeshAgent.SetDestination(currentTarget.position);
+    }
+    private void CycleTarget()
     {
         if (isRun)
         {
+            
+            if (isTriger)
             {
-                //tempPosition = TempTarget.transform.position+new Vector3(Random.value*15,0,Random.value*15);
-                
-                if (isTriger)
-                {
-                    thisObject.NavMeshAgent.stoppingDistance = 15;
+                if (Targets == null) { return; }
+                currentTarget = Targets[countTarget];
+                EnemyMove(currentTarget);
+                countTarget++;
+                if (countTarget >= Targets.Length) { countTarget = 0; }
+                isTriger = false;
+            }
+
+            float distanceToTarget = Vector3.Distance(this.gameObject.transform.position, currentTarget.position);
+            if (distanceToTarget <= stopDistance)
+            {
+                isTriger = true;
+            }
+
+
+            {
+                //if (isTriger)
+                //{
+                //    thisObject.NavMeshAgent.stoppingDistance = 15;
+
+                //    tempPosition = new Vector3(TempTarget.transform.position.x + (UnityEngine.Random.value * 15), 0, TempTarget.transform.position.z + (UnityEngine.Random.value * 15));
                     
-                    tempPosition = new Vector3(TempTarget.transform.position.x + (Random.value * 15), 0, TempTarget.transform.position.z + (Random.value * 15));
-                    thisObject.NavMeshAgent.destination = tempPosition;
-                    isTriger = false;
-                }
-                else
-                {
-                    if (Mathf.Abs(TempTarget.transform.position.magnitude- tempPosition.magnitude) >=30f && thisObject.NavMeshAgent.velocity.magnitude ==0)
-                    {
-                        isTriger = true;
-                    }
-                    else
-                    {
-                        //thisObject.NavMeshAgent.destination = tempPosition;
-                    }
-                }
+                //    isTriger = false;
+                //}
+                //else
+                //{
+                //    if (Mathf.Abs(TempTarget.transform.position.magnitude - tempPosition.magnitude) >= 30f && thisObject.NavMeshAgent.velocity.magnitude == 0)
+                //    {
+                //        isTriger = true;
+                //    }
+                //    else
+                //    {
+                //        //thisObject.NavMeshAgent.destination = tempPosition;
+                //    }
+                //}
 
                 //print($"{thisObject.NavMeshAgent.remainingDistance} " +
                 //    $"{tempPosition.magnitude} {TempTarget.transform.position.magnitude}");
@@ -115,6 +141,6 @@ public class LogicMoveEnemy : MonoBehaviour
             GetIsRun();
             return;
         }
-        EnemyMove();
+        CycleTarget();
     }
 }

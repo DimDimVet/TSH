@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LogicMoveEnemySettings", menuName = "ScriptableObjects/LogicMoveEnemySettings")]
-public class LogicMoveEnemySettings : ScriptableObject
+[CreateAssetMenu(fileName = "MoveEnemySettings", menuName = "ScriptableObjects/MoveEnemySettings")]
+public class MoveEnemySettings : ScriptableObject
 {
     [Header("Скорость движения")]
     public float SpeedMove = 5f;

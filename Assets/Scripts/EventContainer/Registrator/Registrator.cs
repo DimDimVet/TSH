@@ -11,11 +11,12 @@ public class Registrator : ListDataBase
             IsDead =false,
             Transform = gameObject.transform,
             HealtPlayer = GetComponent<HealtPlayer>(),
+            HealtEnemy = GetComponent<HealtEnemy>(),
             MovePlayer = GetComponent<MoveBodyPlayer>(),
             CameraMove= GetComponent<CameraMove>(),
             CameraComponent=GetComponent<Camera>(),
             NavMeshAgent=GetComponent<NavMeshAgent>(),
-            LogicMoveEnemy=GetComponent<LogicMoveEnemy>(),
+            MoveEnemy=GetComponent<MoveEnemy>(),
         };
         SetData(registrator);
     }
