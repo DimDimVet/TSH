@@ -22,7 +22,6 @@ public class ScanEnemy : MonoBehaviour
         int thisHash = this.gameObject.GetHashCode();
         Construction thisObject = GetObjectHash(thisHash);
         CreatEnemy(thisObject);
-        print(thisObject.Hash);
 
         if (scanEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
         if (NotActionClass) { return; }//Проверка разрешнения
@@ -63,11 +62,22 @@ public class ScanEnemy : MonoBehaviour
         {
             ProcessingEnemy(objectGetScaner);
         }
+
         if (players != null) { GetTargetPlayer(players, enemys); }
     }
     private void ReBuildScanObject(int hashGetObject)
     {
+        objectGetScaner = GetObjectHash(hashGetObject);
+        if (objectGetScaner.HealtPlayer != null)
+        {
+            CleanPlayer(objectGetScaner);
+        }
+        if (objectGetScaner.HealtEnemy != null)
+        {
+            CleanEnemy(objectGetScaner);
+        }
 
+        if (players != null) { GetTargetPlayer(players, enemys); }
     }
     private void ProcessingEnemy(Construction objectGetScaner)
     {
@@ -77,7 +87,7 @@ public class ScanEnemy : MonoBehaviour
             {
                 if (enemys[i].Hash == objectGetScaner.Hash)
                 {
-                    break;
+                    return;
                 }
             }
             CreatEnemy(objectGetScaner);
@@ -92,7 +102,7 @@ public class ScanEnemy : MonoBehaviour
             {
                 if (players[i].Hash == objectGetScaner.Hash)
                 {
-                    break;
+                    return;
                 }
             }
             CreatPlayer(objectGetScaner);
@@ -103,6 +113,15 @@ public class ScanEnemy : MonoBehaviour
     {
         if (enemys != null)
         {
+            for (int i = 0; i < enemys.Length; i++)
+            {
+                if (enemys[i].Hash==0)
+                {
+                    enemys[i] = objectGetScaner;
+                    return;
+                }
+            }
+
             int newLength = enemys.Length + 1;
             Array.Resize(ref enemys, newLength);
             enemys[newLength - 1] = objectGetScaner;
@@ -116,6 +135,15 @@ public class ScanEnemy : MonoBehaviour
     {
         if (players != null)
         {
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].Hash == 0)
+                {
+                    players[i] = objectGetScaner;
+                    return;
+                }
+            }
+
             int newLength = players.Length + 1;
             Array.Resize(ref players, newLength);
             players[newLength - 1] = objectGetScaner;
@@ -123,6 +151,34 @@ public class ScanEnemy : MonoBehaviour
         else
         {
             players = new Construction[] { objectGetScaner };
+        }
+    }
+    private void CleanEnemy(Construction objectGetScaner)
+    {
+        if (enemys != null)
+        {
+            for (int i = 0; i < enemys.Length; i++)
+            {
+                if (enemys[i].Hash == objectGetScaner.Hash)
+                {
+                    enemys[i].Hash = 0;
+                    return;
+                }
+            }
+        }
+    }
+    private void CleanPlayer(Construction objectGetScaner)
+    {
+        if (players != null)
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i].Hash == objectGetScaner.Hash)
+                {
+                    players[i].Hash = 0;
+                    return;
+                }
+            }
         }
     }
     private void EnemyScan()
