@@ -8,16 +8,16 @@ public class MoveEnemy : TargetsMoveEnemy
     private bool NotActionClass = false;
     //кэш
     private float speedMove, speedAngle, acceleration, stopDistance;
-    private int countTarget=0;
+    private int countTarget = 0;
     private Transform currentTarget;
     private Construction thisObject;
+    private Transform defaultPosition;
 
     private float agentVelocity;
     public float AgentVelocity { get { return agentVelocity; } }
-    
-    
+
     private Vector3 tempPosition;
-    private bool isTriger = true,gg;
+    private bool isTriger = true, gg;
     private bool isRun = false;
 
 
@@ -27,6 +27,7 @@ public class MoveEnemy : TargetsMoveEnemy
         if (NotActionClass) { return; }//Проверка разрешнения
         GetSetting();
         GetIsRun();
+        defaultPosition= thisObject.NavMeshAgent.transform;
     }
     private void GetSetting()
     {
@@ -51,38 +52,42 @@ public class MoveEnemy : TargetsMoveEnemy
         thisObject.NavMeshAgent.acceleration = acceleration;
         thisObject.NavMeshAgent.stoppingDistance = stopDistance;
     }
+    public override void DefaultTarget()
+    {
+        //Targets = new Transform[] { defaultPosition };
+        Targets = null;
+    }
     private void EnemyMove(Transform _currentTarget)
     {
-        isTriger = false;
         Transform target = _currentTarget;
         //thisObject.NavMeshAgent.destination = currentTarget.position;
-        var tt=thisObject.NavMeshAgent.SetDestination(target.position);
-        
-        float distanceToTarget = Vector3.Distance(this.gameObject.transform.position, target.position);
-        //print($"{distanceToTarget} {tt}");
-        //if (distanceToTarget <= stopDistance)
-        //{
-        //    isTriger = true;
-        //}
+        thisObject.NavMeshAgent.destination=target.position;
     }
     private void StepTarget()
     {
         if (Targets == null) { isTriger = true; return; }
         currentTarget = Targets[countTarget];
+        print(Targets[countTarget].transform.position);
         EnemyMove(currentTarget);
-        countTarget++;
+        //countTarget++;
     }
     private void CycleTarget()
     {
         if (isRun)
         {
+
             if (isTriger)
             {
                 StepTarget();
+                isTriger = false;
                 //if (countTarget >= Targets.Length) { countTarget = 0; }
             }
-            //print($"{currentTarget.position} {Targets[countTarget].position}");
-            
+            else
+            {
+                if (thisObject.NavMeshAgent.velocity.magnitude <= 0.1f) { isTriger = true; }
+            }
+            // print($"{Targets[countTarget].position}");
+
 
 
             {
@@ -91,7 +96,7 @@ public class MoveEnemy : TargetsMoveEnemy
                 //    thisObject.NavMeshAgent.stoppingDistance = 15;
 
                 //    tempPosition = new Vector3(TempTarget.transform.position.x + (UnityEngine.Random.value * 15), 0, TempTarget.transform.position.z + (UnityEngine.Random.value * 15));
-                    
+
                 //    isTriger = false;
                 //}
                 //else

@@ -8,7 +8,7 @@ public class TargetsMoveEnemy : MonoBehaviour
     private int thisHash;
     public int ThisHash { get { return thisHash; } }
     private Transform[] targets;
-    public Transform[] Targets { get { return targets; } }
+    public Transform[] Targets { get { return targets; }set { targets = value; } }
 
     private void OnEnable()
     {
@@ -23,19 +23,30 @@ public class TargetsMoveEnemy : MonoBehaviour
     {
         for (int i = 0; i < grupEnemys.Length; i++)
         {
+           
             if (grupEnemys[i].Hash == thisHash)
             {
                 for (int y = 0; y < players.Length; y++)
                 {
-                    CreatTarget(players[y]);
+                    if (players[y].Hash != 0)
+                    {
+                        CreatTarget(players[y]);
+                        print(players[y].Hash);
+                    }
+                    else
+                    {
+                        ClearTarget();
+                        DefaultTarget();
+                        print(players[y].Hash);
+                    }
                 }
-                break;
+                //break;
             }
-            else
-            {
-                ClearTarget();
-                DefaultTarget();
-            }
+            //else
+            //{
+            //    ClearTarget();
+            //    DefaultTarget();
+            //}
         }
     }
     private void CreatTarget(Construction objectTarget)
@@ -55,8 +66,8 @@ public class TargetsMoveEnemy : MonoBehaviour
     {
         Array.Clear(targets, 0, targets.Length);
     }
-    private void DefaultTarget()
+    public virtual void DefaultTarget()
     {
-        targets[0] = this.gameObject.transform;
+        //targets = new Transform[] { defaultPosition };
     }
 }

@@ -62,8 +62,6 @@ public class ScanEnemy : MonoBehaviour
         {
             ProcessingEnemy(objectGetScaner);
         }
-
-        if (players != null) { GetTargetPlayer(players, enemys); }
     }
     private void ReBuildScanObject(int hashGetObject)
     {
@@ -76,7 +74,9 @@ public class ScanEnemy : MonoBehaviour
         {
             CleanEnemy(objectGetScaner);
         }
-
+    }
+    private void EventTarget()
+    {
         if (players != null) { GetTargetPlayer(players, enemys); }
     }
     private void ProcessingEnemy(Construction objectGetScaner)
@@ -118,6 +118,7 @@ public class ScanEnemy : MonoBehaviour
                 if (enemys[i].Hash==0)
                 {
                     enemys[i] = objectGetScaner;
+                    EventTarget();
                     return;
                 }
             }
@@ -130,6 +131,7 @@ public class ScanEnemy : MonoBehaviour
         {
             enemys = new Construction[] { objectGetScaner };
         }
+        EventTarget();
     }
     private void CreatPlayer(Construction objectGetScaner)
     {
@@ -140,6 +142,7 @@ public class ScanEnemy : MonoBehaviour
                 if (players[i].Hash == 0)
                 {
                     players[i] = objectGetScaner;
+                    EventTarget();
                     return;
                 }
             }
@@ -152,6 +155,7 @@ public class ScanEnemy : MonoBehaviour
         {
             players = new Construction[] { objectGetScaner };
         }
+        EventTarget();
     }
     private void CleanEnemy(Construction objectGetScaner)
     {
@@ -161,7 +165,8 @@ public class ScanEnemy : MonoBehaviour
             {
                 if (enemys[i].Hash == objectGetScaner.Hash)
                 {
-                    enemys[i].Hash = 0;
+                    Array.Clear(enemys, i, 1);
+                    EventTarget();
                     return;
                 }
             }
@@ -175,7 +180,8 @@ public class ScanEnemy : MonoBehaviour
             {
                 if (players[i].Hash == objectGetScaner.Hash)
                 {
-                    players[i].Hash = 0;
+                    Array.Clear(players, i, 1);
+                    EventTarget();
                     return;
                 }
             }

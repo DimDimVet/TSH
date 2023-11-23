@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7cabc85ac3e2d4eb5aef5d5f969bf7, type: 3}
   m_Name: MoveSettings
   m_EditorClassIdentifier: 
-  SpeedForward: 4
-  SpeedBack: 2
+  SpeedForward: 14
+  SpeedBack: 10
   SpeedTurn: 25
   Weight: 50
-  ForceMove: 50000
-  ForceTurn: 30000
   GroundLayer:
     serializedVersion: 2
     m_Bits: 1
