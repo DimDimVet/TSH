@@ -40,16 +40,16 @@ public class EventManager
 
     //Особые события
     //События активности Player
-    public static Action<bool> OnIsActivGunPlayerShoot;
-    public static void IsActivGunPlayerShoot(bool isShootGunPlayer)
+    public static Action<int, bool> OnIsActivGunPlayerShoot;
+    public static void IsActivGunPlayerShoot(int thisHash, bool isShootGunPlayer)
     {
-        OnIsActivGunPlayerShoot?.Invoke(isShootGunPlayer);
+        OnIsActivGunPlayerShoot?.Invoke(thisHash, isShootGunPlayer);
     }
 
-    public static Action<bool> OnIsActivAvtoRifPlayerShoot;
-    public static void IsActivAvtoRifPlayerShoot(bool isShootAvtoRifPlayer)
+    public static Action<int, bool> OnIsActivAvtoRifPlayerShoot;
+    public static void IsActivAvtoRifPlayerShoot(int thisHash, bool isShootAvtoRifPlayer)
     {
-        OnIsActivAvtoRifPlayerShoot?.Invoke(isShootAvtoRifPlayer);
+        OnIsActivAvtoRifPlayerShoot?.Invoke(thisHash, isShootAvtoRifPlayer);
     }
     //События активности Enemy
     //Передать группе Enemy TargetPlayer
@@ -58,4 +58,18 @@ public class EventManager
     {
         OnGetTargetPlayer?.Invoke(players, grupEnemys);
     }
+
+    public static Action<int,bool> OnIsReadinessShoot;
+    public static void IsReadinessShoot(int thisHash,bool isReadinessShoot)
+    {
+        OnIsReadinessShoot?.Invoke(thisHash,isReadinessShoot);
+    }
+
+    public static Action<int, bool> OnIsActivGunEnemyShoot;
+    public static void IsActivGunEnemyShoot(int thisHash, bool isShootGunEnemy)
+    {
+        OnIsActivGunEnemyShoot?.Invoke(thisHash,isShootGunEnemy);
+    }
+
+
 }

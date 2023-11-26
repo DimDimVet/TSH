@@ -5,8 +5,11 @@ public class Shoot : GetInputPlayer
     [SerializeField] private ShootSettings shootSettings;
     private bool NotActionClass = false;
     //кэш
+    private int thisHash;
+    public int ThisHash { get { return thisHash; } }
     private float currentTime, defaultTime;
-    private bool isBullReLoad = false, isTrigerSleeve=true;
+    private bool isBullReLoad = false, isTrigerSleeve = true, isInputPlayer,isScriptAction=false;
+    public bool IsScriptAction { get { return isScriptAction; } set { isScriptAction = value; } }
     private bool isRun = false;
     void Start()
     {
@@ -19,30 +22,31 @@ public class Shoot : GetInputPlayer
     {
         currentTime = shootSettings.CurrentTime;
         defaultTime = currentTime;
+        isInputPlayer = shootSettings.IsInputPlayer;
         shootSettings.IsUpDate = false;
     }
     private void GetIsRun()
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            isRun = true;
-            //
+            if (thisHash != 0) { isRun = true;  }
+            else { thisHash = this.gameObject.GetHashCode(); }
         }
     }
     private bool ReLoadBullet()
     {
-        if (isBullReLoad) 
+        if (isBullReLoad)
         {
             currentTime -= Time.deltaTime;
             if (currentTime <= 2 && isTrigerSleeve)
             {
                 ShootBulletSleeve();
-                isTrigerSleeve=false;
+                isTrigerSleeve = false;
             }
             if (currentTime <= 0)
-            { 
+            {
                 currentTime = defaultTime; isBullReLoad = false; isTrigerSleeve = true;
-                return true; 
+                return true;
             }
             return false;
         }
@@ -52,11 +56,23 @@ public class Shoot : GetInputPlayer
     {
         if (isRun && ReLoadBullet())
         {
-            if (InputData.MouseLeftButton != 0)
+            if (isInputPlayer)
             {
-                ShootBullet();
-                isBullReLoad =true;
+                if (InputData.MouseLeftButton != 0)
+                {
+                    ShootBullet();
+                    isBullReLoad = true;
+                }
             }
+            else
+            {
+                if (isScriptAction)
+                {
+                    ShootBullet();
+                    isBullReLoad = true;
+                }
+            }
+
         }
     }
     public virtual void ShootBullet()

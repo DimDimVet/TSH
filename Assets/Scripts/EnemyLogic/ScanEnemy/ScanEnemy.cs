@@ -1,8 +1,6 @@
-using Codice.Utils;
 using System;
 using UnityEngine;
 using static EventManager;
-using static PlasticGui.LaunchDiffParameters;
 
 public class ScanEnemy : MonoBehaviour
 {
@@ -10,6 +8,8 @@ public class ScanEnemy : MonoBehaviour
     [SerializeField] private ScanEnemySettings scanEnemySettings;
     private bool NotActionClass = false;
     //кэш
+    private int thisHash;
+    private Construction thisObject;
     private float dimCollider, kfCollider;
     private int hashGetObject;
     private Construction objectGetScaner;
@@ -19,14 +19,11 @@ public class ScanEnemy : MonoBehaviour
 
     void Start()
     {
-        int thisHash = this.gameObject.GetHashCode();
-        Construction thisObject = GetObjectHash(thisHash);
-        CreatEnemy(thisObject);
-
         if (scanEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
         if (NotActionClass) { return; }//Проверка разрешнения
         GetSetting();
         GetIsRun();
+        SetThisObject();
     }
     private void GetSetting()
     {
@@ -41,15 +38,27 @@ public class ScanEnemy : MonoBehaviour
             else { isRun = false; print($"Не установлен Collider в {gameObject.name}"); }
         }
     }
+    private void SetThisObject()
+    {
+        thisHash = this.gameObject.GetHashCode();
+        thisObject = GetObjectHash(thisHash);
+        CreatEnemy(thisObject);
+    }
     private void OnTriggerEnter(Collider other)
     {
-        hashGetObject = other.gameObject.GetHashCode();
-        BuildScanObject(hashGetObject);
+        if (isRun)
+        {
+            hashGetObject = other.gameObject.GetHashCode();
+            BuildScanObject(hashGetObject);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        hashGetObject = other.gameObject.GetHashCode();
-        ReBuildScanObject(hashGetObject);
+        if (isRun)
+        {
+            hashGetObject = other.gameObject.GetHashCode();
+            ReBuildScanObject(hashGetObject);
+        }
     }
     private void BuildScanObject(int hashGetObject)
     {
@@ -115,7 +124,7 @@ public class ScanEnemy : MonoBehaviour
         {
             for (int i = 0; i < enemys.Length; i++)
             {
-                if (enemys[i].Hash==0)
+                if (enemys[i].Hash == 0)
                 {
                     enemys[i] = objectGetScaner;
                     EventTarget();
@@ -180,19 +189,11 @@ public class ScanEnemy : MonoBehaviour
             {
                 if (players[i].Hash == objectGetScaner.Hash)
                 {
-                    Array.Clear(players, i, 1);
+                    Array.Clear(players, i, players.Length);
                     EventTarget();
                     return;
                 }
             }
-        }
-    }
-    private void EnemyScan()
-    {
-        if (isRun)
-        {
-            //print($"{gameObject.GetHashCode()} - {scanCollider.GetHashCode()}");
-            //print($"{gameObject.GetHashCode()} - {scanCollider.GetHashCode()}");
         }
     }
     private void FixedUpdate()
@@ -209,6 +210,5 @@ public class ScanEnemy : MonoBehaviour
             GetIsRun();
             return;
         }
-        EnemyScan();
     }
 }

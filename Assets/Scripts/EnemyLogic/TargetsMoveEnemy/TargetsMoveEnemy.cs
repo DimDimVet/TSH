@@ -4,26 +4,45 @@ using static EventManager;
 
 public class TargetsMoveEnemy : MonoBehaviour
 {
+    [SerializeField] private Transform[] defaultPositions;
     //êýø
+    private Vector3[] defaultPositionsVector;
+    public Vector3[] DefaultPositionsVector { get { return defaultPositionsVector; } }
+    private Vector3[] targets;
+    public Vector3[] Targets { get { return targets; }}
     private int thisHash;
-    public int ThisHash { get { return thisHash; } }
-    private Transform[] targets;
-    public Transform[] Targets { get { return targets; }set { targets = value; } }
+    private Construction thisObject;
+    public Construction ThisObject { get { return thisObject; } }
 
     private void OnEnable()
     {
-        thisHash=this.gameObject.GetHashCode();
         OnGetTargetPlayer += GetTarget;
     }
     private void OnDisable()
     {
         OnGetTargetPlayer -= GetTarget;
     }
+    public void SetTargetDefault()
+    {
+        thisHash = this.gameObject.GetHashCode();
+        thisObject = GetObjectHash(thisHash);
+        if (thisObject.Hash == 0) { return; }
+
+        if (defaultPositions.Length != 0)
+        {
+            defaultPositionsVector = new Vector3[defaultPositions.Length];
+            for (int i = 0; i < defaultPositions.Length; i++) { defaultPositionsVector[i] = defaultPositions[i].position; }
+        }
+        else
+        {
+            defaultPositions = new Transform[] { gameObject.transform };
+            defaultPositionsVector=new Vector3[] { defaultPositions[0].position };
+        }
+    }
     private void GetTarget(Construction[] players, Construction[] grupEnemys)
     {
         for (int i = 0; i < grupEnemys.Length; i++)
         {
-           
             if (grupEnemys[i].Hash == thisHash)
             {
                 for (int y = 0; y < players.Length; y++)
@@ -31,43 +50,38 @@ public class TargetsMoveEnemy : MonoBehaviour
                     if (players[y].Hash != 0)
                     {
                         CreatTarget(players[y]);
-                        print(players[y].Hash);
                     }
                     else
                     {
                         ClearTarget();
-                        DefaultTarget();
-                        print(players[y].Hash);
                     }
                 }
-                //break;
             }
-            //else
-            //{
-            //    ClearTarget();
-            //    DefaultTarget();
-            //}
         }
     }
     private void CreatTarget(Construction objectTarget)
     {
         if (targets != null)
         {
+            for (int i = 0; i < targets.Length; i++)
+            {
+                if (targets[i].magnitude==0)
+                {
+                    targets[i] = objectTarget.Transform.position;
+                    return;
+                }
+            }
             int newLength = targets.Length + 1;
             Array.Resize(ref targets, newLength);
-            targets[newLength - 1] = objectTarget.Transform;
+            targets[newLength - 1] = objectTarget.Transform.position;
         }
         else
         {
-            targets = new Transform[] { objectTarget.Transform };
+            targets = new Vector3[] { objectTarget.Transform.position};
         }
     }
     private void ClearTarget()
     {
         Array.Clear(targets, 0, targets.Length);
-    }
-    public virtual void DefaultTarget()
-    {
-        //targets = new Transform[] { defaultPosition };
     }
 }

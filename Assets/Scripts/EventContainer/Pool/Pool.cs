@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Pool : MonoBehaviour
+public class Pool
 {
     private GameObject prefab;
     private Element[] containerObject;

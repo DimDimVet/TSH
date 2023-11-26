@@ -7,7 +7,7 @@ public class ShootGunPlayer : Shoot
         if (InputData.ModeAction == mode)
         {
             Pools.BullBB.GetObject();
-            IsActivGunPlayerShoot(true);
+            IsActivGunPlayerShoot(ThisHash, true);
         }
     }
     public override void ShootBulletSleeve()

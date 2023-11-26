@@ -9,7 +9,7 @@ public enum Mode
 public class GetInputPlayer : MonoBehaviour
 {
     //Назначим в массив вариации режимов
-    private Mode[] mode = { Mode.Turn, Mode.AvtoRif };
+    private Mode[] modes = { Mode.Turn, Mode.AvtoRif };
     private int countMode = 0;
     private bool isTrigerClick=true;
 
@@ -71,11 +71,6 @@ public class GetInputPlayer : MonoBehaviour
         //остановим 
         inputActions.Disable();
     }
-    private void OnDestroy()
-    {
-        //остановим 
-        inputActions.Disable();
-    }
     private void SelectMoveMode()
     {
         if (inputData.Mode != 0)
@@ -84,11 +79,11 @@ public class GetInputPlayer : MonoBehaviour
             {
                 isTrigerClick = false;
                 countMode++;
-                if (countMode >= mode.Length) { countMode = 0; }
+                if (countMode >= modes.Length) { countMode = 0; }
                 
-                for (int i = 0; i < mode.Length; i++)
+                for (int i = 0; i < modes.Length; i++)
                 {
-                    if ((int)mode[i] == countMode)
+                    if ((int)modes[i] == countMode)
                     {
                         inputData.ModeAction = (Mode)countMode;
                     }

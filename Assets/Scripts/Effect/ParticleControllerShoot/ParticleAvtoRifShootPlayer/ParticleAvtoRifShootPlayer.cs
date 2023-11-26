@@ -1,6 +1,6 @@
 using static EventManager;
 
-public class ParticleAvtoRifShootPlayer : ParticleControllerShootPlayer
+public class ParticleAvtoRifShootPlayer : ParticleControllerShoot
 {
     public override void SetEventOnEneble()
     {

@@ -1,6 +1,4 @@
 using UnityEngine;
-using static EventManager;
-using static UnityEngine.GraphicsBuffer;
 
 public class MoveEnemy : TargetsMoveEnemy
 {
@@ -8,18 +6,10 @@ public class MoveEnemy : TargetsMoveEnemy
     private bool NotActionClass = false;
     //кэш
     private float speedMove, speedAngle, acceleration, stopDistance;
-    private int countTarget = 0;
-    private Transform currentTarget;
-    private Construction thisObject;
-    private Transform defaultPosition;
-
-    private float agentVelocity;
-    public float AgentVelocity { get { return agentVelocity; } }
-
-    private Vector3 tempPosition;
-    private bool isTriger = true, gg;
+    private int countTarget = 0, countTargetDefault=0;
+    private Vector3 currentTarget;
+    private bool isTriger = true;
     private bool isRun = false;
-
 
     void Start()
     {
@@ -27,7 +17,7 @@ public class MoveEnemy : TargetsMoveEnemy
         if (NotActionClass) { return; }//Проверка разрешнения
         GetSetting();
         GetIsRun();
-        defaultPosition= thisObject.NavMeshAgent.transform;
+        SetTargetDefault();
     }
     private void GetSetting()
     {
@@ -40,80 +30,58 @@ public class MoveEnemy : TargetsMoveEnemy
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            thisObject = GetObjectHash(ThisHash);//получаем данные из листа
-            if (thisObject.NavMeshAgent != null) { isRun = true; SetNavComponent(); }
-            else { isRun = false; print($"{gameObject.name} не получил NavMeshAgent"); }
+            if (ThisObject.NavMeshAgent != null) { isRun = true; SetNavComponent(); }
+            else { isRun = false; SetTargetDefault(); print($"{gameObject.name} не получил NavMeshAgent"); }
         }
     }
     private void SetNavComponent()
     {
-        thisObject.NavMeshAgent.speed = speedMove;
-        thisObject.NavMeshAgent.angularSpeed = speedAngle;
-        thisObject.NavMeshAgent.acceleration = acceleration;
-        thisObject.NavMeshAgent.stoppingDistance = stopDistance;
+        ThisObject.NavMeshAgent.speed = speedMove;
+        ThisObject.NavMeshAgent.angularSpeed = speedAngle;
+        ThisObject.NavMeshAgent.acceleration = acceleration;
+        ThisObject.NavMeshAgent.stoppingDistance = stopDistance;
     }
-    public override void DefaultTarget()
+    private void EnemyMove(Vector3 _currentTarget)
     {
-        //Targets = new Transform[] { defaultPosition };
-        Targets = null;
+        ThisObject.NavMeshAgent.destination = _currentTarget;
     }
-    private void EnemyMove(Transform _currentTarget)
+    private void DefaultPosition()
     {
-        Transform target = _currentTarget;
-        //thisObject.NavMeshAgent.destination = currentTarget.position;
-        thisObject.NavMeshAgent.destination=target.position;
+        if (DefaultPositionsVector == null) { isTriger = true; return; }
+        if (countTargetDefault < DefaultPositionsVector.Length)
+        {
+            EnemyMove(DefaultPositionsVector[countTargetDefault]);
+            countTargetDefault++;
+        }
+        else {countTargetDefault = 0;}
     }
     private void StepTarget()
     {
-        if (Targets == null) { isTriger = true; return; }
-        currentTarget = Targets[countTarget];
-        print(Targets[countTarget].transform.position);
-        EnemyMove(currentTarget);
-        //countTarget++;
+        if (Targets == null) { DefaultPosition(); return; }
+        if (countTarget < Targets.Length)
+        {
+            currentTarget = Targets[countTarget];
+            if (currentTarget.magnitude != 0) { EnemyMove(currentTarget); }
+            else { DefaultPosition(); }
+            countTarget++;
+        }
+        else
+        {
+            countTarget = 0;
+        }
     }
     private void CycleTarget()
     {
         if (isRun)
         {
-
             if (isTriger)
             {
                 StepTarget();
                 isTriger = false;
-                //if (countTarget >= Targets.Length) { countTarget = 0; }
             }
             else
             {
-                if (thisObject.NavMeshAgent.velocity.magnitude <= 0.1f) { isTriger = true; }
-            }
-            // print($"{Targets[countTarget].position}");
-
-
-
-            {
-                //if (isTriger)
-                //{
-                //    thisObject.NavMeshAgent.stoppingDistance = 15;
-
-                //    tempPosition = new Vector3(TempTarget.transform.position.x + (UnityEngine.Random.value * 15), 0, TempTarget.transform.position.z + (UnityEngine.Random.value * 15));
-
-                //    isTriger = false;
-                //}
-                //else
-                //{
-                //    if (Mathf.Abs(TempTarget.transform.position.magnitude - tempPosition.magnitude) >= 30f && thisObject.NavMeshAgent.velocity.magnitude == 0)
-                //    {
-                //        isTriger = true;
-                //    }
-                //    else
-                //    {
-                //        //thisObject.NavMeshAgent.destination = tempPosition;
-                //    }
-                //}
-
-                //print($"{thisObject.NavMeshAgent.remainingDistance} " +
-                //    $"{tempPosition.magnitude} {TempTarget.transform.position.magnitude}");
-
+                if (ThisObject.NavMeshAgent.velocity.magnitude <= 0.1f) { isTriger = true; }
             }
 
             {
