@@ -52,6 +52,13 @@ public class ScanEnemy : MonoBehaviour
             BuildScanObject(hashGetObject);
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (isRun)
+        {
+            EventTarget();
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if (isRun)

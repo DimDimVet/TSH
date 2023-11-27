@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using static EventManager;
 
 public class AnimControllerMoveEnemyTank : MonoBehaviour
@@ -10,14 +7,14 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
     private bool NotActionClass = false;
     //кэш
     private Animator animator;
+    private float currentVelocity;
     private float speedAnim;
     private string tankEnemyTrackRight, tankEnemyTrackForward, tankEnemyTrackLeft, tankEnemyTrackBack;
+    private Construction thisObject;
 
-    private NavMeshAgent navMeshAgent;
     private bool isRun = false;
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();    
         if (animSettings == null) { print($"Не установлен Settings в AnimControllerMoveEnemyTank"); NotActionClass = true; }
         if (NotActionClass) { return; }//Проверка разрешнения
         GetIsRun();
@@ -39,56 +36,25 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
             if (animator != null) { isRun = true; }
             else { isRun = false; print($"{gameObject.name} не получила Animator"); }
 
-            //int hash = this.gameObject.GetHashCode();
-            //thisObject = GetObjectHash(hash);//получаем данные из листа
-            //if (thisObject.LogicMoveEnemy != null) { isRun = true;}
-            //else { isRun = false; print($"{gameObject.name} не получил LogicMoveEnemy"); }
+            int hash = this.gameObject.GetHashCode();
+            thisObject = GetObjectHash(hash);//получаем данные из листа
+            if (thisObject.NavMeshAgent != null) { isRun = true; }
+            else { isRun = false; print($"{gameObject.name} не получил LogicMoveEnemy"); }
         }
     }
     private void AnimAction()
     {
         if (isRun)
         {
-            //print(navMeshAgent.velocity.magnitude);
-            //print(navMeshAgent.remainingDistance);
-
-
-            //rigidbodyEnemyTank.velocity
-
-            ////кнопки и канвас
-            //if (InputData.Move.y > 0)
-            //{
-            //    animator.SetFloat(tankPlayerTrackForward, speedAnim);
-            //}
-            //else
-            //{
-            //    animator.SetFloat(tankPlayerTrackForward, 0);
-            //}
-            //if (InputData.Move.y < 0)
-            //{
-            //    animator.SetFloat(tankPlayerTrackBack, speedAnim);
-            //}
-            //else
-            //{
-            //    animator.SetFloat(tankPlayerTrackBack, 0);
-            //}
-
-            //if (InputData.Move.x > 0)
-            //{
-            //    animator.SetFloat(tankPlayerTrackRight, speedAnim);
-            //}
-            //else
-            //{
-            //    animator.SetFloat(tankPlayerTrackRight, 0);
-            //}
-            //if (InputData.Move.x < 0)
-            //{
-            //    animator.SetFloat(tankPlayerTrackLeft, speedAnim);
-            //}
-            //else
-            //{
-            //    animator.SetFloat(tankPlayerTrackLeft, 0);
-            //}
+            currentVelocity = Mathf.Abs(thisObject.NavMeshAgent.velocity.magnitude);
+            if (currentVelocity > 0.1f)
+            {
+                animator.SetFloat(tankEnemyTrackForward, 1);
+            }
+            else
+            {
+                animator.SetFloat(tankEnemyTrackForward, 0);
+            }
         }
     }
     private void FixedUpdate()

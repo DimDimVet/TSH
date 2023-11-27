@@ -3367,6 +3367,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 99523729773756265, guid: e0c0105a2a3e17940a80898e99466053,
+        type: 3}
+      propertyPath: m_AutoRepath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 99523729773756265, guid: e0c0105a2a3e17940a80898e99466053,
+        type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 99523729773756265, guid: e0c0105a2a3e17940a80898e99466053,
+        type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4175134221497575316, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
       propertyPath: defaultPositions.Array.size
@@ -3435,6 +3450,16 @@ PrefabInstance:
     - target: {fileID: 4216478438306379531, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851788104951840342, guid: e0c0105a2a3e17940a80898e99466053,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991585504143753074, guid: e0c0105a2a3e17940a80898e99466053,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8254701966265616306, guid: e0c0105a2a3e17940a80898e99466053,

@@ -15,5 +15,5 @@ MonoBehaviour:
   SpeedMove: 5
   Acceleration: 7
   SpeedAngle: 40
-  StopDistance: 35
+  StopDistance: 25
   IsUpDate: 0

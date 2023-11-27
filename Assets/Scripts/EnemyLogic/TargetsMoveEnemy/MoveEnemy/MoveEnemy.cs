@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Codice.Client.Commands.WkTree.WorkspaceTreeNode;
 
 public class MoveEnemy : TargetsMoveEnemy
 {
@@ -10,7 +11,6 @@ public class MoveEnemy : TargetsMoveEnemy
     private Vector3 currentTarget;
     private bool isTriger = true;
     private bool isRun = false;
-
     void Start()
     {
         if (moveEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
@@ -43,7 +43,7 @@ public class MoveEnemy : TargetsMoveEnemy
     }
     private void EnemyMove(Vector3 _currentTarget)
     {
-        ThisObject.NavMeshAgent.destination = _currentTarget;
+        ThisObject.NavMeshAgent.SetDestination(_currentTarget);
     }
     private void DefaultPosition()
     {

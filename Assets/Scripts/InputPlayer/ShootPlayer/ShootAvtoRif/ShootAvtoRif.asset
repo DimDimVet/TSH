@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ShootAvtoRif
   m_EditorClassIdentifier: 
   CurrentTime: 0.3
+  IsInputPlayer: 1
   IsUpDate: 0
