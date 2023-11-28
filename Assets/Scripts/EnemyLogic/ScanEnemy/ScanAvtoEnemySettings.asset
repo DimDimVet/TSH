@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5c5d8350cf373d4da0595bc27b46fdd, type: 3}
-  m_Name: CameraSettings
+  m_Script: {fileID: 11500000, guid: a616f9336a127df42b29bc689c68acab, type: 3}
+  m_Name: ScanAvtoEnemySettings
   m_EditorClassIdentifier: 
-  AxesX: 0
-  AxesY: 40
-  AxesZ: -60
-  LimitZ: 10
-  LimitX: 10
-  SpeedMove: 15
+  DimCollider: 60
+  KfCollider: 2
   IsUpDate: 0

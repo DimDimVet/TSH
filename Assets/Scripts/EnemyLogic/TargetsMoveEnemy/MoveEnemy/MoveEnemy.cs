@@ -1,5 +1,4 @@
 using UnityEngine;
-using static Codice.Client.Commands.WkTree.WorkspaceTreeNode;
 
 public class MoveEnemy : TargetsMoveEnemy
 {
@@ -7,7 +6,7 @@ public class MoveEnemy : TargetsMoveEnemy
     private bool NotActionClass = false;
     //êýø
     private float speedMove, speedAngle, acceleration, stopDistance;
-    private int countTarget = 0, countTargetDefault=0;
+    private int countTarget = 0, countTargetDefault = 0;
     private Vector3 currentTarget;
     private bool isTriger = true;
     private bool isRun = false;
@@ -53,7 +52,7 @@ public class MoveEnemy : TargetsMoveEnemy
             EnemyMove(DefaultPositionsVector[countTargetDefault]);
             countTargetDefault++;
         }
-        else {countTargetDefault = 0;}
+        else { countTargetDefault = 0; }
     }
     private void StepTarget()
     {
