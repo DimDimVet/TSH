@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1001470414773500244}
   - component: {fileID: 957741934562679082}
   - component: {fileID: 3953393120735436814}
+  - component: {fileID: 1036278762089398638}
+  - component: {fileID: -4672308348949474256}
+  - component: {fileID: -408796455103165982}
   m_Layer: 0
   m_Name: SleeveAvtoEnemy
   m_TagString: Untagged
@@ -83,3 +86,68 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &1036278762089398638
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751381745668113648}
+  serializedVersion: 4
+  m_Mass: 0.3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &-4672308348949474256
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751381745668113648}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05221671
+  m_Height: 0.049923144
+  m_Direction: 1
+  m_Center: {x: 0.000000023283064, y: 0.000000039115548, z: 0.012913039}
+--- !u!114 &-408796455103165982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751381745668113648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5631ab4cf91f45bd2712c24b2d57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullSettings: {fileID: 11400000, guid: efe497609e56f11459aff2ee26e47525, type: 2}
+  typeSleeve: 1
+  body: {fileID: 1036278762089398638}

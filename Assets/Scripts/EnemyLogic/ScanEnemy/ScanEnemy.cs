@@ -56,7 +56,7 @@ public class ScanEnemy : MonoBehaviour
     {
         if (isRun)
         {
-            EventTarget();
+            //EventTarget();
         }
     }
     private void OnTriggerExit(Collider other)

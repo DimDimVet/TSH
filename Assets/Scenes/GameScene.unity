@@ -197,6 +197,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6342994707112619545}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &126834046 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4938748562627592359, guid: a873c30815a125d4fb3febd02ada1924,
+    type: 3}
+  m_PrefabInstance: {fileID: 685953148804092123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &183190859
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +750,7 @@ PrefabInstance:
     - target: {fileID: 8254701966265616306, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1116,7 +1122,7 @@ PrefabInstance:
     - target: {fileID: 8254701966265616306, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2759,10 +2765,86 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 87200735280159716, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_Name
+      value: PointOutBullEnemyAvto
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843291275663149921, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_Name
+      value: ParticleGunAvtoH
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375545348726658541, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.233
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375545348726658541, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473831417889842745, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_Name
+      value: ParticleGunAvtoV
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475303243571810881, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: shootSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f29467481c5c524091df6fe59d94751,
+        type: 2}
+    - target: {fileID: 3194581477534840184, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.228
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194581477534840184, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.359
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194581477534840184, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194581477534840184, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194581477534840184, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194581477534840184, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194581477534840184, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3968821607049334371, guid: a873c30815a125d4fb3febd02ada1924,
         type: 3}
       propertyPath: m_Name
       value: AvtoEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968821607049334371, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168062683760686687, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557158667425375583, guid: a873c30815a125d4fb3febd02ada1924,
         type: 3}
@@ -2774,6 +2856,36 @@ PrefabInstance:
       propertyPath: defaultPositions.Array.data[1]
       value: 
       objectReference: {fileID: 334476698}
+    - target: {fileID: 4705854040278015215, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_Name
+      value: ParticleGunAvtoSm
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938748562627592359, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.229
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938748562627592359, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938748562627592359, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.2588191
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938748562627592359, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938748562627592359, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 9209439536110802652, guid: a873c30815a125d4fb3febd02ada1924,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2829,6 +2941,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a873c30815a125d4fb3febd02ada1924, type: 3}
+--- !u!4 &685953148804092124 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2375545348726658541, guid: a873c30815a125d4fb3febd02ada1924,
+    type: 3}
+  m_PrefabInstance: {fileID: 685953148804092123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &698263967343145864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2986,6 +3104,12 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5317875599497161399, guid: f418585ce174d77459f9b82d847ee301,
         type: 3}
+      propertyPath: _BullEnemyAvto
+      value: 
+      objectReference: {fileID: 1709093970595360203, guid: e1ccf6e104be7ba4480a9bb679f6e3f0,
+        type: 3}
+    - target: {fileID: 5317875599497161399, guid: f418585ce174d77459f9b82d847ee301,
+        type: 3}
       propertyPath: _BullEnemyTank
       value: 
       objectReference: {fileID: 9191355760498519246, guid: c848c7d84658b4842b74ea9ab8ffe3ae,
@@ -3013,10 +3137,21 @@ PrefabInstance:
       objectReference: {fileID: 93611996}
     - target: {fileID: 5317875599497161399, guid: f418585ce174d77459f9b82d847ee301,
         type: 3}
+      propertyPath: _BullEnemyAvtoSleeve
+      value: 
+      objectReference: {fileID: 3751381745668113648, guid: 5ad340ff86dd51b42a13edb10a4d8a23,
+        type: 3}
+    - target: {fileID: 5317875599497161399, guid: f418585ce174d77459f9b82d847ee301,
+        type: 3}
       propertyPath: _BullEnemyTankSleeve
       value: 
       objectReference: {fileID: 6245140225712637890, guid: 9135eccc1404efc43ab8788a9cf35b2c,
         type: 3}
+    - target: {fileID: 5317875599497161399, guid: f418585ce174d77459f9b82d847ee301,
+        type: 3}
+      propertyPath: ContainerBullEnemyAvto
+      value: 
+      objectReference: {fileID: 685953148804092124}
     - target: {fileID: 5317875599497161399, guid: f418585ce174d77459f9b82d847ee301,
         type: 3}
       propertyPath: ContainerBullEnemyTank
@@ -3027,6 +3162,11 @@ PrefabInstance:
       propertyPath: ContainerBullRifSleeve
       value: 
       objectReference: {fileID: 230050362}
+    - target: {fileID: 5317875599497161399, guid: f418585ce174d77459f9b82d847ee301,
+        type: 3}
+      propertyPath: ContainerBullEnemyAvtoSleeve
+      value: 
+      objectReference: {fileID: 126834046}
     - target: {fileID: 5317875599497161399, guid: f418585ce174d77459f9b82d847ee301,
         type: 3}
       propertyPath: ContainerBullEnemyTankSleeve
@@ -3570,7 +3710,7 @@ PrefabInstance:
     - target: {fileID: 8254701966265616306, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

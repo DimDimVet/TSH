@@ -1,4 +1,3 @@
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -6,13 +5,13 @@ public class Bullet : MonoBehaviour
     //[SerializeField] private ParticleSystem particle;
     //[SerializeField] private TrailRenderer trailRender;
     [SerializeField] private BulletSettings bullSettings;
-    [SerializeField] private bool typeSleeve=false;
+    [SerializeField] private bool typeSleeve = false;
     [SerializeField] private Rigidbody body;
     private bool NotActionClass = false;
     //кэш
     private float speedBullet;
     private float killTime, defaultTime;
-    private bool isBullKill = true,isShootTriger=true;
+    private bool isBullKill = true, isShootTriger = true;
     private bool isRun = false;
 
     void Awake()
@@ -58,16 +57,16 @@ public class Bullet : MonoBehaviour
 
             isBullKill = true;
             if (KillTimeBullet())
-            { ReternBullet();}
+            { ReternBullet(); }
         }
-        else if(typeSleeve)
+        else if (typeSleeve)
         {
             if (isShootTriger) { body.AddForce(body.position * speedBullet, ForceMode.Acceleration); }
 
-            isShootTriger =false;
+            isShootTriger = false;
             isBullKill = true;
             if (KillTimeBullet())
-            { isShootTriger=true; ShootSleeve(); }
+            { isShootTriger = true; ShootSleeve(); }
         }
     }
     public virtual void ReternBullet()
@@ -85,7 +84,7 @@ public class Bullet : MonoBehaviour
         if (bullSettings.IsUpDate)
         {
             GetSetting();
-            bullSettings.IsUpDate=false;
+            bullSettings.IsUpDate = false;
         }
         if (!isRun)//если общее разрешение на запуск false
         {

@@ -9,15 +9,19 @@ public class Pools : MonoBehaviour
     //public GameObject _BullSmog; public Transform ContainerBullSmog;
     public GameObject _BullRifSleeve; public Transform ContainerBullRifSleeve;
     public GameObject _BullSleeve; public Transform ContainerBullSleeve;
-    //Для входных префабов Plauer
+    //Для входных префабов Enemy
     public GameObject _BullEnemyTank; public Transform ContainerBullEnemyTank;
     public GameObject _BullEnemyTankSleeve; public Transform ContainerBullEnemyTankSleeve;
+    public GameObject _BullEnemyAvto; public Transform ContainerBullEnemyAvto;
+    public GameObject _BullEnemyAvtoSleeve; public Transform ContainerBullEnemyAvtoSleeve;
     //Для доступа к пулам Player
     public static Pool BullBB, BullFB, BullRif, BullSmog;
     public static Pool BullRifSleeve, BullSleeve;
     //Для доступа к пулам Enemy
     public static Pool BullEnemyTank;
     public static Pool BullEnemyTankSleeve;
+    public static Pool BullEnemyAvto;
+    public static Pool BullEnemyAvtoSleeve;
 
     void Start()
     {
@@ -35,5 +39,7 @@ public class Pools : MonoBehaviour
         //Пулы Enemy
         BullEnemyTank = new Pool(_BullEnemyTank, ContainerBullEnemyTank);
         BullEnemyTankSleeve = new Pool(_BullEnemyTankSleeve, ContainerBullEnemyTankSleeve);
+        BullEnemyAvto = new Pool(_BullEnemyAvto, ContainerBullEnemyAvto);
+        BullEnemyAvtoSleeve = new Pool(_BullEnemyAvtoSleeve, ContainerBullEnemyAvtoSleeve);
     }
 }
