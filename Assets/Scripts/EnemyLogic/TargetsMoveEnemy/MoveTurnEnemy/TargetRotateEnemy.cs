@@ -8,8 +8,8 @@ public class TargetRotateEnemy : MonoBehaviour
     private Transform defaultTransform;
     public Transform DefaultTransform { get { return defaultTransform; } }
 
-    private Vector3 target;
-    public Vector3 Target { get { return target; } }
+    private Transform target;
+    public Transform Target { get { return target; } }
 
     private int thisHash;
     public int ThisHash { get { return thisHash; } }
@@ -48,10 +48,11 @@ public class TargetRotateEnemy : MonoBehaviour
     }
     private void CreatTarget(Construction objectTarget)
     {
-        target = objectTarget.Transform.position;
+        target = objectTarget.Transform;
     }
     private void ClearTarget()
     {
-        target = Vector3.zero;
+        target = null;
+        //target = Vector3.zero;
     }
 }

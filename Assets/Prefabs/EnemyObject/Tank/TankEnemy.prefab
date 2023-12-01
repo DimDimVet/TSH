@@ -5123,59 +5123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentObject: {fileID: 8254701966265616306}
   turnSettings: {fileID: 11400000, guid: e5506815cdaea5d41a92f1bbdfbe6b2c, type: 2}
---- !u!1 &789312893866822883
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6789194167116108677}
-  - component: {fileID: 8781026658862748852}
-  m_Layer: 0
-  m_Name: Scaner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6789194167116108677
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789312893866822883}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.92, z: 5.95}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4216478438306379531}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8781026658862748852
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789312893866822883}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &820793289451809612
 GameObject:
   m_ObjectHideFlags: 0
@@ -30864,7 +30811,6 @@ Transform:
   - {fileID: 426826479178827844}
   - {fileID: 382190555442695753}
   - {fileID: 1684245393732312266}
-  - {fileID: 6789194167116108677}
   - {fileID: 1813636986230816845}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31000,7 +30946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11471d3b869c78a4884842d67385fd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanCollider: {fileID: 8781026658862748852}
+  scanCollider: {fileID: 0}
   scanEnemySettings: {fileID: 11400000, guid: 1ce2a3e8b6fb06d44ab4881d69b690d4, type: 2}
 --- !u!114 &4175134221497575316
 MonoBehaviour:

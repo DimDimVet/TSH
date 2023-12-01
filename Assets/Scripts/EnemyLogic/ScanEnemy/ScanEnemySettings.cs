@@ -4,7 +4,7 @@ using UnityEngine;
 public class ScanEnemySettings : ScriptableObject
 {
     [Header("Диаметр коллайдера")]
-    public float DimCollider = 40f;
+    public float DiametrCollider = 40f;
     [Header("Множитель диаметра по событию")]
     public float KfCollider = 2f;
 

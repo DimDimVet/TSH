@@ -1,18 +1,21 @@
 using System;
 using UnityEngine;
 using static EventManager;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ScanEnemy : MonoBehaviour
 {
-    [SerializeField] private SphereCollider scanCollider;
     [SerializeField] private ScanEnemySettings scanEnemySettings;
     private bool NotActionClass = false;
     //кэш
     private int thisHash;
     private Construction thisObject;
-    private float dimCollider, kfCollider;
+    private float diametrCollider, kfCollider;
     private int hashGetObject;
-    private Construction objectGetScaner;
+    private Collider[] hitColl;
+    //private int[] hashHitColl;
+    private Construction[] objectsGetScaner;
+    private Construction hitObject;
     private Construction[] players, enemys;
 
     private bool isRun = false;
@@ -27,181 +30,135 @@ public class ScanEnemy : MonoBehaviour
     }
     private void GetSetting()
     {
-        dimCollider = scanEnemySettings.DimCollider;
+        diametrCollider = scanEnemySettings.DiametrCollider;
         kfCollider = scanEnemySettings.KfCollider;
     }
     private void GetIsRun()
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            if (scanCollider != null) { isRun = true; scanCollider.radius = dimCollider; }
-            else { isRun = false; print($"Не установлен Collider в {gameObject.name}"); }
+            isRun = true;
+            //if (scanCollider != null) { isRun = true; scanCollider.radius = diametrCollider; }
+            //else { isRun = false; print($"Не установлен Collider в {gameObject.name}"); }
         }
     }
     private void SetThisObject()
     {
         thisHash = this.gameObject.GetHashCode();
         thisObject = GetObjectHash(thisHash);
-        CreatEnemy(thisObject);
+        Creat(thisObject, enemys);
     }
-    private void OnTriggerEnter(Collider other)
+    private void DetectObject()
     {
-        if (isRun)
+        hitColl = Physics.OverlapSphere(this.gameObject.transform.position, diametrCollider);
+
+        for (int i = 0; i < hitColl.Length; i++)
         {
-            hashGetObject = other.gameObject.GetHashCode();
-            BuildScanObject(hashGetObject);
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (isRun)
-        {
-            //EventTarget();
+            hashGetObject = hitColl[i].gameObject.GetHashCode();
+            ScanObject(hashGetObject, hitColl.Length);
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void ScanObject(int hashGetObject, int countStop)
     {
-        if (isRun)
+        hitObject = GetObjectHash(hashGetObject);
+        if (hitObject.Hash == 0) { return; }
+
+        if (objectsGetScaner == null || objectsGetScaner.Length < countStop)
         {
-            hashGetObject = other.gameObject.GetHashCode();
-            ReBuildScanObject(hashGetObject);
+            objectsGetScaner = Creat(hitObject, objectsGetScaner);
+            return;
+        }
+        else if (objectsGetScaner.Length > countStop)
+        {
+            Clean(hitObject, objectsGetScaner);
+            Creat(hitObject, objectsGetScaner);
+            return;
+        }
+        else if (objectsGetScaner.Length == countStop)
+        {
+            SelectObject(objectsGetScaner, objectsGetScaner.Length);
+            return;
         }
     }
-    private void BuildScanObject(int hashGetObject)
+    private void SelectObject(Construction[] objects, int countStop)
     {
-        objectGetScaner = GetObjectHash(hashGetObject);
-        if (objectGetScaner.HealtPlayer != null)
+        if (enemys != null)
         {
-            ProcessingPlayer(objectGetScaner);
+            for (int y = 0; y < enemys.Length; y++)
+            {
+                Clean(enemys[y], enemys);
+            }
         }
-        if (objectGetScaner.HealtEnemy != null)
+        if (players != null)
         {
-            ProcessingEnemy(objectGetScaner);
+            for (int y = 0; y < players.Length; y++)
+            {
+                Clean(players[y], players);
+            }
+        }
+        //
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (objects[i].HealtEnemy != null)
+            {
+                enemys = Creat(objects[i], enemys);
+                print($" enemys {enemys.Length}");
+            }
+            if (objects[i].HealtPlayer != null)
+            {
+                players = Creat(objects[i], players);
+                print($"players {players.Length}");
+            }
+        }
+        EventTarget();
+    }
+    private void Clean(Construction intObject, Construction[] massivObject)
+    {
+        if (massivObject != null)
+        {
+            Array.Clear(massivObject, 0, massivObject.Length);
+            return;
         }
     }
-    private void ReBuildScanObject(int hashGetObject)
+    private Construction[] Creat(Construction intObject, Construction[] massivObject)
     {
-        objectGetScaner = GetObjectHash(hashGetObject);
-        if (objectGetScaner.HealtPlayer != null)
+        bool isStop = false;
+        if (massivObject != null)
         {
-            CleanPlayer(objectGetScaner);
+            for (int i = 0; i < massivObject.Length; i++)
+            {
+                if (!isStop)
+                {
+                    if (massivObject[i].Hash == 0)
+                    {
+                        massivObject[i] = intObject;
+                        isStop = true;
+                    }
+                }
+            }
+            if (!isStop)
+            {
+                int newLength = massivObject.Length + 1;
+                Array.Resize(ref massivObject, newLength);
+                massivObject[newLength - 1] = intObject;
+                return massivObject;
+            }
         }
-        if (objectGetScaner.HealtEnemy != null)
+        else
         {
-            CleanEnemy(objectGetScaner);
+            massivObject = new Construction[] { intObject };
+            return massivObject;
         }
+        return massivObject;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(this.gameObject.transform.position, diametrCollider);
     }
     private void EventTarget()
     {
         if (players != null) { GetTargetPlayer(players, enemys); }
-    }
-    private void ProcessingEnemy(Construction objectGetScaner)
-    {
-        if (enemys != null)
-        {
-            for (int i = 0; i < enemys.Length; i++)
-            {
-                if (enemys[i].Hash == objectGetScaner.Hash)
-                {
-                    return;
-                }
-            }
-            CreatEnemy(objectGetScaner);
-        }
-        else { CreatEnemy(objectGetScaner); }
-    }
-    private void ProcessingPlayer(Construction objectGetScaner)
-    {
-        if (players != null)
-        {
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i].Hash == objectGetScaner.Hash)
-                {
-                    return;
-                }
-            }
-            CreatPlayer(objectGetScaner);
-        }
-        else { CreatPlayer(objectGetScaner); }
-    }
-    private void CreatEnemy(Construction objectGetScaner)
-    {
-        if (enemys != null)
-        {
-            for (int i = 0; i < enemys.Length; i++)
-            {
-                if (enemys[i].Hash == 0)
-                {
-                    enemys[i] = objectGetScaner;
-                    EventTarget();
-                    return;
-                }
-            }
-
-            int newLength = enemys.Length + 1;
-            Array.Resize(ref enemys, newLength);
-            enemys[newLength - 1] = objectGetScaner;
-        }
-        else
-        {
-            enemys = new Construction[] { objectGetScaner };
-        }
-        EventTarget();
-    }
-    private void CreatPlayer(Construction objectGetScaner)
-    {
-        if (players != null)
-        {
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i].Hash == 0)
-                {
-                    players[i] = objectGetScaner;
-                    EventTarget();
-                    return;
-                }
-            }
-
-            int newLength = players.Length + 1;
-            Array.Resize(ref players, newLength);
-            players[newLength - 1] = objectGetScaner;
-        }
-        else
-        {
-            players = new Construction[] { objectGetScaner };
-        }
-        EventTarget();
-    }
-    private void CleanEnemy(Construction objectGetScaner)
-    {
-        if (enemys != null)
-        {
-            for (int i = 0; i < enemys.Length; i++)
-            {
-                if (enemys[i].Hash == objectGetScaner.Hash)
-                {
-                    Array.Clear(enemys, i, 1);
-                    EventTarget();
-                    return;
-                }
-            }
-        }
-    }
-    private void CleanPlayer(Construction objectGetScaner)
-    {
-        if (players != null)
-        {
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i].Hash == objectGetScaner.Hash)
-                {
-                    Array.Clear(players, i, players.Length);
-                    EventTarget();
-                    return;
-                }
-            }
-        }
     }
     private void FixedUpdate()
     {
@@ -217,5 +174,6 @@ public class ScanEnemy : MonoBehaviour
             GetIsRun();
             return;
         }
+        DetectObject();
     }
 }

@@ -10019,59 +10019,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &3920652736167323231
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2255936986810844125}
-  - component: {fileID: 6861389327858864347}
-  m_Layer: 0
-  m_Name: ScanAvtoEnemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2255936986810844125
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3920652736167323231}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.48, z: 1.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9209439536110802652}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &6861389327858864347
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3920652736167323231}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3968821607049334371
 GameObject:
   m_ObjectHideFlags: 0
@@ -10119,7 +10066,6 @@ Transform:
   - {fileID: 8912841393231637615}
   - {fileID: 9045186758821136214}
   - {fileID: 3354949402948111652}
-  - {fileID: 2255936986810844125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8458025570867906728
@@ -10227,7 +10173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11471d3b869c78a4884842d67385fd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanCollider: {fileID: 6861389327858864347}
+  scanCollider: {fileID: 0}
   scanEnemySettings: {fileID: 11400000, guid: 552ccde22729f7a49b38908186eda313, type: 2}
 --- !u!114 &4557158667425375583
 MonoBehaviour:

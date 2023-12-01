@@ -4,8 +4,9 @@ using static EventManager;
 public class MoveTurnPlayer : GetInputPlayer
 {
     [SerializeField] private TurnSettings turnSettings;
+    [SerializeField] GameObject objectMaus;
     private bool NotActionClass = false;
-    private Mode mode=Mode.Turn;
+    private Mode mode = Mode.Turn;
     //кэш
     private Construction cameraMain;
     private Vector3 currentMousePosition;
@@ -40,11 +41,12 @@ public class MoveTurnPlayer : GetInputPlayer
     {
         if (isRun)
         {
-            if (InputData.MouseRightButton != 0 && InputData.ModeAction== mode)
-            {
-                currentMousePosition = new Vector3(InputData.MousePosition.x, InputData.MousePosition.y, 0);
-                ray = cameraMain.CameraComponent.ScreenPointToRay(currentMousePosition);//луч...до мышки
+            
 
+            if (InputData.MouseRightButton != 0 && InputData.ModeAction == mode)
+            {
+                currentMousePosition = (Vector2)InputData.MousePosition;
+                ray = cameraMain.CameraComponent.ScreenPointToRay(currentMousePosition);//луч...до мышки
                 if (Physics.Raycast(ray, out RaycastHit hitInfo))
                 {
                     targetDirection = hitInfo.point - gameObject.transform.position;

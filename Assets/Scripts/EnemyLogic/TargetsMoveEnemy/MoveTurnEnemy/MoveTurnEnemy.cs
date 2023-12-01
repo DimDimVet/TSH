@@ -38,8 +38,8 @@ public class MoveTurnEnemy : TargetRotateEnemy
     }
     private void StepTarget()
     {
-        if (Target.magnitude == 0) { DefaultPosition(); return; }
-        targetDirection = Target - gameObject.transform.position;
+        if (Target == null) { DefaultPosition(); return; }
+        targetDirection = Target.position - gameObject.transform.position;
         targetRotation = Quaternion.LookRotation(targetDirection);
         targetRotation.x = 0;
         targetRotation.z = 0;
@@ -52,28 +52,6 @@ public class MoveTurnEnemy : TargetRotateEnemy
         if (isRun)
         {
             StepTarget();
-
-            {
-                //Разворот к цели
-                //target = HealtComponent.transform.position;//Player запишем в цель
-                //currentPosition = this.gameObject.transform.position;//проверим текущию позицию Gun
-                //distanceVector = target - currentPosition;//вычислим вектор между Gun-target
-                //rezulAxisY = Mathf.Atan2(distanceVector.x, distanceVector.z) * Mathf.Rad2Deg * polyrAngle;//вычислим угол вектора в градусах
-                //this.gameObject.transform.rotation = Quaternion.Euler(0, (rezulAxisY + correctivAngle), 0);//повернем Gun angleX
-            }
-
-            {
-                //контроль движения объекта и запуск анимации
-                //currentVelocity = Mathf.Abs(agent.velocity.magnitude);
-                //if (currentVelocity > 0.1f)
-                //{
-                //    animator.SetFloat("SpeedEnemy", 1);
-                //}
-                //else
-                //{
-                //    animator.SetFloat("SpeedEnemy", 0);
-                //}
-            }
         }
     }
     private void FixedUpdate()
