@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedBullet: 25
   KillTime: 2
+  DiametrCollider: 0.5
   IsUpDate: 0

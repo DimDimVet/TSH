@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2375545348726658541}
   m_Layer: 0
-  m_Name: PointOutBullEnemyTank
+  m_Name: PointOutBullEnemyAvto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10168,12 +10168,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3968821607049334371}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11471d3b869c78a4884842d67385fd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanCollider: {fileID: 0}
   scanEnemySettings: {fileID: 11400000, guid: 552ccde22729f7a49b38908186eda313, type: 2}
 --- !u!114 &4557158667425375583
 MonoBehaviour:
@@ -10203,7 +10202,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd74fa51d6a9a094da36ffb3740b47fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSettings: {fileID: 0}
+  shootSettings: {fileID: 11400000, guid: 5f29467481c5c524091df6fe59d94751, type: 2}
+  _BullEnemyAvto: {fileID: 1709093970595360203, guid: e1ccf6e104be7ba4480a9bb679f6e3f0,
+    type: 3}
+  ContainerBullEnemyAvto: {fileID: 2375545348726658541}
+  _BullEnemyAvtoSleeve: {fileID: 3751381745668113648, guid: 5ad340ff86dd51b42a13edb10a4d8a23,
+    type: 3}
+  ContainerBullEnemyAvtoSleeve: {fileID: 4938748562627592359}
 --- !u!114 &673740490455392562
 MonoBehaviour:
   m_ObjectHideFlags: 0

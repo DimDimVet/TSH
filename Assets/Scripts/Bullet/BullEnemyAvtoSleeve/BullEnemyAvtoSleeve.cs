@@ -1,7 +1,8 @@
+using static EventManager;
 public class BullEnemyAvtoSleeve : Bullet
 {
     public override void ShootSleeve()
     {
-        Pools.BullEnemyAvtoSleeve.ReternObject(gameObject);
+        IsReternBull(this.gameObject.GetHashCode());
     }
 }

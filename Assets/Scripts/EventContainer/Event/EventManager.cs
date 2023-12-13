@@ -39,6 +39,11 @@ public class EventManager
     }
 
     //Особые события
+    public static Action<int> OnIsReternBull;
+    public static void IsReternBull(int thisHash)
+    {
+        OnIsReternBull?.Invoke(thisHash);
+    }
     //События активности Player
     public static Action<int, bool> OnIsActivGunPlayerShoot;
     public static void IsActivGunPlayerShoot(int thisHash, bool isShootGunPlayer)
@@ -51,6 +56,7 @@ public class EventManager
     {
         OnIsActivAvtoRifPlayerShoot?.Invoke(thisHash, isShootAvtoRifPlayer);
     }
+
     //События активности Enemy
     //Передать группе Enemy TargetPlayer
     public static Action<Construction[], Construction[]> OnGetTargetPlayer;

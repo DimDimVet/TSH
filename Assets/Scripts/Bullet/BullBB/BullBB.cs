@@ -1,7 +1,8 @@
+using static EventManager;
 public class BullBB : Bullet
 {
     public override void ReternBullet()
     {
-        Pools.BullBB.ReternObject(gameObject);
+        IsReternBull(this.gameObject.GetHashCode());
     }
 }

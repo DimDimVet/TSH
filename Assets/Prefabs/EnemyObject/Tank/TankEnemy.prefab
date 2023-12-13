@@ -30946,7 +30946,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11471d3b869c78a4884842d67385fd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanCollider: {fileID: 0}
   scanEnemySettings: {fileID: 11400000, guid: 1ce2a3e8b6fb06d44ab4881d69b690d4, type: 2}
 --- !u!114 &4175134221497575316
 MonoBehaviour:
@@ -30975,6 +30974,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSettings: {fileID: 11400000, guid: 785f38b811ab18842bbf4f2624c42484, type: 2}
+  _BullEnemyTank: {fileID: 9191355760498519246, guid: c848c7d84658b4842b74ea9ab8ffe3ae,
+    type: 3}
+  ContainerBullEnemyTank: {fileID: 1238480299770470654}
+  _BullEnemyTankSleeve: {fileID: 6245140225712637890, guid: 9135eccc1404efc43ab8788a9cf35b2c,
+    type: 3}
+  ContainerBullEnemyTankSleeve: {fileID: 251756251890276995}
 --- !u!114 &7084921566334167420
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ public class BulletSettings : ScriptableObject
     public float SpeedBullet = 5f;
     [Header("Время жизни пули")]
     public float KillTime = 5f;
+    [Header("Диаметр коллайдера")]
+    public float DiametrCollider = 0.5f;
 
     [Header("Обновить")]
     public bool IsUpDate = false;

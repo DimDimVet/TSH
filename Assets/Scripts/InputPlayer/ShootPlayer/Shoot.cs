@@ -17,6 +17,11 @@ public class Shoot : GetInputPlayer
         if (NotActionClass) { return; }//Проверка разрешнения
         GetIsRun();
         GetSetting();
+        Set();
+    }
+    public virtual void Set()
+    {
+        //
     }
     private void GetSetting()
     {

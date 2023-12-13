@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using static EventManager;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ScanEnemy : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class ScanEnemy : MonoBehaviour
     private float diametrCollider, kfCollider;
     private int hashGetObject;
     private Collider[] hitColl;
-    //private int[] hashHitColl;
+    private int refLength;
     private Construction[] objectsGetScaner;
     private Construction hitObject;
     private Construction[] players, enemys;
@@ -48,52 +47,55 @@ public class ScanEnemy : MonoBehaviour
         thisObject = GetObjectHash(thisHash);
         Creat(thisObject, enemys);
     }
+
     private void DetectObject()
     {
         hitColl = Physics.OverlapSphere(this.gameObject.transform.position, diametrCollider);
-
+        if (refLength == hitColl.Length) { return; }
+        ScanObject(hitColl);
+        refLength = hitColl.Length;
+    }
+    private void ScanObject(Collider[] hitColl)
+    {
+        Clean(objectsGetScaner);
         for (int i = 0; i < hitColl.Length; i++)
         {
             hashGetObject = hitColl[i].gameObject.GetHashCode();
-            ScanObject(hashGetObject, hitColl.Length);
+            hitObject = GetObjectHash(hashGetObject);
+            if (hitObject.Hash != 0)
+            {
+                if (objectsGetScaner == null)
+                {
+                    objectsGetScaner = Creat(hitObject, objectsGetScaner);
+                }
+                else
+                {
+                    objectsGetScaner = Creat(hitObject, objectsGetScaner);
+                }
+            }
         }
-    }
-    private void ScanObject(int hashGetObject, int countStop)
-    {
-        hitObject = GetObjectHash(hashGetObject);
-        if (hitObject.Hash == 0) { return; }
+        //for (int i = 0; i < objectsGetScaner.Length; i++)
+        //{
+        //    print(objectsGetScaner[i].Hash);
+        //    print(objectsGetScaner.Length);
+        //}
 
-        if (objectsGetScaner == null || objectsGetScaner.Length < countStop)
-        {
-            objectsGetScaner = Creat(hitObject, objectsGetScaner);
-            return;
-        }
-        else if (objectsGetScaner.Length > countStop)
-        {
-            Clean(hitObject, objectsGetScaner);
-            Creat(hitObject, objectsGetScaner);
-            return;
-        }
-        else if (objectsGetScaner.Length == countStop)
-        {
-            SelectObject(objectsGetScaner, objectsGetScaner.Length);
-            return;
-        }
+        SelectObject(objectsGetScaner);
     }
-    private void SelectObject(Construction[] objects, int countStop)
+    private void SelectObject(Construction[] objects)
     {
         if (enemys != null)
         {
             for (int y = 0; y < enemys.Length; y++)
             {
-                Clean(enemys[y], enemys);
+                Clean(enemys);
             }
         }
         if (players != null)
         {
             for (int y = 0; y < players.Length; y++)
             {
-                Clean(players[y], players);
+                Clean(players);
             }
         }
         //
@@ -102,17 +104,15 @@ public class ScanEnemy : MonoBehaviour
             if (objects[i].HealtEnemy != null)
             {
                 enemys = Creat(objects[i], enemys);
-                print($" enemys {enemys.Length}");
             }
             if (objects[i].HealtPlayer != null)
             {
                 players = Creat(objects[i], players);
-                print($"players {players.Length}");
             }
         }
         EventTarget();
     }
-    private void Clean(Construction intObject, Construction[] massivObject)
+    private void Clean(Construction[] massivObject)
     {
         if (massivObject != null)
         {

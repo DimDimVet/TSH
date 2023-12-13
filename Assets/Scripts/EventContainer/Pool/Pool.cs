@@ -1,3 +1,4 @@
+using Codice.CM.Client.Differences.Merge;
 using System;
 using UnityEngine;
 
@@ -55,9 +56,9 @@ public class Pool
         containerObject[newLength - 1] = CreatObject();
         return newLength - 1;
     }
-    public bool ReternObject(GameObject gameObject)
+    public bool ReternObject(int _hash)
     {
-        int hash = gameObject.GetHashCode();
+        int hash = _hash;
 
         for (int i = 0; i < containerObject.Length; i++)
         {

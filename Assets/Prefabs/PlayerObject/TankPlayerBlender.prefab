@@ -9956,6 +9956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSettings: {fileID: 11400000, guid: 9298e445c9012474690164661378537b, type: 2}
+  objectMaus: {fileID: 0}
 --- !u!1 &1169905155560193923
 GameObject:
   m_ObjectHideFlags: 0
@@ -15258,8 +15259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70a0a9f600873f4eae8c011cb10dff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partDinamic: {fileID: 0}
-  partIdle: {fileID: 0}
+  partDinamic: {fileID: 5131246087951062801}
+  partIdle: {fileID: 5670664778849754003}
 --- !u!54 &7070071120764387684
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15346,6 +15347,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSettings: {fileID: 11400000, guid: 37166526b672a244aadc715cebcb96bf, type: 2}
+  _BullBB: {fileID: 3126515883450502261, guid: 0df5f34b4f0530d47a8630b421a1aa6b, type: 3}
+  ContainerBullBB: {fileID: 8874210717382226208}
+  _BullSleeve: {fileID: 1347269582274150208, guid: 3e7100d1568e72e479426ec1cd3cd6bb,
+    type: 3}
+  ContainerBullSleeve: {fileID: 6870855573494367559}
 --- !u!114 &5875775756229264233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15372,6 +15378,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSettings: {fileID: 11400000, guid: 6999a6955319c7845804681815d41563, type: 2}
+  _BullRif: {fileID: 6734328804877840724, guid: dd3da5e7e0ebffb43adc123e64e1f5b3,
+    type: 3}
+  ContainerBullRif: {fileID: 9094503143978709280}
+  _BullRifSleeve: {fileID: 4742743726184200396, guid: 29054d2756876a0479f1f2dd4b685ae8,
+    type: 3}
+  ContainerBullRifSleeve: {fileID: 5639065612979723157}
 --- !u!114 &1112913270454223559
 MonoBehaviour:
   m_ObjectHideFlags: 0
