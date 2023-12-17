@@ -13,14 +13,23 @@ public class TargetsMoveEnemy : MonoBehaviour
     private int thisHash;
     private Construction thisObject;
     public Construction ThisObject { get { return thisObject; } }
+    public bool IsDead { get { return isDead; } }
+    private bool isDead = false;
 
     private void OnEnable()
     {
         OnGetTargetPlayer += GetTarget;
+        isDead = false;
+        OnIsDead += StopRun;
     }
     private void OnDisable()
     {
         OnGetTargetPlayer -= GetTarget;
+        OnIsDead -= StopRun;
+    }
+    private void StopRun(int _thisHash, bool _isDead)
+    {
+        if (thisHash == _thisHash) { isDead = _isDead; }
     }
     public void SetTargetDefault()
     {
@@ -47,7 +56,7 @@ public class TargetsMoveEnemy : MonoBehaviour
             {
                 for (int y = 0; y < players.Length; y++)
                 {
-                    if (players[y].Hash != 0)
+                    if (players[y].Hash != 0 & players[y].HealtPlayer!=null)
                     {
                         CreatTarget(players[y]);
                     }
@@ -65,6 +74,10 @@ public class TargetsMoveEnemy : MonoBehaviour
         {
             for (int i = 0; i < targets.Length; i++)
             {
+                if (targets[i] == objectTarget.Transform.position)
+                {
+                    return;
+                }
                 if (targets[i].magnitude==0)
                 {
                     targets[i] = objectTarget.Transform.position;
@@ -83,5 +96,6 @@ public class TargetsMoveEnemy : MonoBehaviour
     private void ClearTarget()
     {
         Array.Clear(targets, 0, targets.Length);
+        if (targets.Length > 200 ) { Array.Resize(ref targets, 1); }
     }
 }

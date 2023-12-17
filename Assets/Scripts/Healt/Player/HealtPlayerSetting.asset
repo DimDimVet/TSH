@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b9318b05a05df439e9a8871d2165e2, type: 3}
   m_Name: HealtPlayerSetting
   m_EditorClassIdentifier: 
-  SpeedForward: 1
-  SpeedBack: 1
-  SpeedTurn: 0.1
+  HealtCount: 100

@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class HealtEnemy : Healt
 {
-    [SerializeField] private HealtSetting settingsData;
-    void Start()
-    {
 
-    }
 }

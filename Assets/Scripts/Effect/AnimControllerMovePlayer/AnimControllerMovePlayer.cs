@@ -3,17 +3,14 @@ using UnityEngine;
 public class AnimControllerPlayer : GetInputPlayer
 {
     [SerializeField] private AnimControllerMovePlayerSettings animSettings;
-    private bool NotActionClass = false;
     //кэш
     private Animator animator;
     private float speedAnim;
     private string tankPlayerTrackRight, tankPlayerTrackForward, tankPlayerTrackLeft, tankPlayerTrackBack;
-
     private bool isRun = false;
     void Start()
     {
-        if (animSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (animSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); }
         GetIsRun();
         GetSetting();
     }
@@ -76,7 +73,7 @@ public class AnimControllerPlayer : GetInputPlayer
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (IsDead) { return; }
 
         if (animSettings.IsUpDate)
         {

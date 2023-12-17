@@ -4,21 +4,33 @@ using static EventManager;
 public class AnimControllerMoveEnemyTank : MonoBehaviour
 {
     [SerializeField] private AnimControllerMoveEnemyTankSettings animSettings;
-    private bool NotActionClass = false;
     //кэш
     private Animator animator;
     private float currentVelocity;
     private float speedAnim;
     private string tankEnemyTrackRight, tankEnemyTrackForward, tankEnemyTrackLeft, tankEnemyTrackBack;
     private Construction thisObject;
+    private int thisHash;
 
-    private bool isRun = false;
+    private bool isRun = false, isDead = false;
     void Start()
     {
-        if (animSettings == null) { print($"Не установлен Settings в AnimControllerMoveEnemyTank"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (animSettings == null) { print($"Не установлен Settings в AnimControllerMoveEnemyTank");}
         GetIsRun();
         GetSetting();
+    }
+    private void OnEnable()
+    {
+        isDead = false;
+        OnIsDead += StopRun;
+    }
+    private void OnDisable()
+    {
+        OnIsDead -= StopRun;
+    }
+    private void StopRun(int _thisHash, bool _isDead)
+    {
+        if (thisHash == _thisHash) { isDead = _isDead; }
     }
     private void GetSetting()
     {
@@ -36,8 +48,8 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
             if (animator != null) { isRun = true; }
             else { isRun = false; print($"{gameObject.name} не получила Animator"); }
 
-            int hash = this.gameObject.GetHashCode();
-            thisObject = GetObjectHash(hash);//получаем данные из листа
+            thisHash = this.gameObject.GetHashCode();
+            thisObject = GetObjectHash(thisHash);//получаем данные из листа
             if (thisObject.NavMeshAgent != null) { isRun = true; }
             else { isRun = false; print($"{gameObject.name} не получил LogicMoveEnemy"); }
         }
@@ -59,7 +71,7 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (isDead) { return; }
 
         if (animSettings.IsUpDate)
         {

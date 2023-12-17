@@ -5,7 +5,6 @@ using static EventManager;
 public class ScanEnemy : MonoBehaviour
 {
     [SerializeField] private ScanEnemySettings scanEnemySettings;
-    private bool NotActionClass = false;
     //кэш
     private int thisHash;
     private Construction thisObject;
@@ -17,15 +16,27 @@ public class ScanEnemy : MonoBehaviour
     private Construction hitObject;
     private Construction[] players, enemys;
 
-    private bool isRun = false;
+    private bool isRun = false,isDead = false;
 
     void Start()
     {
-        if (scanEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (scanEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); }
         GetSetting();
         GetIsRun();
         SetThisObject();
+    }
+    private void OnEnable()
+    {
+        isDead = false;
+        OnIsDead += StopRun;
+    }
+    private void OnDisable()
+    {
+        OnIsDead -= StopRun;
+    }
+    private void StopRun(int _thisHash, bool _isDead)
+    {
+        if (thisHash == _thisHash) { isDead = _isDead; }
     }
     private void GetSetting()
     {
@@ -36,9 +47,8 @@ public class ScanEnemy : MonoBehaviour
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            isRun = true;
-            //if (scanCollider != null) { isRun = true; scanCollider.radius = diametrCollider; }
-            //else { isRun = false; print($"Не установлен Collider в {gameObject.name}"); }
+            if (scanEnemySettings != null) { isRun = true;  }
+            else { isRun = false; print($"Не установлен scanEnemySettings в {gameObject.name}"); }
         }
     }
     private void SetThisObject()
@@ -62,7 +72,8 @@ public class ScanEnemy : MonoBehaviour
         {
             hashGetObject = hitColl[i].gameObject.GetHashCode();
             hitObject = GetObjectHash(hashGetObject);
-            if (hitObject.Hash != 0)
+
+            if (hitObject.Hash != 0 & (hitObject.HealtEnemy || hitObject.HealtPlayer))
             {
                 if (objectsGetScaner == null)
                 {
@@ -162,8 +173,7 @@ public class ScanEnemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
-
+        if (isDead) { return; }
         if (scanEnemySettings.IsUpDate)
         {
             GetSetting();

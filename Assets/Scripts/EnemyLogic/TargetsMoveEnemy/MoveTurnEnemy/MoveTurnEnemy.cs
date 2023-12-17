@@ -4,16 +4,13 @@ using static EventManager;
 public class MoveTurnEnemy : TargetRotateEnemy
 {
     [SerializeField] private TurnSettings turnSettings;
-    private bool NotActionClass = false;
     //кэш
     private Vector3 targetDirection;
     private Quaternion targetRotation;
-    private float speedTurn;
+    private float speedTurn, maxOffSetX;
     private bool isRun = false;
     void Start()
     {
-        if (turnSettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
         GetSetting();
         GetIsRun();
         SetTargetDefault();
@@ -21,6 +18,7 @@ public class MoveTurnEnemy : TargetRotateEnemy
     private void GetSetting()
     {
         speedTurn = turnSettings.SpeedTurn;
+        maxOffSetX= turnSettings.MaxOffSetX;
     }
     private void GetIsRun()
     {
@@ -41,7 +39,7 @@ public class MoveTurnEnemy : TargetRotateEnemy
         if (Target == null) { DefaultPosition(); return; }
         targetDirection = Target.position - gameObject.transform.position;
         targetRotation = Quaternion.LookRotation(targetDirection);
-        targetRotation.x = 0;
+        if (targetRotation.x> maxOffSetX){targetRotation.x = maxOffSetX;}
         targetRotation.z = 0;
         this.gameObject.transform.rotation =
             Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * speedTurn);
@@ -56,7 +54,7 @@ public class MoveTurnEnemy : TargetRotateEnemy
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (IsDead) { return; }
 
         if (turnSettings.IsUpDate)
         {

@@ -4,21 +4,20 @@ using static EventManager;
 public class MoveAvtoRifPlayer : GetInputPlayer
 {
     [SerializeField] private TurnSettings avtoRifSettings;
-    private bool NotActionClass = false;
     private Mode mode = Mode.AvtoRif;
     //кэш
     private Construction cameraMain;
+    private Construction parentObject;
     private Vector3 currentMousePosition;
     private Ray ray;
     private Vector3 targetDirection;
     private Quaternion targetRotation;
     private float speedTurn;
-    private bool isRun = false;
+    private bool isRun = false, isDead = false;
 
     void Start()
     {
-        if (avtoRifSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (avtoRifSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); }
         GetIsRun();
         GetSetting();
     }
@@ -31,13 +30,15 @@ public class MoveAvtoRifPlayer : GetInputPlayer
     {
         if (!isRun)//если общее разрешение на запуск false
         {
+            parentObject = OnGetPlayer();
             cameraMain = GetCamera();//получаем данные из листа
-            if (cameraMain.CameraComponent != null) { isRun = true; }
+            if (cameraMain.CameraComponent != null & parentObject.Hash != 0) { isRun = true; }
             else { isRun = false; print($"MoveTurnPlayer не получила CameraComponent"); }
         }
     }
     private void TurnMove()
     {
+        isDead = parentObject.HealtPlayer.IsDead;
         if (isRun)
         {
             if (InputData.MouseRightButton != 0 && InputData.ModeAction == mode)
@@ -60,7 +61,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (isDead) { return; }
 
         if (avtoRifSettings.IsUpDate)
         {

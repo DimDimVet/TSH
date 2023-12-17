@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public struct Construction
 {
     public int Hash;
+    public int ParentHashObject;
     public Transform Transform;
-    public bool IsDead { get; set; }
     public bool SetActiv { get; set; }
     public HealtPlayer HealtPlayer;
     public HealtEnemy HealtEnemy;

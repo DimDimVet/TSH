@@ -108,7 +108,7 @@ public class MoveEnemy : TargetsMoveEnemy
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (IsDead) { return; }//Проверка разрешнения
 
         if (moveEnemySettings.IsUpDate)
         {

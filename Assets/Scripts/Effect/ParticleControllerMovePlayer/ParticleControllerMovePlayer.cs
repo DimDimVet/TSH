@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ParticleControllerMovePlayer : GetInputPlayer
 {
-    private bool NotActionClass = false;
     //кэш
     [SerializeField] private ParticleSystem partDinamic, partIdle;
     private float refDistance = 0.01f;
@@ -12,10 +11,8 @@ public class ParticleControllerMovePlayer : GetInputPlayer
     private bool isRun = false;
     void Start()
     {
-        if (partDinamic == null & partIdle == null) { print($"Не установлен ParticleSystem в ParticleDrive"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (partDinamic == null & partIdle == null) { print($"Не установлен ParticleSystem в ParticleDrive"); }
     }
-
     private void GetIsRun()
     {
         if (!isRun)//если общее разрешение на запуск false
@@ -72,7 +69,7 @@ public class ParticleControllerMovePlayer : GetInputPlayer
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (IsDead) { return; }
 
         if (!isRun)//если общее разрешение на запуск false
         {

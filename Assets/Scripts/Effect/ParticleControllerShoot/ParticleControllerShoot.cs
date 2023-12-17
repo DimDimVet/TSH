@@ -1,22 +1,28 @@
 using UnityEngine;
+using static EventManager;
 
 public class ParticleControllerShoot : MonoBehaviour
 {
-    private bool NotActionClass = false;
     //кэш
     [SerializeField] private ParticleSystem partShoot;
     public ParticleSystem PartSht { get { return partShoot; } set { value = partShoot; } }
 
-    private int _thisHash;
-    private bool isRun = false;
+    private int thisHash;
+    private bool isRun = false, isDead = false;
 
     private void OnEnable()
     {
         SetEventOnEneble();
+        OnIsDead += StopRun;
     }
     private void OnDisable()
     {
         SetEventOnDisable();
+        OnIsDead -= StopRun;
+    }
+    private void StopRun(int _thisHash, bool _isDead)
+    {
+        if (thisHash == _thisHash) { isDead = _isDead; }
     }
     public virtual void SetEventOnEneble()
     {
@@ -27,23 +33,19 @@ public class ParticleControllerShoot : MonoBehaviour
     {
         //OnIsActivGunPlayerShoot -= PartShoot;
     }
-    void Start()
-    {
-        if (partShoot == null) { print($"ParticleSystem не установлен ParticleControllerShootPlayer"); NotActionClass = true; }
-        if (NotActionClass) { return; }
-    }
 
     private void GetIsRun()
     {
         if (!isRun)
         {
-            _thisHash = this.gameObject.GetHashCode();
-            if (_thisHash != 0) { isRun = true; }
+            thisHash = this.gameObject.GetHashCode();
+            if (thisHash != 0) { isRun = true; }
+            else { print($"ParticleSystem не установлен ParticleControllerShootPlayer"); isRun = false; }
         }
     }
-    public void PartShoot(int thisHash, bool isActiv)
+    public void PartShoot(int _thisHash, bool isActiv)
     {
-        if (isActiv && _thisHash == thisHash)
+        if (isActiv && thisHash == _thisHash)
         {
             partShoot.Play();
         }
@@ -58,7 +60,7 @@ public class ParticleControllerShoot : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }
+        if (isDead) { return; }
 
         if (!isRun)
         {

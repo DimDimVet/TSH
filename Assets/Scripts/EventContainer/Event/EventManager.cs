@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class EventManager
 {
@@ -39,10 +40,28 @@ public class EventManager
     }
 
     //Особые события
-    public static Action<int> OnIsReternBull;
-    public static void IsReternBull(int thisHash)
+    public static Action<int, bool> OnIsDead;
+    public static void IsDead(int thisHash, bool isDead)
     {
-        OnIsReternBull?.Invoke(thisHash);
+        OnIsDead?.Invoke(thisHash, isDead);
+    }
+
+    public static Action<int, RaycastHit> OnIsReternBull;
+    public static void IsReternBull(int thisHash,RaycastHit hit)
+    {
+        OnIsReternBull?.Invoke(thisHash, hit);
+    }
+
+    public static Action<int, int> OnGetDamage;
+    public static void GetDamage(int getHash, int damage)
+    {
+        OnGetDamage?.Invoke(getHash, damage);
+    }
+
+    public static Action<int, int> OnGetUIDamage;
+    public static void GetUIDamage(int getHash, int healt)
+    {
+        OnGetUIDamage?.Invoke(getHash, healt);
     }
     //События активности Player
     public static Action<int, bool> OnIsActivGunPlayerShoot;

@@ -4,8 +4,10 @@ public class ShootAvtoRif : Shoot
 {
     public GameObject _BullRif; public Transform ContainerBullRif;
     public GameObject _BullRifSleeve; public Transform ContainerBullRifSleeve;
+    public GameObject _BullDecal; public Transform ContainerBullDecal;
     private Pool bullRif;
     private Pool bullRifSleeve;
+    private Pool bullDecal;
 
     private Mode mode = Mode.AvtoRif;
 
@@ -13,12 +15,22 @@ public class ShootAvtoRif : Shoot
     {
         bullRif = new Pool(_BullRif, ContainerBullRif);
         bullRifSleeve = new Pool(_BullRifSleeve, ContainerBullRifSleeve);
+        bullDecal = new Pool(_BullDecal, ContainerBullDecal);
         OnIsReternBull += ReternBullet;
     }
-    private void ReternBullet(int hash)
+    private void ReternBullet(int hash, RaycastHit hit)
     {
-        bullRif.ReternObject(hash);
-        bullRifSleeve.ReternObject(hash);
+        bullDecal.ReternObject(hash);
+        if (hit.collider != null)
+        {
+            if (bullRif.ReternObject(hash)) { bullDecal.GetObjectHit(hit); }
+            bullRifSleeve.ReternObject(hash);
+        }
+        else
+        {
+            bullRif.ReternObject(hash);
+            bullRifSleeve.ReternObject(hash);
+        }
     }
     public override void ShootBullet()
     {

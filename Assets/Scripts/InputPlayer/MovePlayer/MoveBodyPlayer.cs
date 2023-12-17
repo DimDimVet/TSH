@@ -4,7 +4,6 @@ using static EventManager;
 public class MoveBodyPlayer : GetInputPlayer
 {
     [SerializeField] private MoveSettings moveSettings;
-    private bool NotActionClass = false;
     //кэш движений
     private float speedForward, speedBack, speedTurn;
     private float weight;
@@ -14,7 +13,7 @@ public class MoveBodyPlayer : GetInputPlayer
 
     void Start()
     {
-        if (moveSettings == null) { print($"Не установлен Settings в MovePlayer"); NotActionClass = true; return; }
+        if (moveSettings == null) { print($"Не установлен Settings в MovePlayer"); }
         GetIsRun();
         GetSetting();
     }
@@ -31,8 +30,6 @@ public class MoveBodyPlayer : GetInputPlayer
 
     private void GetIsRun()
     {
-        if (IsActivObjectHash(gameObject.GetHashCode())) { }
-
         rigidbodyGameObject = gameObject.GetComponent<Rigidbody>();
 
         if (!(rigidbodyGameObject is Rigidbody))
@@ -76,7 +73,7 @@ public class MoveBodyPlayer : GetInputPlayer
 
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (IsDead) { return; }
 
         if (moveSettings.IsUpDate)
         {

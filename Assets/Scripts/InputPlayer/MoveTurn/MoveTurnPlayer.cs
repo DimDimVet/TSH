@@ -5,7 +5,6 @@ public class MoveTurnPlayer : GetInputPlayer
 {
     [SerializeField] private TurnSettings turnSettings;
     [SerializeField] GameObject objectMaus;
-    private bool NotActionClass = false;
     private Mode mode = Mode.Turn;
     //кэш
     private Construction cameraMain;
@@ -14,12 +13,12 @@ public class MoveTurnPlayer : GetInputPlayer
     private Vector3 targetDirection;
     private Quaternion targetRotation;
     private float speedTurn;
-    private bool isRun = false;
+    private Construction parentObject;
+    private bool isRun = false, isDead=false;
 
     void Start()
     {
-        if (turnSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (turnSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); }
         GetIsRun();
         GetSetting();
     }
@@ -32,17 +31,18 @@ public class MoveTurnPlayer : GetInputPlayer
     {
         if (!isRun)//если общее разрешение на запуск false
         {
+            parentObject = OnGetPlayer();
             cameraMain = GetCamera();//получаем данные из листа
-            if (cameraMain.CameraComponent != null) { isRun = true; }
-            else { isRun = false; print($"MoveTurnPlayer не получила CameraComponent"); }
+            if (cameraMain.CameraComponent != null & parentObject.Hash!=0) { isRun = true; }
+            else { isRun = false; print($"MoveTurnPlayer не получила CameraComponent");return; }
+            
         }
     }
     private void TurnMove()
     {
+        isDead = parentObject.HealtPlayer.IsDead;
         if (isRun)
         {
-            
-
             if (InputData.MouseRightButton != 0 && InputData.ModeAction == mode)
             {
                 currentMousePosition = (Vector2)InputData.MousePosition;
@@ -62,7 +62,7 @@ public class MoveTurnPlayer : GetInputPlayer
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (isDead) { return; }
 
         if (turnSettings.IsUpDate)
         {

@@ -1,13 +1,9 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static EventManager;
 
 public class HealtPlayer : Healt
 {
-    [SerializeField] private HealtSetting settingsData;
-    void Start()
-    {
-        
-    }
 
 }

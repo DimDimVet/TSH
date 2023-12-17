@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using static EventManager;
 public enum Mode
 {
     Turn,
@@ -11,13 +11,20 @@ public class GetInputPlayer : MonoBehaviour
     //Назначим в массив вариации режимов
     private Mode[] modes = { Mode.Turn, Mode.AvtoRif };
     private int countMode = 0;
-    private bool isTrigerClick=true;
+    private bool isTrigerClick = true;
 
     private InputData inputData;//кэш структура хранения всех данных ввода
     public InputData InputData { get { return inputData; } /*set { inputData = value; }*/ }
     private InputPlayer inputActions;//кэш MapInput
+    public int ThisHash { get { return thisHash; } set { thisHash = value; } }
+    public bool IsDead { get { return isDead; } set { isDead = value; } }
+    private int thisHash;
+    private bool isDead = false;
+
     void OnEnable()
     {
+        thisHash = this.gameObject.GetHashCode();
+        OnIsDead += StopRun;
         inputData = new InputData();
         inputActions = new InputPlayer();
         if (inputActions != null)
@@ -70,6 +77,11 @@ public class GetInputPlayer : MonoBehaviour
     {
         //остановим 
         inputActions.Disable();
+        OnIsDead -= StopRun;
+    }
+    private void StopRun(int _thisHash, bool _isDead)
+    {
+        if (thisHash == _thisHash) { isDead = _isDead; }
     }
     private void SelectMoveMode()
     {
@@ -80,7 +92,7 @@ public class GetInputPlayer : MonoBehaviour
                 isTrigerClick = false;
                 countMode++;
                 if (countMode >= modes.Length) { countMode = 0; }
-                
+
                 for (int i = 0; i < modes.Length; i++)
                 {
                     if ((int)modes[i] == countMode)

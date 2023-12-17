@@ -1,4 +1,3 @@
-using Codice.CM.Client.Differences.Merge;
 using System;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class Pool
     }
     private Element CreatObject(bool isSetActiv = false)
     {
-        GameObject temp = GameObject.Instantiate(prefab, containerTransform.position,Quaternion.identity);
+        GameObject temp = GameObject.Instantiate(prefab, containerTransform.position, Quaternion.identity);
         temp.SetActive(isSetActiv);
         Element element = new Element
         {
@@ -34,10 +33,25 @@ public class Pool
             element.Object.transform.rotation = containerTransform.rotation;
         }
     }
+    private void SetTransformHit(Element element, RaycastHit hit)
+    {
+        if (element.Object.transform.position != (hit.point + hit.normal * 0.001f))
+        {
+            element.Object.transform.position = hit.point + hit.normal * 0.001f;
+            element.Object.transform.rotation = Quaternion.LookRotation(-hit.normal);
+        }
+    }
     public GameObject GetObject()
     {
         int index = GetQueue();
         SetTransform(containerObject[index]);
+        containerObject[index].Object.gameObject.SetActive(true);
+        return containerObject[index].Object;
+    }
+    public GameObject GetObjectHit(RaycastHit hit)
+    {
+        int index = GetQueue();
+        SetTransformHit(containerObject[index], hit);
         containerObject[index].Object.gameObject.SetActive(true);
         return containerObject[index].Object;
     }

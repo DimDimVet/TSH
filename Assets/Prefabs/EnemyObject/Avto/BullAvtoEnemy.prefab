@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca75d203120a574b85bc09c127b4e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 0}
+  decalGO: {fileID: 0}
   bullSettings: {fileID: 11400000, guid: 2bb3b8befa8e86a498298a78a8b541de, type: 2}
   typeSleeve: 0
   body: {fileID: 0}

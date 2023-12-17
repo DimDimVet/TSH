@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeedTurn: 2
   IsUpDate: 0
+  MaxOffSetX: 0.01

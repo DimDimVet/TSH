@@ -8,8 +8,6 @@ public class TestCamera : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _gameObject;
     private Vector3 prevPos;
-
-    private float timer = 0.5f;
     void Start()
     {
         

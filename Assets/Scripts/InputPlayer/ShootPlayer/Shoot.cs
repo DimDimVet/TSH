@@ -3,18 +3,18 @@ using UnityEngine;
 public class Shoot : GetInputPlayer
 {
     [SerializeField] private ShootSettings shootSettings;
-    private bool NotActionClass = false;
     //кэш
-    private int thisHash;
-    public int ThisHash { get { return thisHash; } }
+    //private int thisHash;
+    //public int ThisHash { get { return thisHash; } }
     private float currentTime, defaultTime;
     private bool isBullReLoad = false, isTrigerSleeve = true, isInputPlayer,isScriptAction=false;
     public bool IsScriptAction { get { return isScriptAction; } set { isScriptAction = value; } }
-    private bool isRun = false;
+    //public bool IsDead { set { isDead = value; } }
+    private bool isRun = false/*, isDead = false*/;
+
     void Start()
     {
-        if (shootSettings == null) { print($"Не установлен Settings в ShootPlayer"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (shootSettings == null) { print($"Не установлен Settings в ShootPlayer");}
         GetIsRun();
         GetSetting();
         Set();
@@ -34,8 +34,8 @@ public class Shoot : GetInputPlayer
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            if (thisHash != 0) { isRun = true;  }
-            else { thisHash = this.gameObject.GetHashCode(); }
+            if (ThisHash != 0) { isRun = true;  }
+            else { ThisHash = this.gameObject.GetHashCode(); }
         }
     }
     private bool ReLoadBullet()
@@ -90,7 +90,7 @@ public class Shoot : GetInputPlayer
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (IsDead) { return; }
 
         if (shootSettings.IsUpDate)
         {

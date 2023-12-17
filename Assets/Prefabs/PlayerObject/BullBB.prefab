@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8769149915114713220}
   - component: {fileID: 8293916138348917832}
   - component: {fileID: -5163892609674174860}
-  - component: {fileID: -5340002207055144647}
   m_Layer: 0
   m_Name: BullBB
   m_TagString: Untagged
@@ -98,26 +97,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullSettings: {fileID: 11400000, guid: e18b483eeecdcdd4abb0c1944c052385, type: 2}
---- !u!136 &-5340002207055144647
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3126515883450502261}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.32223254
-  m_Height: 0.16014516
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.000000007450581, z: 0.08222168}
+  typeSleeve: 0
+  body: {fileID: 0}

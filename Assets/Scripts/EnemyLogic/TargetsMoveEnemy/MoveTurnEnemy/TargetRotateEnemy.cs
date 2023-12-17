@@ -15,14 +15,22 @@ public class TargetRotateEnemy : MonoBehaviour
     public int ThisHash { get { return thisHash; } }
     private Construction thisObject;
     public Construction ThisObject { get { return thisObject; } }
-
+    public bool IsDead { get { return isDead; } }
+    private bool isDead = false;
     private void OnEnable()
     {
         OnGetTargetPlayer += GetTarget;
+        isDead = false;
+        OnIsDead += StopRun;
     }
     private void OnDisable()
     {
         OnGetTargetPlayer -= GetTarget;
+        OnIsDead -= StopRun;
+    }
+    private void StopRun(int _thisHash, bool _isDead)
+    {
+        if (thisHash == _thisHash) { isDead = _isDead; }
     }
     public void SetTargetDefault()
     {

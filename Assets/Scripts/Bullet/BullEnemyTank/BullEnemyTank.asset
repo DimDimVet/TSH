@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5312a5230e117854ab09bc3992cd688d, type: 3}
   m_Name: BullEnemyTank
   m_EditorClassIdentifier: 
+  IsHealt: 1
   SpeedBullet: 15
   KillTime: 5
-  DiametrCollider: 0.5
+  DiametrCollider: 0.3
+  Damage: 3
+  PercentDamage: 50
   IsUpDate: 0

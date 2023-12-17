@@ -8,4 +8,7 @@ public class TurnSettings : ScriptableObject
 
     [Header("Обновить")]
     public bool IsUpDate = false;
+
+    [Header("Смещение по Х(рек. не более 0.007)")]
+    public float MaxOffSetX = 0.007f;
 }

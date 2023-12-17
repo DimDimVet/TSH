@@ -3,19 +3,33 @@ using static EventManager;
 
 public class ParticleControllerMoveEnemyTank : MonoBehaviour
 {
-    private bool NotActionClass = false;
     //кэш
     [SerializeField] private ParticleSystem partDinamic, partIdle;
     private Construction thisObject;
+    private int thisHash;
     private float currentVelocity;
     private bool isPartIdle = true;
-    private bool isRun = false;
+    private bool isRun = false, isDead = false;
     void Start()
     {
-        if (partDinamic == null & partIdle == null) { print($"Не установлен ParticleSystem в ParticleDrive"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (partDinamic == null & partIdle == null) { print($"Не установлен ParticleSystem в ParticleDrive"); }
+        thisHash=this.gameObject.GetHashCode();
     }
-
+    private void OnEnable()
+    {
+        isDead = false;
+        OnIsDead += StopRun;
+    }
+    private void OnDisable()
+    {
+        OnIsDead -= StopRun;
+    }
+    private void StopRun(int _thisHash, bool _isDead)
+    {
+        if (thisHash == _thisHash) { isDead = _isDead; }
+        partDinamic.Stop();
+        partIdle.Stop();
+    }
     private void GetIsRun()
     {
         if (!isRun)//если общее разрешение на запуск false
@@ -24,8 +38,8 @@ public class ParticleControllerMoveEnemyTank : MonoBehaviour
             else if (partDinamic != null) { isRun = true; }
             else { isRun = false; print($"ParticleControllerPlayer не получила Particle"); }
 
-            int hash = this.gameObject.GetHashCode();
-            thisObject = GetObjectHash(hash);//получаем данные из листа
+            thisHash = this.gameObject.GetHashCode();
+            thisObject = GetObjectHash(thisHash);//получаем данные из листа
             if (thisObject.NavMeshAgent != null) { isRun = true; }
             else { isRun = false; print($"{gameObject.name} не получил LogicMoveEnemy"); }
         }
@@ -76,7 +90,7 @@ public class ParticleControllerMoveEnemyTank : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (isDead) { return; }
 
         if (!isRun)//если общее разрешение на запуск false
         {

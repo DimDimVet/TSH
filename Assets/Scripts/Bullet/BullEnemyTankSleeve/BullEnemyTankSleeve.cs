@@ -3,6 +3,6 @@ public class BullEnemyTankSleeve : Bullet
 {
     public override void ShootSleeve()
     {
-        IsReternBull(this.gameObject.GetHashCode());
+        IsReternBull(this.gameObject.GetHashCode(), Hit);
     }
 }
