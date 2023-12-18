@@ -8,10 +8,12 @@ public abstract class Healt : MonoBehaviour
     [SerializeField] private HealtSetting settingsHealt;
     public int HealtCount { get { return healtCount; } /*set { healtCount = value; }*/ }
     public int ThisHash { get { return thisHash; } }
-    public bool IsDead { get { return isDead; } }
+    public bool IsDead { get { return isDead; } set { isDead = value; } }
     private int thisHash;
     [SerializeField] private int healtCount = 0;
     private Construction thisObject;
+
+    public Construction[] ThisObjects { get { return thisObjects; } set { thisObjects = value; } }
     private Construction[] thisObjects;
 
     private bool isRun = false, isDead = false;
@@ -42,20 +44,24 @@ public abstract class Healt : MonoBehaviour
             else { isRun = false; print($"Не установлены компоненты в {gameObject.name}"); }
         }
     }
-    private void ControlDamage(int getHash, int damage)
+    public bool ControlDamage(int getHash, int damage)
     {
-        if (isDead) { return; }
-        if (thisObjects == null) { SetChildrensObject(); }
-        
-        for (int i = 0; i < thisObjects.Length; i++)
+        if (getHash == thisHash)
         {
-            if (thisObjects[i].Hash == getHash|| thisObjects[i].ParentHashObject == getHash)
+            if (isDead) { return isDead; }
+            if (thisObjects == null) { SetChildrensObject(); return false; }
+
+            for (int i = 0; i < thisObjects.Length; i++)
             {
-                if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead); }
-                else { healtCount -= damage; }
-                GetUIDamage(thisHash, healtCount);
+                if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)
+                {
+                    if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead); return isDead; }
+                    else { healtCount -= damage; }
+                    GetUIDamage(thisHash, healtCount);
+                }
             }
         }
+        return isDead;
     }
     private void SetChildrensObject()
     {

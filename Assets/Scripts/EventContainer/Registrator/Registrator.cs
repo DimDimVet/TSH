@@ -29,6 +29,7 @@ public class Registrator : ListDataBase
             Construction registrator = new Construction
             {
                 Hash = thisHash,
+                ParentHashObject = thisHash,
                 Transform = gameObject.transform,
                 HealtPlayer = GetComponent<HealtPlayer>(),
                 HealtEnemy = GetComponent<HealtEnemy>(),

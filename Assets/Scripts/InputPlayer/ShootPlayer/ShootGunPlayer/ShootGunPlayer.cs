@@ -12,13 +12,14 @@ public class ShootGunPlayer : Shoot
     private Mode mode = Mode.Turn;
     public override void Set()
     {
-        bullBB = new Pool(_BullBB, ContainerBullBB);
+        bullBB = new Pool(_BullBB,ContainerBullBB);
         bullSleeve = new Pool(_BullSleeve, ContainerBullSleeve);
         bullDecal = new Pool(_BullDecal, ContainerBullDecal);
         OnIsReternBull += ReternBullet;
     }
-    private void ReternBullet(int hash,RaycastHit hit)
+    private void ReternBullet(int hash, int hashObjectDamagAcceptance, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
     {
+        if (hashObjectDamagAcceptance != 0) { print($"Вернули пулю {hash} c дамагом {setDamage} в объект {hashObjectDamagAcceptance}/ объект уничтожен{isKillObjectAcceptance}"); }
         bullDecal.ReternObject(hash);
         if (hit.collider != null)
         {

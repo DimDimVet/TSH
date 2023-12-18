@@ -3,14 +3,17 @@ using static EventManager;
 public class BullEnemyAvto : Bullet
 {
     private float percent, currentDamag;
+    private int _damage, hashObjectDamagAcceptance;
+    private bool isKillObjectAcceptance;
     public override void ReternBullet()
     {
-        IsReternBull(this.gameObject.GetHashCode(), Hit);
+        IsReternBull(this.gameObject.GetHashCode(),hashObjectDamagAcceptance, isKillObjectAcceptance, _damage, Hit);
     }
     public override void SetDamage(int hash)
     {
-        int _damage = DamagRandom();
-        GetDamage(hash, _damage);
+        _damage = DamagRandom();
+        hashObjectDamagAcceptance=hash;
+        isKillObjectAcceptance=GetDamage(hashObjectDamagAcceptance, _damage);
         //print($"Передаем в {hash} дамаг {_damage}");
     }
     private int DamagRandom()

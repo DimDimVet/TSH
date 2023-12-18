@@ -46,16 +46,16 @@ public class EventManager
         OnIsDead?.Invoke(thisHash, isDead);
     }
 
-    public static Action<int, RaycastHit> OnIsReternBull;
-    public static void IsReternBull(int thisHash,RaycastHit hit)
+    public static Action<int, int, bool, int, RaycastHit> OnIsReternBull;//возврат пули с данными об попадании
+    public static void IsReternBull(int thisHash, int hashObjectDamagAcceptance, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
     {
-        OnIsReternBull?.Invoke(thisHash, hit);
+        OnIsReternBull?.Invoke(thisHash, hashObjectDamagAcceptance, isKillObjectAcceptance, setDamage, hit);
     }
 
-    public static Action<int, int> OnGetDamage;
-    public static void GetDamage(int getHash, int damage)
+    public static Func<int, int, bool> OnGetDamage;
+    public static bool GetDamage(int getHash, int damage)
     {
-        OnGetDamage?.Invoke(getHash, damage);
+        return(bool)OnGetDamage?.Invoke(getHash, damage);
     }
 
     public static Action<int, int> OnGetUIDamage;
@@ -64,7 +64,7 @@ public class EventManager
         OnGetUIDamage?.Invoke(getHash, healt);
     }
     //События активности Player
-    public static Action<int, bool> OnIsActivGunPlayerShoot;
+    public static Action<int, bool> OnIsActivGunPlayerShoot;//Запуск партиклов
     public static void IsActivGunPlayerShoot(int thisHash, bool isShootGunPlayer)
     {
         OnIsActivGunPlayerShoot?.Invoke(thisHash, isShootGunPlayer);
@@ -84,16 +84,16 @@ public class EventManager
         OnGetTargetPlayer?.Invoke(players, grupEnemys);
     }
 
-    public static Action<int,bool> OnIsReadinessShoot;
-    public static void IsReadinessShoot(int thisHash,bool isReadinessShoot)
+    public static Action<int, bool> OnIsReadinessShoot;
+    public static void IsReadinessShoot(int thisHash, bool isReadinessShoot)
     {
-        OnIsReadinessShoot?.Invoke(thisHash,isReadinessShoot);
+        OnIsReadinessShoot?.Invoke(thisHash, isReadinessShoot);
     }
 
     public static Action<int, bool> OnIsActivGunEnemyShoot;
     public static void IsActivGunEnemyShoot(int thisHash, bool isShootGunEnemy)
     {
-        OnIsActivGunEnemyShoot?.Invoke(thisHash,isShootGunEnemy);
+        OnIsActivGunEnemyShoot?.Invoke(thisHash, isShootGunEnemy);
     }
 
 

@@ -12,7 +12,6 @@ public class Bullet : MonoBehaviour
     public float Damage { get { return damage; } }
     public float PercentDamage { get { return percentDamage; } }
     public RaycastHit Hit { get { return hit; } }
-    private bool NotActionClass = false;
     //кэш
     private float speedBullet;
     private float diametrCollider;
@@ -30,8 +29,7 @@ public class Bullet : MonoBehaviour
 
     void Awake()
     {
-        if (bullSettings == null) { print($"Не установлен {bullSettings.name} в Bullet"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (bullSettings == null) { print($"Не установлен {bullSettings.name} в Bullet"); }
         GetIsRun();
         GetSetting();
     }
@@ -140,8 +138,6 @@ public class Bullet : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (NotActionClass) { return; }//Проверка разрешнения
-
         if (bullSettings.IsUpDate)
         {
             GetSetting();

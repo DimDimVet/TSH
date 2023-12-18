@@ -17,7 +17,7 @@ public class ShootEnemyTank : Shoot
         bullDecal = new Pool(_BullDecal, ContainerBullDecal);
         OnIsReternBull += ReternBullet;
     }
-    private void ReternBullet(int hash, RaycastHit hit)
+    private void ReternBullet(int hash,int hashObjectDamagAcceptance, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
     {
         bullDecal.ReternObject(hash);
         if (hit.collider != null)
