@@ -20,6 +20,7 @@ public class ShootAvtoRif : Shoot
     }
     private void ReternBullet(int hash, int hashObjectDamagAcceptance, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
     {
+        if (hashObjectDamagAcceptance != 0 & isKillObjectAcceptance) { print($"Вернули пулю {hash} c дамагом {setDamage} в объект {hashObjectDamagAcceptance}/ объект уничтожен {isKillObjectAcceptance}"); }
         bullDecal.ReternObject(hash);
         if (hit.collider != null)
         {

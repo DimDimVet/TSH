@@ -7,20 +7,17 @@ public abstract class Healt : MonoBehaviour
 {
     [SerializeField] private HealtSetting settingsHealt;
     public int HealtCount { get { return healtCount; } /*set { healtCount = value; }*/ }
-    public int ThisHash { get { return thisHash; } }
     public bool IsDead { get { return isDead; } set { isDead = value; } }
     private int thisHash;
     [SerializeField] private int healtCount = 0;
     private Construction thisObject;
 
-    public Construction[] ThisObjects { get { return thisObjects; } set { thisObjects = value; } }
     private Construction[] thisObjects;
 
     private bool isRun = false, isDead = false;
     private void Start()
     {
         thisHash = gameObject.GetHashCode();
-        thisObject = GetObjectHash(ThisHash);
         GetSetting();
     }
     private void OnEnable()
@@ -40,41 +37,41 @@ public abstract class Healt : MonoBehaviour
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            if (settingsHealt != null) { isRun = true; }
+            thisObject = GetObjectHash(thisHash);
+            if (settingsHealt != null & thisObject.Hash!=0) { isRun = true; }
             else { isRun = false; print($"Не установлены компоненты в {gameObject.name}"); }
         }
     }
-    public bool ControlDamage(int getHash, int damage)
+    public void ControlDamage(int getHash, int damage)
     {
-        if (getHash == thisHash)
-        {
-            if (isDead) { return isDead; }
-            if (thisObjects == null) { SetChildrensObject(); return false; }
+        if (isDead ) { return; }
 
-            for (int i = 0; i < thisObjects.Length; i++)
+        if (thisObjects == null) { thisObjects= SetChildrensObject(); }
+
+        for (int i = 0; i < thisObjects.Length; i++)
+        {
+            if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)
             {
-                if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)
-                {
-                    if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead); return isDead; }
-                    else { healtCount -= damage; }
-                    GetUIDamage(thisHash, healtCount);
-                }
+                if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead); return; }
+                else { healtCount -= damage; }
+                GetUIDamage(thisHash, healtCount);
             }
         }
-        return isDead;
     }
-    private void SetChildrensObject()
+    private Construction[] SetChildrensObject()
     {
-        Clean(thisObjects);
+        Construction[] tempObject=new Construction[0];
+        Clean(tempObject);
 
         List<Construction> tempList = GetList();
         for (int i = 0; i < tempList.Count; i++)
         {
             if (tempList[i].ParentHashObject == thisObject.Hash)
             {
-                thisObjects = Creat(tempList[i], thisObjects);
+                tempObject = Creat(tempList[i], tempObject);
             }
         }
+        return tempObject;
         ////
         //for (int i = 0; i < thisObjects.Length; i++) { print($"{ThisHash}->{thisObjects[i].Hash}"); }
     }

@@ -37,6 +37,7 @@ public class Bullet : MonoBehaviour
     {
         startPos = transform.position;
         killTime = defaultTime;
+        OnIsDead += IsDeadTargetObject;
     }
     private void GetSetting()
     {
@@ -55,6 +56,10 @@ public class Bullet : MonoBehaviour
         {
             isRun = true;
         }
+    }
+    public virtual void IsDeadTargetObject(int thisHash, bool isDead)
+    {
+        //
     }
     private bool DetectObject()
     {

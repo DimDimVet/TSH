@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using static EventManager;
@@ -17,7 +16,7 @@ public class UIHealtBar : MonoBehaviour
     private void GetSet()
     {
         canvas = GetComponent<Canvas>();
-        cameraObject =GetCamera();
+        cameraObject = GetCamera();
         currentCamera = cameraObject.CameraComponent;
         canvas.worldCamera = currentCamera;
         //
@@ -48,13 +47,13 @@ public class UIHealtBar : MonoBehaviour
     }
     private void SetUIDamage(int healt)
     {
-        slider.value= healt;
+        slider.value = healt;
     }
     private void GetIsRun()
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            if (slider != null & currentCamera!=null & trackingObject!=null) { isRun = true; }
+            if (slider != null & currentCamera != null & trackingObject != null) { isRun = true; }
             else { isRun = false; GetSet(); print($"Не установлены компоненты в {gameObject.name}"); }
         }
     }
