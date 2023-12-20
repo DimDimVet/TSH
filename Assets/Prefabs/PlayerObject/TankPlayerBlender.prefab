@@ -19966,6 +19966,7 @@ GameObject:
   - component: {fileID: 1112913270454223559}
   - component: {fileID: 4293753351778983899}
   - component: {fileID: 7092841425158872475}
+  - component: {fileID: 9038331250532184833}
   m_Layer: 0
   m_Name: TankPlayerBlender
   m_TagString: Untagged
@@ -20263,6 +20264,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partDead: {fileID: 8578091842681655411}
+--- !u!114 &9038331250532184833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637375663211714923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a468d62d6c29f4f9ec79000b1b6af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3308639749213505074
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: HealtEnemyAvtoSetting
   m_EditorClassIdentifier: 
   HealtCount: 500
+  CostObject: 300

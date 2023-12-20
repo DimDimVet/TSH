@@ -28,7 +28,7 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
     {
         OnIsDead -= StopRun;
     }
-    private void StopRun(int _thisHash, bool _isDead)
+    private void StopRun(int _thisHash, bool _isDead, int costObject)
     {
         if (thisHash == _thisHash) { isDead = _isDead; }
     }

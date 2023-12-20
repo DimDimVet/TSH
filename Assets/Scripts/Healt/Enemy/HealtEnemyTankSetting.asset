@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: HealtEnemyTankSetting
   m_EditorClassIdentifier: 
   HealtCount: 100
+  CostObject: 1000

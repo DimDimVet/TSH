@@ -4,13 +4,13 @@ using static EventManager;
 public class BullEnemyTank : Bullet
 {
     private float percent, currentDamag;
-    private int _damage, hashObjectDamagAcceptance;
+    private int _damage, hashObjectDamagAcceptance, costTargetObject;
     private bool isKillObjectAcceptance;
     private int hashTarget;
     private bool isDeadTarget;
     public override void ReternBullet()
     {
-        IsReternBull(this.gameObject.GetHashCode(), hashObjectDamagAcceptance, isKillObjectAcceptance, _damage, Hit);
+        IsReternBull(this.gameObject.GetHashCode(), hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance, _damage, Hit);
     }
     public override void SetDamage(int hash)
     {
@@ -24,10 +24,11 @@ public class BullEnemyTank : Bullet
         if (hashObjectDamagAcceptance == hashTarget) { return isDeadTarget; }
         else { return false; }
     }
-    public override void IsDeadTargetObject(int thisHash, bool isDead)
+    public override void IsDeadTargetObject(int thisHash, bool isDead, int costObject)
     {
         hashTarget = thisHash;
         isDeadTarget = isDead;
+        costTargetObject = costObject;
     }
     private int DamagRandom()
     {

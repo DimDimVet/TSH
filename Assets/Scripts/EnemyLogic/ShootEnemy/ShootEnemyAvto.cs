@@ -16,7 +16,7 @@ public class ShootEnemyAvto : Shoot
         bullDecal = new Pool(_BullDecal, ContainerBullDecal);
         OnIsReternBull += ReternBullet;
     }
-    private void ReternBullet(int hash, int hashObjectDamagAcceptance, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
+    private void ReternBullet(int hash, int hashObjectDamagAcceptance, int costTargetObject,bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
     {
         bullDecal.ReternObject(hash);
         if (hit.collider != null)
@@ -41,7 +41,7 @@ public class ShootEnemyAvto : Shoot
         OnIsReadinessShoot -= ReadinessShoot;
         OnIsDead -= StopRun;
     }
-    private void StopRun(int _thisHash, bool _isDead)
+    private void StopRun(int _thisHash, bool _isDead, int costObject)
     {
         if (ThisHash == _thisHash) { IsDead = _isDead; }
     }

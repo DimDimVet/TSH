@@ -1,3 +1,4 @@
+using PlasticGui.WorkspaceWindow.PendingChanges;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class UIMainCanvas : MonoBehaviour
     //[SerializeField] private Slider slider;
     //[SerializeField] private GameObject trackingObject;
     //кэш
-    private int thisHash;
+    //private int thisHash;
     private Camera currentCamera;
     private Canvas canvas;
     private Construction cameraObject, thisObject;
@@ -21,6 +22,7 @@ public class UIMainCanvas : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         cameraObject = GetCamera();
+        thisObject= GetPlayer();
         currentCamera = cameraObject.CameraComponent;
         canvas.worldCamera = currentCamera;
         //
@@ -39,20 +41,22 @@ public class UIMainCanvas : MonoBehaviour
     }
     private void OnEnable()
     {
-        //OnGetUIDamage += ThisUIDamage;
+        OnUIStaistic += GetStat;
+        CountPlayerText.text = $"{0}";
+        InfoCountPlayerText.text = $"{0}";
     }
     private void OnDisable()
     {
-        //OnGetUIDamage -= ThisUIDamage;
+        OnUIStaistic -= GetStat;
     }
-    //private void ThisUIDamage(int getHash, int healt)
-    //{
-    //    if (thisHash == getHash) { SetUIDamage(healt); }
-    //}
-    //private void SetUIDamage(int healt)
-    //{
-    //    slider.value = healt;
-    //}
+    private void GetStat(Statistic stat)
+    {
+        if (isRun & thisObject.Hash==stat.HashPlayer)
+        {
+            CountPlayerText.text = $"{stat.CountCost}";
+            InfoCountPlayerText.text = $"{stat.CostTargetObject}";
+        }
+    }
     private void GetIsRun()
     {
         if (!isRun)//если общее разрешение на запуск false

@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
             isRun = true;
         }
     }
-    public virtual void IsDeadTargetObject(int thisHash, bool isDead)
+    public virtual void IsDeadTargetObject(int thisHash, bool isDead, int costObject)
     {
         //
     }

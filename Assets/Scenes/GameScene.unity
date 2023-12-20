@@ -319,6 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357f675abd605f941b259a58912b0215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CountPlayerText: {fileID: 336663830}
+  InfoCountPlayerText: {fileID: 1601640958}
 --- !u!4 &230050362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5639065612979723157, guid: 524e6e56dd2b52e479702e1d8d8c4634,

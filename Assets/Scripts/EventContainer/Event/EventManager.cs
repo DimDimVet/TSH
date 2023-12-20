@@ -40,16 +40,16 @@ public class EventManager
     }
 
     //Особые события
-    public static Action<int, bool> OnIsDead;
-    public static void IsDead(int thisHash, bool isDead)
+    public static Action<int, bool, int> OnIsDead;
+    public static void IsDead(int thisHash, bool isDead, int costObject)
     {
-        OnIsDead?.Invoke(thisHash, isDead);
+        OnIsDead?.Invoke(thisHash, isDead, costObject);
     }
 
-    public static Action<int, int, bool, int, RaycastHit> OnIsReternBull;//возврат пули с данными об попадании
-    public static void IsReternBull(int thisHash, int hashObjectDamagAcceptance, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
+    public static Action<int, int,int, bool, int, RaycastHit> OnIsReternBull;//возврат пули с данными об попадании
+    public static void IsReternBull(int thisHash, int hashObjectDamagAcceptance, int costObject, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
     {
-        OnIsReternBull?.Invoke(thisHash, hashObjectDamagAcceptance, isKillObjectAcceptance, setDamage, hit);
+        OnIsReternBull?.Invoke(thisHash, hashObjectDamagAcceptance, costObject, isKillObjectAcceptance, setDamage, hit);
     }
 
     public static Action<int, int> OnGetDamage;
@@ -76,6 +76,17 @@ public class EventManager
         OnIsActivAvtoRifPlayerShoot?.Invoke(thisHash, isShootAvtoRifPlayer);
     }
 
+    public static Action<int,int, bool> OnShootStaisticPlayer;
+    public static void ShootStaisticPlayer(int hashObjectDamagAcceptance, int costTargetObject, bool isKillObjectAcceptance)
+    {
+        OnShootStaisticPlayer?.Invoke(hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance);
+    }
+
+    public static Action<Statistic> OnUIStaistic;
+    public static void UIStaistic(Statistic stat)
+    {
+        OnUIStaistic?.Invoke(stat);
+    }
     //События активности Enemy
     //Передать группе Enemy TargetPlayer
     public static Action<Construction[], Construction[]> OnGetTargetPlayer;

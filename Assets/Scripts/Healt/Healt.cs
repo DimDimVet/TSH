@@ -9,6 +9,7 @@ public abstract class Healt : MonoBehaviour
     public int HealtCount { get { return healtCount; } /*set { healtCount = value; }*/ }
     public bool IsDead { get { return isDead; } set { isDead = value; } }
     private int thisHash;
+    private int costObject;
     [SerializeField] private int healtCount = 0;
     private Construction thisObject;
 
@@ -32,6 +33,7 @@ public abstract class Healt : MonoBehaviour
     private void GetSetting()
     {
         healtCount = settingsHealt.HealtCount;
+        costObject = settingsHealt.CostObject;
     }
     private void GetIsRun()
     {
@@ -52,7 +54,7 @@ public abstract class Healt : MonoBehaviour
         {
             if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)
             {
-                if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead); return; }
+                if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead, costObject); return; }
                 else { healtCount -= damage; }
                 GetUIDamage(thisHash, healtCount);
             }
