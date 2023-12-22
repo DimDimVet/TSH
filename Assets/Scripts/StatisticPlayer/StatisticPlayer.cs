@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static EventManager;
 
@@ -8,12 +6,12 @@ public class StatisticPlayer : MonoBehaviour
 {
     private Statistic[] statistics;
     private Statistic tempStat;
-    private int countCost=0;
+    private int countCost = 0;
     private int thisHash;
 
     private void Start()
     {
-        thisHash=gameObject.GetHashCode();
+        thisHash = gameObject.GetHashCode();
     }
     private void OnEnable()
     {
@@ -26,9 +24,14 @@ public class StatisticPlayer : MonoBehaviour
     }
     private void ShootStatistic(int hashObjectDamagAcceptance, int costTargetObject, bool isKillObjectAcceptance)
     {
-        
-        tempStat =new Statistic {HashPlayer= thisHash, Hash = hashObjectDamagAcceptance,
-                                 CostTargetObject= costTargetObject,IsKillObjectAcceptance= isKillObjectAcceptance};
+
+        tempStat = new Statistic
+        {
+            HashPlayer = thisHash,
+            Hash = hashObjectDamagAcceptance,
+            CostTargetObject = costTargetObject,
+            IsKillObjectAcceptance = isKillObjectAcceptance
+        };
         if (statistics == null)
         {
             countCost = CountCost(costTargetObject);
@@ -36,8 +39,9 @@ public class StatisticPlayer : MonoBehaviour
             statistics = Creat(tempStat, statistics);
             UIStaistic(tempStat);
         }
-        else {
-            for (int i = 0; i < statistics.Length; i++) 
+        else
+        {
+            for (int i = 0; i < statistics.Length; i++)
             {
                 if (statistics[i].Hash == tempStat.Hash) { return; }
             }
@@ -49,7 +53,7 @@ public class StatisticPlayer : MonoBehaviour
     }
     private int CountCost(int _countCost)
     {
-        return countCost+_countCost;
+        return countCost + _countCost;
     }
     //
     private void Clean(Statistic[] massivObject)

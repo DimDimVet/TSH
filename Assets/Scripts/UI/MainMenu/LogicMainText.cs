@@ -1,10 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static EventManager;
 
 public class LogicMainText : MonoBehaviour
 {
+
+    [SerializeField] private AudioSetting audioSetting;
+
     [Header("Текст наименования")]
     [SerializeField] private string mainName;
 
@@ -22,21 +24,21 @@ public class LogicMainText : MonoBehaviour
 
     private int index;
     private float countTime = 0;
-    private bool isRun = false;
+    private bool isRun = false, isStop = false;
     private AudioSource audioSource;
 
     private void Start()
     {
-        if (audioClip != null)
-        { 
+        if (audioClip != null & audioSetting != null)
+        {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioClip;
-            
+            audioSource.volume = (audioSetting.efectVol) / 100;
         }
     }
     private void AddWrite(bool _isRun)
     {
-        if (_isRun & mainName != "" & uiText != null)
+        if (!isStop & _isRun & mainName != "" & uiText != null)
         {
             index++;
             if (index <= mainName.Length)
@@ -47,13 +49,14 @@ public class LogicMainText : MonoBehaviour
             else
             {
                 if (loop) { index = 0; }
-                else { return; }
+                else { isStop = true; IsRunMainPanel(isStop); return; }
             }
         }
         else { print($"Не заполнены поля в {gameObject.name}"); }
     }
     private void Update()
     {
+        if (isStop) { return; }
         if (countTime <= timer)
         {
             countTime += Time.deltaTime;
