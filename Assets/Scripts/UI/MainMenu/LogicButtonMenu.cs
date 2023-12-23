@@ -20,9 +20,6 @@ public class LogicButtonMenu : MonoBehaviour
     [Header("Кнопка Выход")]
     [SerializeField] private Button exitButton;
 
-    [Header("Звуковой файл")]
-    [SerializeField] private AudioClip audioClip;
-
     private bool isStop = false;
     private AudioSource audioSource;
 
@@ -37,11 +34,11 @@ public class LogicButtonMenu : MonoBehaviour
         }
         else { print($"Не заполнены поля в {gameObject.name}");return; }
 
-        if (audioClip != null & audioSetting != null)
+        if (audioSetting != null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.clip = audioClip;
-            audioSource.volume = (audioSetting.efectVol) / 100;
+            audioSource.clip = audioSetting.AudioClipButton;
+            audioSource.volume = (audioSetting.EfectVol) / 100;
         }
     }
     private void SetEventButton()

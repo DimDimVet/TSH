@@ -19,9 +19,6 @@ public class LogicMainText : MonoBehaviour
     [Header("Цикличность")]
     [SerializeField] private bool loop = false;
 
-    [Header("Звуковой файл")]
-    [SerializeField] private AudioClip audioClip;
-
     private int index;
     private float countTime = 0;
     private bool isRun = false, isStop = false;
@@ -29,11 +26,11 @@ public class LogicMainText : MonoBehaviour
 
     private void Start()
     {
-        if (audioClip != null & audioSetting != null)
+        if (audioSetting != null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.clip = audioClip;
-            audioSource.volume = (audioSetting.efectVol) / 100;
+            audioSource.clip = audioSetting.AudioClipButton;
+            audioSource.volume = (audioSetting.EfectVol) / 100;
         }
     }
     private void AddWrite(bool _isRun)

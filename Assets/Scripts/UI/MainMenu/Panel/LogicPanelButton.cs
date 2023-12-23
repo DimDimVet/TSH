@@ -8,12 +8,8 @@ public class LogicPanelButton : MonoBehaviour
     [Header("Панель кнопок")]
     [SerializeField] private GameObject panelButton;
 
-    [Header("Звуковой файл")]
-    [SerializeField] private AudioClip audioClip;
-
     private AudioSource audioSource;
     private bool isTriger = false;
-
     private void OnEnable()
     {
         OnIsRunMainPanel += IsStartpanel;
@@ -30,11 +26,11 @@ public class LogicPanelButton : MonoBehaviour
         }
         else { print($"Не заполнены поля в {gameObject.name}"); }
 
-        if (audioClip != null & audioSetting != null)
+        if (audioSetting != null)//
         {
             audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.clip = audioClip;
-            audioSource.volume = (audioSetting.muzVol) / 100;
+            audioSource.clip = audioSetting.AudioClipGnd;
+            audioSource.volume = (audioSetting.MuzVol) / 100;
         }
     }
     private void IsStartpanel(bool isRun)
@@ -43,7 +39,6 @@ public class LogicPanelButton : MonoBehaviour
         {
             panelButton.SetActive(isRun);
             if (!isTriger) { audioSource.Play(); isTriger = true; }
-
         }
         else
         {
