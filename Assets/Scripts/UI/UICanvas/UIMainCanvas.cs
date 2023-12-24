@@ -1,6 +1,3 @@
-using PlasticGui.WorkspaceWindow.PendingChanges;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static EventManager;
@@ -22,7 +19,7 @@ public class UIMainCanvas : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         cameraObject = GetCamera();
-        thisObject= GetPlayer();
+        thisObject = GetPlayer();
         currentCamera = cameraObject.CameraComponent;
         canvas.worldCamera = currentCamera;
         //
@@ -51,7 +48,7 @@ public class UIMainCanvas : MonoBehaviour
     }
     private void GetStat(Statistic stat)
     {
-        if (isRun & thisObject.Hash==stat.HashPlayer)
+        if (isRun & thisObject.Hash == stat.HashPlayer)
         {
             CountPlayerText.text = $"{stat.CountCost}";
             InfoCountPlayerText.text = $"{stat.CostTargetObject}";
@@ -61,7 +58,7 @@ public class UIMainCanvas : MonoBehaviour
     {
         if (!isRun)//если общее разрешение на запуск false
         {
-            if (currentCamera != null ) { isRun = true; }
+            if (currentCamera != null) { isRun = true; }
             else { isRun = false; GetSet(); print($"Не установлены компоненты в {gameObject.name}"); }
         }
     }

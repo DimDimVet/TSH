@@ -1,5 +1,6 @@
 using UnityEngine;
 using static EventManager;
+using static UnityEngine.PlayerLoop.PostLateUpdate;
 
 public class LogicPanelButton : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class LogicPanelButton : MonoBehaviour
     private void OnEnable()
     {
         OnIsRunMainPanel += IsStartpanel;
+        OnUpDateAudioParametr += UpDateAudio;
     }
     private void OnDisable()
     {
         OnIsRunMainPanel -= IsStartpanel;
+        OnUpDateAudioParametr -= UpDateAudio;
     }
     private void Start()
     {
@@ -30,8 +33,12 @@ public class LogicPanelButton : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioSetting.AudioClipGnd;
-            audioSource.volume = (audioSetting.MuzVol) / 100;
+            audioSource.volume = (audioSetting.MuzVol);
         }
+    }
+    private void UpDateAudio()
+    {
+        audioSource.volume = (audioSetting.MuzVol);
     }
     private void IsStartpanel(bool isRun)
     {

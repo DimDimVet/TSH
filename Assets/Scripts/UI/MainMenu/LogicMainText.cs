@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using static EventManager;
+using static UnityEngine.PlayerLoop.PostLateUpdate;
 
 public class LogicMainText : MonoBehaviour
 {
@@ -30,8 +31,20 @@ public class LogicMainText : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioSetting.AudioClipButton;
-            audioSource.volume = (audioSetting.EfectVol) / 100;
+            audioSource.volume = (audioSetting.EfectVol);
         }
+    }
+    private void OnEnable()
+    {
+        OnUpDateAudioParametr += UpDateAudio;
+    }
+    private void OnDisable()
+    {
+        OnUpDateAudioParametr -= UpDateAudio;
+    }
+    private void UpDateAudio()
+    {
+        audioSource.volume = (audioSetting.EfectVol);
     }
     private void AddWrite(bool _isRun)
     {

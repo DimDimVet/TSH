@@ -38,8 +38,20 @@ public class LogicButtonMenu : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioSetting.AudioClipButton;
-            audioSource.volume = (audioSetting.EfectVol) / 100;
+            audioSource.volume = (audioSetting.EfectVol);
         }
+    }
+    private void OnEnable()
+    {
+        OnUpDateAudioParametr += UpDateAudio;
+    }
+    private void OnDisable()
+    {
+        OnUpDateAudioParametr -= UpDateAudio;
+    }
+    private void UpDateAudio()
+    {
+        audioSource.volume = (audioSetting.EfectVol);
     }
     private void SetEventButton()
     {

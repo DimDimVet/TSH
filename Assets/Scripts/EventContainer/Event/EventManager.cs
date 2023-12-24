@@ -70,6 +70,12 @@ public class EventManager
         OnIsRunMainPanel?.Invoke(isRun);
     }
 
+    public static Action OnUpDateAudioParametr;//Запуск партиклов
+    public static void UpDateAudioParametr()
+    {
+        OnUpDateAudioParametr?.Invoke();
+    }
+
     //События активности Player
     public static Action<int, bool> OnIsActivGunPlayerShoot;//Запуск партиклов
     public static void IsActivGunPlayerShoot(int thisHash, bool isShootGunPlayer)

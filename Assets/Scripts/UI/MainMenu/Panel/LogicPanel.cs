@@ -4,6 +4,7 @@ using static EventManager;
 
 public class LogicPanel : MonoBehaviour
 {
+    public AudioSetting AudioSetting { get { return audioSetting; } set{ audioSetting = value; } }
     [SerializeField] private AudioSetting audioSetting;
 
     [Header("Кнопка Назад")]
@@ -15,6 +16,7 @@ public class LogicPanel : MonoBehaviour
     {
         if (returnButton != null & thisPanel != null)
         {
+            SetEventReturnButton();
             SetEventButton();
             SetPanel();
         }
@@ -24,12 +26,28 @@ public class LogicPanel : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioSetting.AudioClipButton;
-            audioSource.volume = (audioSetting.EfectVol) / 100;
+            audioSource.volume = (audioSetting.EfectVol);
         }
     }
-    private void SetEventButton()
+    private void OnEnable()
+    {
+        OnUpDateAudioParametr += UpDateAudio;
+    }
+    private void OnDisable()
+    {
+        OnUpDateAudioParametr -= UpDateAudio;
+    }
+    private void UpDateAudio()
+    {
+        audioSource.volume = (audioSetting.EfectVol);
+    }
+    private void SetEventReturnButton()
     {
         returnButton.onClick.AddListener(ReturnPanel);
+    }
+    public virtual void SetEventButton()
+    {
+        //
     }
     public virtual void SetPanel()
     {
