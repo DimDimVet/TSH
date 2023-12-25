@@ -6,14 +6,16 @@ public class UIMainCanvas : MonoBehaviour
 {
     [SerializeField] private Text CountPlayerText;
     [SerializeField] private Text InfoCountPlayerText;
-    //[SerializeField] private Slider slider;
-    //[SerializeField] private GameObject trackingObject;
     //êýø
-    //private int thisHash;
     private Camera currentCamera;
     private Canvas canvas;
     private Construction cameraObject, thisObject;
 
+    [SerializeField,Range(0,5)] private int timerAlfa;
+    private int countAlfa = 0;
+    private Color currColorAlfa;
+
+    private bool isUpDate=false;
     private bool isRun = false;
     private void GetSet()
     {
@@ -22,19 +24,11 @@ public class UIMainCanvas : MonoBehaviour
         thisObject = GetPlayer();
         currentCamera = cameraObject.CameraComponent;
         canvas.worldCamera = currentCamera;
+        canvas.planeDistance = 15f;
         //
-        //thisHash = trackingObject.GetHashCode();
-        //thisObject = GetObjectHash(thisHash);
-        //if (thisObject.HealtEnemy != null)
-        //{
-        //    slider.maxValue = thisObject.HealtEnemy.HealtCount;
-        //    slider.value = thisObject.HealtEnemy.HealtCount;
-        //}
-        //else if (thisObject.HealtPlayer != null)
-        //{
-        //    slider.maxValue = thisObject.HealtPlayer.HealtCount;
-        //    slider.value = thisObject.HealtPlayer.HealtCount;
-        //}
+        currColorAlfa = InfoCountPlayerText.color;
+        currColorAlfa.a = 0f;
+        InfoCountPlayerText.color = currColorAlfa;
     }
     private void OnEnable()
     {
@@ -51,7 +45,27 @@ public class UIMainCanvas : MonoBehaviour
         if (isRun & thisObject.Hash == stat.HashPlayer)
         {
             CountPlayerText.text = $"{stat.CountCost}";
-            InfoCountPlayerText.text = $"{stat.CostTargetObject}";
+            InfoCountPlayerText.text = $"+{stat.CostTargetObject}";
+            //
+            isUpDate = !isUpDate;
+            currColorAlfa.a = 1f;
+        }
+    }
+    private void InfoCountAlfa()
+    {
+        if (isUpDate )
+        {
+            if (countAlfa <= timerAlfa)
+            {
+                countAlfa++;
+            }
+            else
+            {
+                countAlfa = 0;
+                currColorAlfa.a = currColorAlfa.a - 0.01f;
+                if (currColorAlfa.a <= 0) { isUpDate = !isUpDate; }
+                InfoCountPlayerText.color = currColorAlfa;
+            }
         }
     }
     private void GetIsRun()
@@ -69,9 +83,7 @@ public class UIMainCanvas : MonoBehaviour
             GetIsRun();
             return;
         }
+        //
+        InfoCountAlfa();
     }
-    //private void LateUpdate()
-    //{
-    //    this.gameObject.transform.LookAt(currentCamera.transform);
-    //}
 }

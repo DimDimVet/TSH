@@ -14,7 +14,7 @@ public class LogicPanel : MonoBehaviour
     private AudioSource audioSource;
     private void Start()
     {
-        if (returnButton != null & thisPanel != null)
+        if (returnButton != null)
         {
             SetEventReturnButton();
             SetEventButton();
@@ -60,7 +60,7 @@ public class LogicPanel : MonoBehaviour
     public virtual void ReturnPanel()
     {
         AudioClick();
-        thisPanel.SetActive(false);
+        if (thisPanel != null) { thisPanel.SetActive(false); }
         IsRunMainPanel(true);
     }
 }
