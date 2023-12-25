@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static EventManager;
 
 public class LogicButtonMenu : MonoBehaviour
 {
     [SerializeField] private AudioSetting audioSetting;
-
+    [SerializeField] private SceneSetting sceneSetting;
+    //
     [Header("Кнопка Игра")]
     [SerializeField] private Button gameButton;
+    [Header("Указать индекс сцены игры")]
+    private int gameSceneIndex;
     [Header("Кнопка Настройка")]
     [SerializeField] private Button settButton;
     [SerializeField] private GameObject settPanel;
@@ -25,14 +29,14 @@ public class LogicButtonMenu : MonoBehaviour
 
     private void Start()
     {
-        if (gameButton != null & settButton!=null & rezultButton!=null 
-            & historyButton!=null & exitButton!=null)
+        if (sceneSetting!=null & gameButton != null & settButton != null &
+            rezultButton != null & historyButton != null & exitButton != null)
         {
             SetEventButton();
             SetPanel();
             isStop = false;
         }
-        else { print($"Не заполнены поля в {gameObject.name}");return; }
+        else { print($"Не заполнены поля в {gameObject.name}"); return; }
 
         if (audioSetting != null)
         {
@@ -40,6 +44,8 @@ public class LogicButtonMenu : MonoBehaviour
             audioSource.clip = audioSetting.AudioClipButton;
             audioSource.volume = (audioSetting.EfectVol);
         }
+        if (sceneSetting != null) { gameSceneIndex = sceneSetting.GameSceneIndex; }
+        else { print($"Не заполнен индекс сцены");}
     }
     private void OnEnable()
     {
@@ -74,6 +80,7 @@ public class LogicButtonMenu : MonoBehaviour
     private void StartGame()
     {
         AudioClick();
+        SceneManager.LoadScene(gameSceneIndex);
     }
     private void SettGame()
     {

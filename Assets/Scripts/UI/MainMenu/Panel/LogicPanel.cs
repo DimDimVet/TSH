@@ -53,11 +53,11 @@ public class LogicPanel : MonoBehaviour
     {
         //
     }
-    private void AudioClick()
+    public void AudioClick()
     {
         audioSource.Play();
     }
-    private void ReturnPanel()
+    public virtual void ReturnPanel()
     {
         AudioClick();
         thisPanel.SetActive(false);
