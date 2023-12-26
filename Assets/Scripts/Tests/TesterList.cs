@@ -14,9 +14,10 @@ public class TesterList : MonoBehaviour
     private void GetTestList()
     {
         List<Construction> tempList = GetList();
+        print($"count={tempList.Count}");
         for (int i = 0; i < tempList.Count; i++) 
         {
-            print($"{tempList[i].Hash}");
+            print($"{tempList[i].Hash} - {tempList[i].CameraComponent}");
         }
     }
 

@@ -10,7 +10,7 @@ public class LogicPanel : MonoBehaviour
     [Header("Кнопка Назад")]
     [SerializeField] private Button returnButton;
     [SerializeField] private GameObject thisPanel;
-
+    public GameObject ThisPanel { get { return thisPanel; } set { thisPanel = value; } }
     private AudioSource audioSource;
     private void Start()
     {

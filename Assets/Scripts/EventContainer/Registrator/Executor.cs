@@ -6,6 +6,7 @@ public class Executor : ListDataBase
     private List<Construction> listData;
     private void OnEnable()
     {
+        ClearData();
         OnGetObjectHash += SetObjectHash;
         //OnIsActivObjectHash += SetIsActivObjectHash;
         OnGetList += SetList;
