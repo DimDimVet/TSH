@@ -16,7 +16,7 @@ public class BullBB : Bullet
     {
         _damage = DamagRandom();
         hashObjectDamagAcceptance = hash;
-        GetDamage(hashObjectDamagAcceptance, _damage);
+         GetDamage(hash, _damage);
         isKillObjectAcceptance = KillObjectAcceptance(hashObjectDamagAcceptance);
     }
     private bool KillObjectAcceptance(int hashObjectDamagAcceptance)

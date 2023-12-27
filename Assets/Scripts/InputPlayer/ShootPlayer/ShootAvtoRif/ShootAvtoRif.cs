@@ -18,10 +18,9 @@ public class ShootAvtoRif : Shoot
         bullDecal = new Pool(_BullDecal, ContainerBullDecal);
         OnIsReternBull += ReternBullet;
     }
-    private void ReternBullet(int hash, int hashObjectDamagAcceptance,int costTargetObject, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
+    private void ReternBullet(int hash, int hashObjectDamagAcceptance, int costTargetObject, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
     {
- { print($"Вернули пулю {hash} c дамагом {setDamage} в объект {hashObjectDamagAcceptance}= объект уничтожен {isKillObjectAcceptance}"); }
-        if (/*hashObjectDamagAcceptance != 0 &*/ isKillObjectAcceptance) { print($"Вернули пулю {hash} c дамагом {setDamage} в объект {hashObjectDamagAcceptance}/ объект уничтожен {isKillObjectAcceptance}"); }
+        //if (/*hashObjectDamagAcceptance != 0 &*/ isKillObjectAcceptance) { print($"Вернули пулю {hash} c дамагом {setDamage} в объект {hashObjectDamagAcceptance}/ объект уничтожен {isKillObjectAcceptance}"); }
         if (hashObjectDamagAcceptance != 0 & isKillObjectAcceptance) { ShootStaisticPlayer(hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance); }
         bullDecal.ReternObject(hash);
         if (hit.collider != null)

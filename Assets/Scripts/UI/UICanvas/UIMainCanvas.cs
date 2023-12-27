@@ -76,7 +76,7 @@ public class UIMainCanvas : MonoBehaviour
             else { isRun = false; GetSet(); print($"Не установлены компоненты в {gameObject.name}"); }
         }
     }
-    void Update()
+    private void FixedUpdate()
     {
         if (!isRun)//если общее разрешение на запуск false
         {

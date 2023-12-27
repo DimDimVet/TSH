@@ -17,6 +17,7 @@ public class AudioControllerShoot : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioGunSetting.AudioClipGun;
+        audioSource.volume = (audioSetting.EfectVol);
     }
     private void OnEnable()
     {

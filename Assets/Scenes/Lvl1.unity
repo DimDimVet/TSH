@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2652,7 +2652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1043160999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2831,7 +2831,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 98.99988}
-  m_SizeDelta: {x: 600, y: 70}
+  m_SizeDelta: {x: 400, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1113567072
 MonoBehaviour:
@@ -3566,7 +3566,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -108.00012}
-  m_SizeDelta: {x: 600, y: 70}
+  m_SizeDelta: {x: 400, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294653196
 MonoBehaviour:
@@ -3841,6 +3841,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5539789623692175218, guid: e0c0105a2a3e17940a80898e99466053,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5851788104951840342, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[0]
@@ -3849,7 +3854,7 @@ PrefabInstance:
     - target: {fileID: 6793239464067516258, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7991585504143753074, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
@@ -3864,7 +3869,7 @@ PrefabInstance:
     - target: {fileID: 8254701966265616306, guid: e0c0105a2a3e17940a80898e99466053,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5525,7 +5530,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.9998779}
-  m_SizeDelta: {x: 600, y: 70}
+  m_SizeDelta: {x: 400, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2028050472
 MonoBehaviour:
@@ -5591,7 +5596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98dc165b7800a6344823cb2381961690, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50ba21b6d0c4d3b4fa1f38c0a722517f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6100,6 +6105,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 5f29467481c5c524091df6fe59d94751,
         type: 2}
+    - target: {fileID: 2772704233600610523, guid: a873c30815a125d4fb3febd02ada1924,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3194581477534840184, guid: a873c30815a125d4fb3febd02ada1924,
         type: 3}
       propertyPath: m_LocalPosition.y
