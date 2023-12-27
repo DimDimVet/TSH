@@ -19962,8 +19962,10 @@ GameObject:
   - component: {fileID: 4286329805561696180}
   - component: {fileID: 8330332809315719820}
   - component: {fileID: 5875775756229264233}
+  - component: {fileID: 3043601205997363523}
   - component: {fileID: 8624110218676038340}
   - component: {fileID: 1112913270454223559}
+  - component: {fileID: 4673688283217787930}
   - component: {fileID: 4293753351778983899}
   - component: {fileID: 7092841425158872475}
   - component: {fileID: 9038331250532184833}
@@ -20203,6 +20205,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partShoot: {fileID: 6165777309218028347}
+--- !u!114 &3043601205997363523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637375663211714923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8fe2c80d5dabe48aad25c0baa872f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSetting: {fileID: 11400000, guid: ff106710eb485fe43877e75479454094, type: 2}
+  audioGunSetting: {fileID: 11400000, guid: d2e2207ab34bac546bce72c75df371eb, type: 2}
 --- !u!114 &8624110218676038340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20237,6 +20253,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partShoot: {fileID: 4277949139293709195}
+--- !u!114 &4673688283217787930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637375663211714923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428fcff7b30d5a34184efa8fbb3adc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSetting: {fileID: 11400000, guid: ff106710eb485fe43877e75479454094, type: 2}
+  audioGunSetting: {fileID: 11400000, guid: 314c72918535255408fc462cd1f6e545, type: 2}
 --- !u!114 &4293753351778983899
 MonoBehaviour:
   m_ObjectHideFlags: 0

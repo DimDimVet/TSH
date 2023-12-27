@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static EventManager;
-using static UnityEngine.PlayerLoop.PostLateUpdate;
 
 public class AudioControllerShoot : MonoBehaviour
 {
@@ -16,6 +13,11 @@ public class AudioControllerShoot : MonoBehaviour
     private int thisHash;
     private bool isRun = false, isDead = false;
 
+    private void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = audioGunSetting.AudioClipGun;
+    }
     private void OnEnable()
     {
         SetEventOnEneble();
@@ -38,21 +40,19 @@ public class AudioControllerShoot : MonoBehaviour
     }
     public virtual void SetEventOnEneble()
     {
-        //OnIsActivGunPlayerShoot += PartShoot;
-        //partShoot.Stop();
+        //
     }
     public virtual void SetEventOnDisable()
     {
-        //OnIsActivGunPlayerShoot -= PartShoot;
+        //
     }
-
     private void GetIsRun()
     {
         if (!isRun)
         {
             thisHash = this.gameObject.GetHashCode();
             if (thisHash != 0) { isRun = true; }
-            else { print($"ParticleSystem не установлен ParticleControllerShootPlayer"); isRun = false; }
+            else { isRun = false; }
         }
     }
     public void AudioShoot(int _thisHash, bool isActiv)
@@ -66,10 +66,6 @@ public class AudioControllerShoot : MonoBehaviour
             audioSource.Stop();
         }
     }
-    private void RunParticle()
-    {
-
-    }
     private void FixedUpdate()
     {
         if (isDead) { return; }
@@ -79,6 +75,5 @@ public class AudioControllerShoot : MonoBehaviour
             GetIsRun();
             return;
         }
-        RunParticle();
     }
 }

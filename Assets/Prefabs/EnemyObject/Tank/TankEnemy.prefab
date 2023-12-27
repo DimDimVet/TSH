@@ -45274,6 +45274,7 @@ GameObject:
   - component: {fileID: 4175134221497575316}
   - component: {fileID: 5539789623692175218}
   - component: {fileID: 7084921566334167420}
+  - component: {fileID: 522471167028983150}
   - component: {fileID: 5519138053901206013}
   - component: {fileID: 3471286871416680594}
   - component: {fileID: 7455148058991244307}
@@ -45490,6 +45491,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partShoot: {fileID: 7886443493745761380}
+--- !u!114 &522471167028983150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254701966265616306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b95e31e3fa9ff194eb8763dc18ba3248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSetting: {fileID: 11400000, guid: ff106710eb485fe43877e75479454094, type: 2}
+  audioGunSetting: {fileID: 11400000, guid: 65c5257aa1f26be4698208cc1b95dca6, type: 2}
 --- !u!54 &5519138053901206013
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45551,6 +45566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsHealt: {fileID: 11400000, guid: d5019581d99cc00479d30b46d9ebda2e, type: 2}
+  healtCount: 0
 --- !u!114 &6371889444005764524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45576,8 +45592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6c32424aef3db4fbd9d3a0bb42428d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParentObject: {fileID: 0}
   ParentHash: 0
-  ParentOblect: {fileID: 0}
+  thisHash: 0
 --- !u!1 &8342663532763726146
 GameObject:
   m_ObjectHideFlags: 0

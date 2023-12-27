@@ -62,7 +62,7 @@ public class UIMainCanvas : MonoBehaviour
             else
             {
                 countAlfa = 0;
-                currColorAlfa.a = currColorAlfa.a - 0.01f;
+                currColorAlfa.a = currColorAlfa.a - 0.1f;
                 if (currColorAlfa.a <= 0) { isUpDate = !isUpDate; }
                 InfoCountPlayerText.color = currColorAlfa;
             }

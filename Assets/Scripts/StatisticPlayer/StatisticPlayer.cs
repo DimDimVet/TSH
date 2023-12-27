@@ -24,7 +24,6 @@ public class StatisticPlayer : MonoBehaviour
     }
     private void ShootStatistic(int hashObjectDamagAcceptance, int costTargetObject, bool isKillObjectAcceptance)
     {
-
         tempStat = new Statistic
         {
             HashPlayer = thisHash,
