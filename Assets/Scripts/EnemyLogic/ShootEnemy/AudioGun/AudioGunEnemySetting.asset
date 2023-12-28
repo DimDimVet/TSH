@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629706a194410a84baaa7df120f61d18, type: 3}
   m_Name: AudioGunEnemySetting
   m_EditorClassIdentifier: 
-  AudioClipGun: {fileID: 8300000, guid: 61d30b5dabf6966499314efe7e44d7b6, type: 3}
+  AudioClipGun: {fileID: 8300000, guid: 9bd36821310a5164d804b3031784b190, type: 3}
