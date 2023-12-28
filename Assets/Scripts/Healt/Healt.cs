@@ -44,23 +44,21 @@ public abstract class Healt : MonoBehaviour
             else { isRun = false; print($"Не установлены компоненты в {gameObject.name}"); }
         }
     }
-    public void ControlDamage(int getHash, int damage)//проблема
+    public int ControlDamage(int getHash, int damage)//проблема
     {
-        if (isDead ) { return; }
-
-        if (thisObjects == null) { thisObjects= SetChildrensObject(); }
+        if (isDead) { return 0; }
+        if (thisObjects == null) { thisObjects = SetChildrensObject(); }
 
         for (int i = 0; i < thisObjects.Length; i++)
         {
             if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)
             {
-                print($"{thisHash}");   
                 healtCount -= damage;
                 GetUIDamage(thisHash, healtCount);
-                if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead, costObject); }
+                if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead, costObject); return thisHash; }
             }
         }
-
+        return 0;
     }
     private Construction[] SetChildrensObject()
     {

@@ -98,6 +98,7 @@ public class GetInputPlayer : MonoBehaviour
                     if ((int)modes[i] == countMode)
                     {
                         inputData.ModeAction = (Mode)countMode;
+                        print(countMode);
                     }
                 }
                 isTrigerClick = true;
