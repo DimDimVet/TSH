@@ -37,6 +37,7 @@ public class ShootGunPlayer : Shoot
     {
         if (InputData.ModeAction == mode)
         {
+            CurrentCountClip--;
             bullBB.GetObject();
             IsActivGunPlayerShoot(ThisHash, true);
         }
@@ -47,5 +48,9 @@ public class ShootGunPlayer : Shoot
         {
             bullSleeve.GetObject();
         }
+    }
+    private void Update()
+    {
+        ChargingParametr(mode, IsClipReLoad, CurrentCountClip);
     }
 }

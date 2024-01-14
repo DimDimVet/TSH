@@ -3,9 +3,6 @@ using static EventManager;
 
 public class Bullet : MonoBehaviour
 {
-    //[SerializeField] private ParticleSystem particle;
-    //[SerializeField] private GameObject decalGO;
-    //[SerializeField] private TrailRenderer trailRender;
     [SerializeField] private BulletSettings bullSettings;
     [SerializeField] private bool typeSleeve = false;
     [SerializeField] private Rigidbody body;
@@ -116,7 +113,8 @@ public class Bullet : MonoBehaviour
     {
         if (isRun && !typeSleeve)
         {
-            gameObject.transform.Translate(Vector3.forward * speedBullet * Time.deltaTime);
+            body.velocity = transform.forward * speedBullet;
+            //gameObject.transform.Translate(Vector3.forward * speedBullet * Time.deltaTime);
             isBullKill = true;
             if (KillTimeBullet())
             { ReternBullet(); }

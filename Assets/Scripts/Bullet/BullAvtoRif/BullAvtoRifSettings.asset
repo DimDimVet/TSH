@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BullAvtoRifSettings
   m_EditorClassIdentifier: 
   IsHealt: 0
-  SpeedBullet: 25
+  SpeedBullet: 35
   KillTime: 5
   DiametrCollider: 0.3
   Damage: 1

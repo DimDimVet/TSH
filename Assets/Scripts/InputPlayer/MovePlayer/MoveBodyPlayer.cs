@@ -9,7 +9,11 @@ public class MoveBodyPlayer : GetInputPlayer
     private float weight;
     private Rigidbody rigidbodyGameObject;
     private Vector3 newPosition;
+    private Vector3 eulerAngleVelocity;
+    private Quaternion deltaRotation;
     private bool isRun = false;
+
+    float kof;
 
     void Start()
     {
@@ -22,7 +26,7 @@ public class MoveBodyPlayer : GetInputPlayer
     {
         speedForward = moveSettings.SpeedForward;
         speedBack = moveSettings.SpeedBack;
-        speedTurn = moveSettings.SpeedTurn;
+        eulerAngleVelocity.y = moveSettings.SpeedTurn;
         weight = moveSettings.Weight;
         rigidbodyGameObject.mass = weight;
         moveSettings.IsUpDate = false;
@@ -46,27 +50,34 @@ public class MoveBodyPlayer : GetInputPlayer
 
     private void Move()
     {
+        
         if (isRun)
         {
             //кнопки и канвас
-            if (InputData.Move.y > 0)
+            if (InputData.Move.y > 0 )
             {
-                newPosition = transform.position + (transform.forward) * speedForward * Time.deltaTime;
-                gameObject.transform.position = newPosition;
+                rigidbodyGameObject.velocity = transform.forward * speedForward;
+                //newPosition = transform.position + (transform.forward) * speedForward * Time.deltaTime;
+                //gameObject.transform.position = newPosition;
             }
-            if (InputData.Move.y < 0)
+            if (InputData.Move.y < 0 )
             {
-                newPosition = transform.position + (-transform.forward) * speedBack * Time.deltaTime;
-                gameObject.transform.position = newPosition;
+                rigidbodyGameObject.velocity = -transform.forward * speedBack;
+                //newPosition = transform.position + (-transform.forward) * speedBack * Time.deltaTime;
+                //gameObject.transform.position = newPosition;
             }
 
             if (InputData.Move.x > 0)
             {
-                transform.Rotate(transform.up * Time.deltaTime * speedTurn);//поворот мышью
+                deltaRotation = Quaternion.Euler(eulerAngleVelocity * Time.fixedDeltaTime);
+                rigidbodyGameObject.MoveRotation(rigidbodyGameObject.rotation * deltaRotation);
+                //transform.Rotate(transform.up * Time.deltaTime * speedTurn);//поворот мышью
             }
             if (InputData.Move.x < 0)
             {
-                transform.Rotate(-transform.up * Time.deltaTime * speedTurn);//поворот мышью
+                deltaRotation = Quaternion.Euler(-eulerAngleVelocity * Time.fixedDeltaTime);
+                rigidbodyGameObject.MoveRotation(rigidbodyGameObject.rotation * deltaRotation);
+                //transform.Rotate(-transform.up * Time.deltaTime * speedTurn);//поворот мышью
             }
         }
     }

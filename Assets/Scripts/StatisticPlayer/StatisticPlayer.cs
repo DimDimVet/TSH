@@ -1,11 +1,14 @@
+using Processing.Masiv;
 using System;
 using UnityEngine;
 using static EventManager;
 
 public class StatisticPlayer : MonoBehaviour
 {
+    [SerializeField] private ScriptableObjectStstistic scriptableObjectStstistic;
     private Statistic[] statistics;
     private Statistic tempStat;
+    private Masiv<Statistic> _masiv = new Masiv<Statistic>();
     private int countCost = 0;
     private int thisHash;
 
@@ -16,7 +19,7 @@ public class StatisticPlayer : MonoBehaviour
     private void OnEnable()
     {
         OnShootStaisticPlayer += ShootStatistic;
-        if (statistics != null) { Clean(statistics); }
+        if (statistics != null) { _masiv.Clean(statistics); }
     }
     private void OnDisable()
     {
@@ -35,8 +38,9 @@ public class StatisticPlayer : MonoBehaviour
         {
             countCost = CountCost(costTargetObject);
             tempStat.CountCost = countCost;
-            statistics = Creat(tempStat, statistics);
+            statistics = _masiv.Creat(tempStat, statistics);
             UIStaistic(tempStat);
+            scriptableObjectStstistic.SaveStat(tempStat);
         }
         else
         {
@@ -46,8 +50,9 @@ public class StatisticPlayer : MonoBehaviour
             }
             countCost = CountCost(costTargetObject);
             tempStat.CountCost = countCost;
-            statistics = Creat(tempStat, statistics);
+            statistics = _masiv.Creat(tempStat, statistics);
             UIStaistic(tempStat);
+            scriptableObjectStstistic.SaveStat(tempStat);
         }
     }
     private int CountCost(int _countCost)
@@ -55,43 +60,43 @@ public class StatisticPlayer : MonoBehaviour
         return countCost + _countCost;
     }
     //
-    private void Clean(Statistic[] massivObject)
-    {
-        if (massivObject != null)
-        {
-            Array.Clear(massivObject, 0, massivObject.Length);
-            return;
-        }
-    }
-    private Statistic[] Creat(Statistic intObject, Statistic[] massivObject)
-    {
-        bool isStop = false;
-        if (massivObject != null)
-        {
-            for (int i = 0; i < massivObject.Length; i++)
-            {
-                if (!isStop)
-                {
-                    if (massivObject[i].Hash == 0)
-                    {
-                        massivObject[i] = intObject;
-                        isStop = true;
-                    }
-                }
-            }
-            if (!isStop)
-            {
-                int newLength = massivObject.Length + 1;
-                Array.Resize(ref massivObject, newLength);
-                massivObject[newLength - 1] = intObject;
-                return massivObject;
-            }
-        }
-        else
-        {
-            massivObject = new Statistic[] { intObject };
-            return massivObject;
-        }
-        return massivObject;
-    }
+    //private void Clean(Statistic[] massivObject)
+    //{
+    //    if (massivObject != null)
+    //    {
+    //        Array.Clear(massivObject, 0, massivObject.Length);
+    //        return;
+    //    }
+    //}
+    //private Statistic[] Creat(Statistic intObject, Statistic[] massivObject)
+    //{
+    //    bool isStop = false;
+    //    if (massivObject != null)
+    //    {
+    //        for (int i = 0; i < massivObject.Length; i++)
+    //        {
+    //            if (!isStop)
+    //            {
+    //                if (massivObject[i].Hash == 0)
+    //                {
+    //                    massivObject[i] = intObject;
+    //                    isStop = true;
+    //                }
+    //            }
+    //        }
+    //        if (!isStop)
+    //        {
+    //            int newLength = massivObject.Length + 1;
+    //            Array.Resize(ref massivObject, newLength);
+    //            massivObject[newLength - 1] = intObject;
+    //            return massivObject;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        massivObject = new Statistic[] { intObject };
+    //        return massivObject;
+    //    }
+    //    return massivObject;
+    //}
 }

@@ -12,7 +12,7 @@ public class CameraMove : MonoBehaviour
     private float limitZ, limitX, tempLimitZ, tempLimitX, setZ, setX;
     private float speedMove;
     private Construction player;
-
+    private bool isControlDistance;
     private bool isRun = false;
 
     void Start()
@@ -31,6 +31,7 @@ public class CameraMove : MonoBehaviour
         limitZ= cameraSettings.LimitZ;
         limitX = cameraSettings.LimitX;
         speedMove = cameraSettings.SpeedMove;
+        isControlDistance=cameraSettings.IsControlDistance;
     }
     private void GetIsRun()//получаем ращрешение по результату данных из листа
     {
@@ -47,22 +48,28 @@ public class CameraMove : MonoBehaviour
         {
             rezultPositionZ = player.Transform.position.z - cameraPoint.transform.position.z+ setVector.z;
             rezultPositionX = player.Transform.position.x - cameraPoint.transform.position.x + setVector.x;
-
-            if (rezultPositionZ > 0) { setZ = 1; }else if (rezultPositionZ < 0) { setZ = -1; }
-            if (Math.Abs(rezultPositionZ) > tempLimitZ)
+            if (isControlDistance)
             {
-                tempLimitZ = 1f;
-                cameraPoint.transform.Translate(new Vector3(0, 0, setZ) * Time.deltaTime * speedMove, Space.World);
+                if (rezultPositionZ > 0) { setZ = 1; } else if (rezultPositionZ < 0) { setZ = -1; }
+                if (Math.Abs(rezultPositionZ) > tempLimitZ)
+                {
+                    tempLimitZ = 1f;
+                    cameraPoint.transform.Translate(new Vector3(0, 0, setZ) * Time.deltaTime * speedMove, Space.World);
+                }
+                else { tempLimitZ = limitZ; }
+                //
+                if (rezultPositionX > 0) { setX = 1; } else if (rezultPositionX < 0) { setX = -1; }
+                if (Math.Abs(rezultPositionX) > tempLimitX)
+                {
+                    tempLimitX = 1f;
+                    cameraPoint.transform.Translate(new Vector3(setX, 0, 0) * Time.deltaTime * speedMove, Space.World);
+                }
+                else { tempLimitX = limitX; }
             }
-            else { tempLimitZ = limitZ; }
-            //
-            if (rezultPositionX > 0) { setX = 1; } else if (rezultPositionX < 0) { setX = -1; }
-            if (Math.Abs(rezultPositionX) > tempLimitX)
+            else
             {
-                tempLimitX = 1f;
-                cameraPoint.transform.Translate(new Vector3(setX, 0, 0) * Time.deltaTime * speedMove, Space.World);
+                cameraPoint.transform.Translate(new Vector3(rezultPositionX, 0, rezultPositionZ) * Time.deltaTime * speedMove, Space.World);
             }
-            else { tempLimitX = limitX; }
         }
     }
     private void Update()

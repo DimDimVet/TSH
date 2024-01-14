@@ -15,7 +15,8 @@ MonoBehaviour:
   AxesX: 0
   AxesY: 20
   AxesZ: -20
+  IsControlDistance: 0
   LimitZ: 5
   LimitX: 5
-  SpeedMove: 25
+  SpeedMove: 35
   IsUpDate: 0

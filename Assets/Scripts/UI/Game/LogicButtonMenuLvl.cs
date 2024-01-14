@@ -20,8 +20,6 @@ public class LogicButtonMenuLvl : MonoBehaviour
     [SerializeField] private Button reBootButton;
     [Header("Кнопка продолжить")]
     [SerializeField] private Button continButton;
-
-    private bool isStop = false;
     private AudioSource audioSource, audioSourceMuz;
 
     private void Start()
@@ -31,7 +29,6 @@ public class LogicButtonMenuLvl : MonoBehaviour
         {
             SetEventButton();
             SetPanel();
-            isStop = false;
         }
         else { print($"Не заполнены поля в {gameObject.name}"); return; }
 

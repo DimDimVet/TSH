@@ -82,33 +82,11 @@ public class MoveEnemy : TargetsMoveEnemy
             {
                 if (ThisObject.NavMeshAgent.velocity.magnitude <= 0.1f) { isTriger = true; }
             }
-
-            {
-                //–азворот к цели
-                //target = HealtComponent.transform.position;//Player запишем в цель
-                //currentPosition = this.gameObject.transform.position;//проверим текущию позицию Gun
-                //distanceVector = target - currentPosition;//вычислим вектор между Gun-target
-                //rezulAxisY = Mathf.Atan2(distanceVector.x, distanceVector.z) * Mathf.Rad2Deg * polyrAngle;//вычислим угол вектора в градусах
-                //this.gameObject.transform.rotation = Quaternion.Euler(0, (rezulAxisY + correctivAngle), 0);//повернем Gun angleX
-            }
-
-            {
-                //контроль движени€ объекта и запуск анимации
-                //currentVelocity = Mathf.Abs(agent.velocity.magnitude);
-                //if (currentVelocity > 0.1f)
-                //{
-                //    animator.SetFloat("SpeedEnemy", 1);
-                //}
-                //else
-                //{
-                //    animator.SetFloat("SpeedEnemy", 0);
-                //}
-            }
         }
     }
     private void FixedUpdate()
     {
-        if (IsDead) { return; }//ѕроверка разрешнени€
+        if (IsDead) { ThisObject.NavMeshAgent.isStopped = true; return; }//ѕроверка разрешнени€
 
         if (moveEnemySettings.IsUpDate)
         {

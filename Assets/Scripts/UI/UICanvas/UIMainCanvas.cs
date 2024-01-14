@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using static EventManager;
@@ -11,8 +12,8 @@ public class UIMainCanvas : MonoBehaviour
     private Canvas canvas;
     private Construction cameraObject, thisObject;
 
-    [SerializeField,Range(0,5)] private int timerAlfa;
-    private int countAlfa = 0;
+    [SerializeField,Range(0,1)] private float timerAlfa;
+    private float countAlfa = 0.5f;
     private Color currColorAlfa;
 
     private bool isUpDate=false;
@@ -57,7 +58,7 @@ public class UIMainCanvas : MonoBehaviour
         {
             if (countAlfa <= timerAlfa)
             {
-                countAlfa++;
+                countAlfa= countAlfa+0.1f;
             }
             else
             {

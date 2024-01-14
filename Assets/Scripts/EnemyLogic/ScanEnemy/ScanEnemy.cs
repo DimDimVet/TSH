@@ -1,3 +1,4 @@
+using Processing.Masiv;
 using System;
 using UnityEngine;
 using static EventManager;
@@ -15,6 +16,7 @@ public class ScanEnemy : MonoBehaviour
     private Construction[] objectsGetScaner;
     private Construction hitObject;
     private Construction[] players, enemys;
+    private Masiv<Construction> _masiv = new Masiv<Construction>();
 
     private bool isRun = false,isDead = false;
 
@@ -55,7 +57,7 @@ public class ScanEnemy : MonoBehaviour
     {
         thisHash = this.gameObject.GetHashCode();
         thisObject = GetObjectHash(thisHash);
-        Creat(thisObject, enemys);
+        _masiv.Creat(thisObject, enemys);
     }
 
     private void DetectObject()
@@ -67,7 +69,7 @@ public class ScanEnemy : MonoBehaviour
     }
     private void ScanObject(Collider[] hitColl)
     {
-        Clean(objectsGetScaner);
+        _masiv.Clean(objectsGetScaner);
         for (int i = 0; i < hitColl.Length; i++)
         {
             hashGetObject = hitColl[i].gameObject.GetHashCode();
@@ -77,19 +79,14 @@ public class ScanEnemy : MonoBehaviour
             {
                 if (objectsGetScaner == null)
                 {
-                    objectsGetScaner = Creat(hitObject, objectsGetScaner);
+                    objectsGetScaner = _masiv.Creat(hitObject, objectsGetScaner);
                 }
                 else
                 {
-                    objectsGetScaner = Creat(hitObject, objectsGetScaner);
+                    objectsGetScaner = _masiv.Creat(hitObject, objectsGetScaner);
                 }
             }
         }
-        //for (int i = 0; i < objectsGetScaner.Length; i++)
-        //{
-        //    print(objectsGetScaner[i].Hash);
-        //    print(objectsGetScaner.Length);
-        //}
 
         SelectObject(objectsGetScaner);
     }
@@ -99,14 +96,14 @@ public class ScanEnemy : MonoBehaviour
         {
             for (int y = 0; y < enemys.Length; y++)
             {
-                Clean(enemys);
+                _masiv.Clean(enemys);
             }
         }
         if (players != null)
         {
             for (int y = 0; y < players.Length; y++)
             {
-                Clean(players);
+                _masiv.Clean(players);
             }
         }
         //
@@ -114,54 +111,54 @@ public class ScanEnemy : MonoBehaviour
         {
             if (objects[i].HealtEnemy != null)
             {
-                enemys = Creat(objects[i], enemys);
+                enemys = _masiv.Creat(objects[i], enemys);
             }
             if (objects[i].HealtPlayer != null)
             {
-                players = Creat(objects[i], players);
+                players = _masiv.Creat(objects[i], players);
             }
         }
         EventTarget();
     }
-    private void Clean(Construction[] massivObject)
-    {
-        if (massivObject != null)
-        {
-            Array.Clear(massivObject, 0, massivObject.Length);
-            return;
-        }
-    }
-    private Construction[] Creat(Construction intObject, Construction[] massivObject)
-    {
-        bool isStop = false;
-        if (massivObject != null)
-        {
-            for (int i = 0; i < massivObject.Length; i++)
-            {
-                if (!isStop)
-                {
-                    if (massivObject[i].Hash == 0)
-                    {
-                        massivObject[i] = intObject;
-                        isStop = true;
-                    }
-                }
-            }
-            if (!isStop)
-            {
-                int newLength = massivObject.Length + 1;
-                Array.Resize(ref massivObject, newLength);
-                massivObject[newLength - 1] = intObject;
-                return massivObject;
-            }
-        }
-        else
-        {
-            massivObject = new Construction[] { intObject };
-            return massivObject;
-        }
-        return massivObject;
-    }
+    //private void Clean(Construction[] massivObject)
+    //{
+    //    if (massivObject != null)
+    //    {
+    //        Array.Clear(massivObject, 0, massivObject.Length);
+    //        return;
+    //    }
+    //}
+    //private Construction[] Creat(Construction intObject, Construction[] massivObject)
+    //{
+    //    bool isStop = false;
+    //    if (massivObject != null)
+    //    {
+    //        for (int i = 0; i < massivObject.Length; i++)
+    //        {
+    //            if (!isStop)
+    //            {
+    //                if (massivObject[i].Hash == 0)
+    //                {
+    //                    massivObject[i] = intObject;
+    //                    isStop = true;
+    //                }
+    //            }
+    //        }
+    //        if (!isStop)
+    //        {
+    //            int newLength = massivObject.Length + 1;
+    //            Array.Resize(ref massivObject, newLength);
+    //            massivObject[newLength - 1] = intObject;
+    //            return massivObject;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        massivObject = new Construction[] { intObject };
+    //        return massivObject;
+    //    }
+    //    return massivObject;
+    //}
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

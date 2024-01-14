@@ -58,7 +58,9 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
     {
         if (isRun)
         {
-            currentVelocity = Mathf.Abs(thisObject.NavMeshAgent.velocity.magnitude);
+            if (isDead) { currentVelocity = 0f; }
+            else { currentVelocity = Mathf.Abs(thisObject.NavMeshAgent.velocity.magnitude); }
+            
             if (currentVelocity > 0.1f)
             {
                 animator.SetFloat(tankEnemyTrackForward, 1);
@@ -71,8 +73,7 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (isDead) { return; }
-
+        //if (isDead) { return; }
         if (animSettings.IsUpDate)
         {
             GetSetting();

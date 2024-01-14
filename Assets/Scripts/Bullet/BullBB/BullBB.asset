@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BullBB
   m_EditorClassIdentifier: 
   IsHealt: 0
-  SpeedBullet: 15
+  SpeedBullet: 25
   KillTime: 5
   DiametrCollider: 0.3
   Damage: 3

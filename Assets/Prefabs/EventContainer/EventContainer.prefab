@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3850555399707555046}
   - component: {fileID: 3993164485596218054}
   - component: {fileID: 7123335918692645625}
+  - component: {fileID: 5027292487417753723}
   m_Layer: 0
   m_Name: EventContainer
   m_TagString: Untagged
@@ -58,3 +59,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDate: 0
+--- !u!114 &5027292487417753723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862445587483719244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1852fc38a66b01a4393e8096bbaff760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

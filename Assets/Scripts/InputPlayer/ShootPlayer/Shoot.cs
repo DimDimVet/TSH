@@ -1,13 +1,17 @@
 using UnityEngine;
+using static EventManager;
 
 public class Shoot : GetInputPlayer
 {
     [SerializeField] private ShootSettings shootSettings;
     //êýø
     //private int thisHash;
-    //public int ThisHash { get { return thisHash; } }
-    private float currentTime, defaultTime;
-    private bool isBullReLoad = false, isTrigerSleeve = true, isInputPlayer,isScriptAction=false;
+    public bool IsClipReLoad { get { return isClipReLoad; } }
+    public int CurrentCountClip { get { return currentCountClip; } set { currentCountClip = value; } }
+
+    private float currentTime, defaultTime, currentTimeClip, defaultTimeClip;
+    private int maxCountClip, currentCountClip;
+    private bool isBullReLoad = false, isClipReLoad=false, isTrigerSleeve = true, isInputPlayer,isScriptAction=false;
     public bool IsScriptAction { get { return isScriptAction; } set { isScriptAction = value; } }
     //public bool IsDead { set { isDead = value; } }
     private bool isRun = false/*, isDead = false*/;
@@ -27,6 +31,20 @@ public class Shoot : GetInputPlayer
     {
         currentTime = shootSettings.CurrentTime;
         defaultTime = currentTime;
+
+        maxCountClip = shootSettings.MaxCountClip;
+        currentCountClip = maxCountClip;
+        if (maxCountClip == 1)
+        {
+            currentTimeClip = defaultTime;
+            defaultTimeClip = currentTimeClip;
+        }
+        else 
+        {
+            currentTimeClip = shootSettings.CurrentTimeClip;
+            defaultTimeClip = currentTimeClip;
+        }
+
         isInputPlayer = shootSettings.IsInputPlayer;
         shootSettings.IsUpDate = false;
     }
@@ -57,14 +75,30 @@ public class Shoot : GetInputPlayer
         }
         return true;
     }
+    private bool ReLoadClip()
+    {
+        if (currentCountClip<=0)
+        {
+            currentTimeClip -= Time.deltaTime;
+            if (currentTimeClip <= 0)
+            {
+                currentTimeClip = defaultTimeClip; isClipReLoad = false; currentCountClip = maxCountClip;
+                return true;
+            }
+            isClipReLoad=true;
+            return false;
+        }
+        return true;
+    }
     private void ShootActiv()
     {
-        if (isRun && ReLoadBullet())
+        if (isRun & ReLoadBullet() & ReLoadClip())
         {
             if (isInputPlayer)
             {
                 if (InputData.MouseLeftButton != 0)
                 {
+                    //currentCountClip--;
                     ShootBullet();
                     isBullReLoad = true;
                 }
@@ -77,7 +111,6 @@ public class Shoot : GetInputPlayer
                     isBullReLoad = true;
                 }
             }
-
         }
     }
     public virtual void ShootBullet()

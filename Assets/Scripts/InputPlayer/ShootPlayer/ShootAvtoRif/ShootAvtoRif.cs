@@ -38,6 +38,7 @@ public class ShootAvtoRif : Shoot
     {
         if (InputData.ModeAction == mode)
         {
+            CurrentCountClip--;
             bullRif.GetObject();
             IsActivAvtoRifPlayerShoot(ThisHash, true);
         }
@@ -48,5 +49,9 @@ public class ShootAvtoRif : Shoot
         {
             bullRifSleeve.GetObject();
         }
+    }
+    private void Update()
+    {
+        ChargingParametr(mode,IsClipReLoad, CurrentCountClip);
     }
 }

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: ShootGunPlayerSettings
   m_EditorClassIdentifier: 
   CurrentTime: 3
+  MaxCountClip: 1
+  CurrentTimeClip: 3
   IsInputPlayer: 1
   IsUpDate: 0

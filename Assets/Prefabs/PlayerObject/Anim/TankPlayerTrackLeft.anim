@@ -43,7 +43,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: blendShape.Run
-    path: ZvenoTankEnemyL
+    path: ZvenoL
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -73,7 +73,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: blendShape.Run
-    path: ZvenoTankEnemyR
+    path: ZvenoR
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -86,7 +86,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1052446051
+      path: 3120235669
       attribute: 1748754976
       script: {fileID: 0}
       typeID: 137
@@ -95,7 +95,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3300143104
+      path: 1140079094
       attribute: 1748754976
       script: {fileID: 0}
       typeID: 137
@@ -151,7 +151,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: blendShape.Run
-    path: ZvenoTankEnemyL
+    path: ZvenoL
     classID: 137
     script: {fileID: 0}
     flags: 0
@@ -181,7 +181,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: blendShape.Run
-    path: ZvenoTankEnemyR
+    path: ZvenoR
     classID: 137
     script: {fileID: 0}
     flags: 0

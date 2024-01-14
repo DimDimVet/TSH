@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7454fa5adf898c0488987c5cef9ddea3, type: 3}
   m_Name: ShootAvtoRif
   m_EditorClassIdentifier: 
-  CurrentTime: 0.3
+  CurrentTime: 0.1
+  MaxCountClip: 25
+  CurrentTimeClip: 5
   IsInputPlayer: 1
   IsUpDate: 0

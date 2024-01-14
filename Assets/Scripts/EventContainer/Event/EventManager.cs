@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EventManager
 {
@@ -47,7 +46,7 @@ public class EventManager
         OnIsDead?.Invoke(thisHash, isDead, costObject);
     }
 
-    public static Action<int, int,int, bool, int, RaycastHit> OnIsReternBull;//возврат пули с данными об попадании
+    public static Action<int, int, int, bool, int, RaycastHit> OnIsReternBull;//возврат пули с данными об попадании
     public static void IsReternBull(int thisHash, int hashObjectDamagAcceptance, int costObject, bool isKillObjectAcceptance, int setDamage, RaycastHit hit)
     {
         OnIsReternBull?.Invoke(thisHash, hashObjectDamagAcceptance, costObject, isKillObjectAcceptance, setDamage, hit);
@@ -65,16 +64,28 @@ public class EventManager
         OnGetUIDamage?.Invoke(getHash, healt);
     }
     //События активности UI
-    public static Action<bool> OnIsRunMainPanel;//Запуск партиклов
+    public static Action<bool> OnIsRunMainPanel;
     public static void IsRunMainPanel(bool isRun)
     {
         OnIsRunMainPanel?.Invoke(isRun);
     }
 
-    public static Action OnUpDateAudioParametr;//Запуск партиклов
+    public static Action OnUpDateAudioParametr;
     public static void UpDateAudioParametr()
     {
         OnUpDateAudioParametr?.Invoke();
+    }
+
+    public static Action<Mode> OnSelectParametr;
+    public static void SelectParametr(Mode currentMode)
+    {
+        OnSelectParametr?.Invoke(currentMode);
+    }
+
+    public static Action<Mode, bool, int> OnChargingParametr;
+    public static void ChargingParametr(Mode mode, bool isClipReLoad, int countBull)
+    {
+        OnChargingParametr?.Invoke(mode, isClipReLoad, countBull);
     }
 
     //События активности Player
@@ -90,7 +101,7 @@ public class EventManager
         OnIsActivAvtoRifPlayerShoot?.Invoke(thisHash, isShootAvtoRifPlayer);
     }
 
-    public static Action<int,int, bool> OnShootStaisticPlayer;
+    public static Action<int, int, bool> OnShootStaisticPlayer;
     public static void ShootStaisticPlayer(int hashObjectDamagAcceptance, int costTargetObject, bool isKillObjectAcceptance)
     {
         OnShootStaisticPlayer?.Invoke(hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance);

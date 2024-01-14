@@ -1,9 +1,10 @@
+using Processing;
 using UnityEngine;
 using UnityEngine.AI;
 
-public struct Construction
+public struct Construction: IConstructor
 {
-    public int Hash;
+    public int Hash { get; set; }
     public int ParentHashObject;
     public Transform Transform;
     public bool SetActiv { get; set; }

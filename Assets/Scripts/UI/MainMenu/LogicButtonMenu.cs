@@ -23,8 +23,6 @@ public class LogicButtonMenu : MonoBehaviour
     [SerializeField] private GameObject historyPanel;
     [Header("Кнопка Выход")]
     [SerializeField] private Button exitButton;
-
-    private bool isStop = false;
     private AudioSource audioSource;
 
     private void Start()
@@ -34,7 +32,6 @@ public class LogicButtonMenu : MonoBehaviour
         {
             SetEventButton();
             SetPanel();
-            isStop = false;
         }
         else { print($"Не заполнены поля в {gameObject.name}"); return; }
 
