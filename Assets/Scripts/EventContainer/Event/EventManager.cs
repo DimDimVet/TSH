@@ -58,6 +58,17 @@ public class EventManager
         return (int)OnGetDamage?.Invoke(getHash, damage);
     }
 
+    public static Func<int, float, bool> OnGetEssence;
+    public static bool GetHealtLoot(int getHash, float essence)
+    {
+        return (bool)OnGetEssence?.Invoke(getHash, essence);
+    }
+    public static Action<int> OnIsReternLoot;//возврат loot
+    public static void IsReternLoot(int thisHash)
+    {
+        OnIsReternLoot?.Invoke(thisHash);
+    }
+
     public static Action<int, int> OnGetUIDamage;
     public static void GetUIDamage(int getHash, int healt)
     {

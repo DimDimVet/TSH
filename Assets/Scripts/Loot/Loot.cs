@@ -49,16 +49,12 @@ public class Loot : MonoBehaviour
             else if (hitObject.HealtPlayer != null & isHealt == true)
             {
                 SetEssence(hitObject.Hash);
-                print($"передадим что то в {hitObject.Hash}");
                 return true;
             }
         }
         return false;
     }
-    //private bool ConnectObject()
-    //{
-    //    return DetectObject();
-    //}
+
     public virtual void SetEssence(int hash)//что то предаем в найденый объект
     {
         //

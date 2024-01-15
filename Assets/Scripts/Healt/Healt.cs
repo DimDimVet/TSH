@@ -6,11 +6,12 @@ using static EventManager;
 public abstract class Healt : MonoBehaviour
 {
     [SerializeField] private HealtSetting settingsHealt;
-    public int HealtCount { get { return healtCount; } /*set { healtCount = value; }*/ }
+    public int HealtCount { get { return healtCount; } set { healtCount = value; } }
     public bool IsDead { get { return isDead; } set { isDead = value; } }
     private int thisHash;
+    public int ThisHash { get { return thisHash; } }
     private int costObject;
-    [SerializeField] private int healtCount = 0;
+    [SerializeField] private int healtCount = 0, defaultHealtCount;
     private Construction thisObject;
     private Construction[] thisObjects;
     private Masiv<Construction> _masiv = new Masiv<Construction>();
@@ -25,14 +26,25 @@ public abstract class Healt : MonoBehaviour
     {
         OnGetDamage += ControlDamage;
         isDead = false;
+        SetEventsEnable();
     }
     private void OnDisable()
     {
         OnGetDamage -= ControlDamage;
+        SetEventsDisable();
+    }
+    public virtual void SetEventsEnable()
+    {
+        //
+    }
+    public virtual void SetEventsDisable()
+    {
+        //
     }
     private void GetSetting()
     {
         healtCount = settingsHealt.HealtCount;
+        defaultHealtCount = healtCount;
         costObject = settingsHealt.CostObject;
     }
     private void GetIsRun()
@@ -56,6 +68,7 @@ public abstract class Healt : MonoBehaviour
                 healtCount -= damage;
                 GetUIDamage(thisHash, healtCount);
                 if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead, costObject); return thisHash; }
+                if (healtCount >= defaultHealtCount) { healtCount= defaultHealtCount; return thisHash; }
             }
         }
         return 0;
@@ -74,48 +87,8 @@ public abstract class Healt : MonoBehaviour
             }
         }
         return tempObject;
-        ////
-        //for (int i = 0; i < thisObjects.Length; i++) { print($"{ThisHash}->{thisObjects[i].Hash}"); }
     }
-    //private void Clean(Construction[] massivObject)
-    //{
-    //    if (massivObject != null)
-    //    {
-    //        Array.Clear(massivObject, 0, massivObject.Length);
-    //        return;
-    //    }
-    //}
-    //private Construction[] Creat(Construction intObject, Construction[] massivObject)
-    //{
-    //    bool isStop = false;
-    //    if (massivObject != null)
-    //    {
-    //        for (int i = 0; i < massivObject.Length; i++)
-    //        {
-    //            if (!isStop)
-    //            {
-    //                if (massivObject[i].Hash == 0)
-    //                {
-    //                    massivObject[i] = intObject;
-    //                    isStop = true;
-    //                }
-    //            }
-    //        }
-    //        if (!isStop)
-    //        {
-    //            int newLength = massivObject.Length + 1;
-    //            Array.Resize(ref massivObject, newLength);
-    //            massivObject[newLength - 1] = intObject;
-    //            return massivObject;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        massivObject = new Construction[] { intObject };
-    //        return massivObject;
-    //    }
-    //    return massivObject;
-    //}
+
     void Update()
     {
         if (isDead) { return; }

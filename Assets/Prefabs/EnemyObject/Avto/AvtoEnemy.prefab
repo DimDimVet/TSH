@@ -241,6 +241,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.57498884
   m_Center: {x: 0.06661731, y: -0.0000003874302, z: -0.0000009536743}
+--- !u!1 &1038169575448670940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1030522519214047377}
+  m_Layer: 0
+  m_Name: OutLoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1030522519214047377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038169575448670940}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.58, z: 5.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9209439536110802652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1843291275663149921
 GameObject:
   m_ObjectHideFlags: 0
@@ -10041,6 +10072,7 @@ GameObject:
   - component: {fileID: 1414383009816034156}
   - component: {fileID: 2649991564118731914}
   - component: {fileID: 9120766274024372150}
+  - component: {fileID: 1073063062179161017}
   - component: {fileID: 1805528693641243473}
   m_Layer: 0
   m_Name: AvtoEnemy
@@ -10070,6 +10102,7 @@ Transform:
   - {fileID: 3354949402948111652}
   - {fileID: 4163755762462833027}
   - {fileID: 5382309633042389512}
+  - {fileID: 1030522519214047377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8458025570867906728
@@ -10305,6 +10338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsHealt: {fileID: 11400000, guid: 244aa433873627f48a10c79f41cb7a75, type: 2}
   healtCount: 0
+  defaultHealtCount: 0
 --- !u!114 &9120766274024372150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10318,6 +10352,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partDead: {fileID: 4534102884063301790}
+--- !u!114 &1073063062179161017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968821607049334371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea9026c9751df94cb8fe075794a85d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HealtLoot: {fileID: 7804425945108923433, guid: fffdd425c248d5340b564cf5f129f60f,
+    type: 3}
+  ContainerHealtLoot: {fileID: 1030522519214047377}
+  bodyhealtLoot: {fileID: 4543279064259301988, guid: fffdd425c248d5340b564cf5f129f60f,
+    type: 3}
 --- !u!114 &1805528693641243473
 MonoBehaviour:
   m_ObjectHideFlags: 0

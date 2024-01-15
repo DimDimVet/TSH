@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsHealt: 1
   DiametrCollider: 1
-  Healt: 5
+  Healt: 500
   IsUpDate: 0
