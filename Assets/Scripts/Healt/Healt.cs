@@ -65,6 +65,7 @@ public abstract class Healt : MonoBehaviour
         {
             if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)
             {
+                print("принимаем");
                 healtCount -= damage;
                 GetUIDamage(thisHash, healtCount);
                 if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead, costObject); return thisHash; }

@@ -23,6 +23,7 @@ public class Loot : MonoBehaviour
     }
     private void GetSetting()
     {
+        startPos=this.transform.position;
         healt = lootSettings.Healt;
         diametrCollider = lootSettings.DiametrCollider;
         isHealt = lootSettings.IsHealt;//true-ענטדדונ ןמ HealtPlayer, false-ענטדדונ ןמ HealtEnemy
@@ -73,7 +74,8 @@ public class Loot : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(this.gameObject.transform.position, diametrCollider);
+        //Gizmos.DrawWireSphere(this.gameObject.transform.position, diametrCollider);
+        Gizmos.DrawLine(startPos, transform.position);
     }
     private void FixedUpdate()
     {

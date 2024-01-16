@@ -15,6 +15,7 @@ public class HealtPlayer : Healt
 
     private bool GetHealt(int getHash, float essence)
     {
+        print("передаем");
         ControlDamage(getHash,-(int)essence);
         return true;
         //if (ThisHash == getHash)
