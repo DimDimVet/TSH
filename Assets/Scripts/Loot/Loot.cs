@@ -4,13 +4,12 @@ using static EventManager;
 public class Loot : MonoBehaviour
 {
     [SerializeField] private LootSettings lootSettings;
-    private float diametrCollider;
     private Construction hitObject;
     private bool isHealt;
     private int hashGetObject;
-    private Vector3 startPos;
+    private Vector3 startPos,endPos;
     private RaycastHit hit;
-    //определеный параметр из сеттинга
+    private Vector3 ff = new Vector3(10, 10, 10);
     public float Healt { get { return healt; } }
     private float healt;
     //
@@ -21,11 +20,14 @@ public class Loot : MonoBehaviour
         GetIsRun();
         GetSetting();
     }
+    private void OnEnable()
+    {
+        startPos = this.gameObject.transform.position;
+        endPos = startPos + (new Vector3(1, 1, 1));
+    }
     private void GetSetting()
     {
-        startPos=this.transform.position;
         healt = lootSettings.Healt;
-        diametrCollider = lootSettings.DiametrCollider;
         isHealt = lootSettings.IsHealt;//true-триггер по HealtPlayer, false-триггер по HealtEnemy
     }
     private void GetIsRun()
@@ -37,7 +39,7 @@ public class Loot : MonoBehaviour
     }
     private bool DetectObject()
     {
-        if (Physics.Linecast(startPos, transform.position, out hit))
+        if (Physics.Linecast(startPos, endPos, out hit))
         {
             hashGetObject = hit.collider.gameObject.GetHashCode();
             hitObject = GetObjectHash(hashGetObject);
@@ -74,7 +76,6 @@ public class Loot : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        //Gizmos.DrawWireSphere(this.gameObject.transform.position, diametrCollider);
         Gizmos.DrawLine(startPos, transform.position);
     }
     private void FixedUpdate()

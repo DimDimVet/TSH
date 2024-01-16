@@ -14771,8 +14771,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.7661853, y: 1.3476126, z: 3.1752481}
-  m_Center: {x: 0, y: 1.1388674, z: 0.03344941}
+  m_Size: {x: 2.7661853, y: 0.67572, z: 3.1752481}
+  m_Center: {x: 0, y: 0.80292106, z: 0.03344941}
 --- !u!114 &7653988000782325212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20281,6 +20281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsHealt: {fileID: 0}
   healtCount: 0
+  defaultHealtCount: 0
 --- !u!114 &7092841425158872475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20306,6 +20307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a468d62d6c29f4f9ec79000b1b6af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptableObjectStstistic: {fileID: 0}
 --- !u!1 &3308639749213505074
 GameObject:
   m_ObjectHideFlags: 0
@@ -55210,7 +55212,7 @@ Transform:
   m_GameObject: {fileID: 8320492896053347143}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.843, z: -0.507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -60373,6 +60375,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395658355873952761, guid: 023adf9c5618f9846bbc29eb730750ba,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,7 +11,6 @@ public class Bullet : MonoBehaviour
     public RaycastHit Hit { get { return hit; } }
     //кэш
     private float speedBullet;
-    private float diametrCollider;
     private Construction hitObject;
     private bool isHealt;
     private int hashGetObject;
@@ -41,7 +40,6 @@ public class Bullet : MonoBehaviour
         speedBullet = bullSettings.SpeedBullet;
         killTime = bullSettings.KillTime;
         defaultTime = killTime;
-        diametrCollider = bullSettings.DiametrCollider;
         isHealt = bullSettings.IsHealt;//true-триггер по HealtPlayer, false-триггер по HealtEnemy
         damage = bullSettings.Damage;
         percentDamage = bullSettings.PercentDamage;
@@ -90,7 +88,7 @@ public class Bullet : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(this.gameObject.transform.position, diametrCollider);
+        Gizmos.DrawLine(startPos, transform.position);
     }
     private bool ConnectObject()
     {
@@ -123,7 +121,7 @@ public class Bullet : MonoBehaviour
         }
         else if (typeSleeve)
         {
-            if (isShootTriger) { body.AddForce(body.position * speedBullet, ForceMode.Acceleration); }
+            if (isShootTriger) { body.AddForce(Vector3.up * speedBullet, ForceMode.Impulse); }
 
             isShootTriger = false;
             isBullKill = true;

@@ -10364,11 +10364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea9026c9751df94cb8fe075794a85d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _HealtLoot: {fileID: 7804425945108923433, guid: fffdd425c248d5340b564cf5f129f60f,
+  _HealtLoot: {fileID: 3877098063901990588, guid: 11472ccbc025ff7469c7bc724c15bed5,
     type: 3}
   ContainerHealtLoot: {fileID: 1030522519214047377}
-  bodyhealtLoot: {fileID: 4543279064259301988, guid: fffdd425c248d5340b564cf5f129f60f,
-    type: 3}
 --- !u!114 &1805528693641243473
 MonoBehaviour:
   m_ObjectHideFlags: 0

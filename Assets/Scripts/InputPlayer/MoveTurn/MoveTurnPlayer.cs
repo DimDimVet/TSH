@@ -14,7 +14,7 @@ public class MoveTurnPlayer : GetInputPlayer
     private Quaternion targetRotation;
     private float speedTurn;
     private Construction parentObject;
-    private bool isRun = false, isDead=false;
+    private bool isRun = false;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class MoveTurnPlayer : GetInputPlayer
     }
     private void TurnMove()
     {
-        isDead = parentObject.HealtPlayer.IsDead;
+        IsDead = parentObject.HealtPlayer.IsDead;
         if (isRun)
         {
             if (InputData.MouseRightButton != 0 && InputData.ModeAction == mode)
@@ -62,7 +62,7 @@ public class MoveTurnPlayer : GetInputPlayer
     }
     private void FixedUpdate()
     {
-        if (isDead) { return; }
+        if (IsDead) { return; }
 
         if (turnSettings.IsUpDate)
         {

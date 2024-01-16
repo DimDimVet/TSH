@@ -13,7 +13,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
     private Vector3 targetDirection;
     private Quaternion targetRotation;
     private float speedTurn;
-    private bool isRun = false, isDead = false;
+    private bool isRun = false;
 
     void Start()
     {
@@ -38,7 +38,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
     }
     private void TurnMove()
     {
-        isDead = parentObject.HealtPlayer.IsDead;
+        IsDead = parentObject.HealtPlayer.IsDead;
         if (isRun)
         {
             if (InputData.MouseRightButton != 0 && InputData.ModeAction == mode)
@@ -61,7 +61,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
     }
     private void FixedUpdate()
     {
-        if (isDead) { return; }
+        if (IsDead) { return; }
 
         if (avtoRifSettings.IsUpDate)
         {

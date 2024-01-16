@@ -55,6 +55,21 @@ public class Pool
         containerObject[index].Object.gameObject.SetActive(true);
         return containerObject[index].Object;
     }
+    public GameObject GetObjectRandomPosition(Vector3 pointDefault, float range)
+    {
+        int index = GetQueue();
+        pointDefault *= 2;
+        RaycastHit tempHit = new RaycastHit();
+        //
+        Vector3 newVector = new Vector3(UnityEngine.Random.Range(-pointDefault.x - range, pointDefault.x + range),
+                                        range/2,
+                                        UnityEngine.Random.Range(-pointDefault.z - range, pointDefault.z + range));
+
+        tempHit.point = newVector;
+        SetTransformHit(containerObject[index], tempHit);
+        containerObject[index].Object.gameObject.SetActive(true);
+        return containerObject[index].Object;
+    }
     private int GetQueue()
     {
         for (int i = 0; i < containerObject.Length; i++)

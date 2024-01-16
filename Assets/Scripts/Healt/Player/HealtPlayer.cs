@@ -15,16 +15,8 @@ public class HealtPlayer : Healt
 
     private bool GetHealt(int getHash, float essence)
     {
-        print("передаем");
-        ControlDamage(getHash,-(int)essence);
+        GetHealts(getHash,(int)essence);
         return true;
-        //if (ThisHash == getHash)
-        //{
-        //    HealtCount += (int)essence;
-        //    if (HealtCount > currentHealt) { HealtCount = currentHealt; }
-        //    return true;
-        //}
-        //else { return false; }
     }
 
 }

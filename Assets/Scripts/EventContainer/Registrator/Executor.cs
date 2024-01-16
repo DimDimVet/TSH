@@ -16,7 +16,6 @@ public class Executor : ListDataBase
     private void OnDisable()
     {
         OnGetObjectHash -= SetObjectHash;
-        //OnIsActivObjectHash -= SetIsActivObjectHash;
         OnGetList -= SetList;
         OnGetPlayer -= SetPlayer;
         OnGetCamera -= SetCamera;

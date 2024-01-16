@@ -6,12 +6,14 @@ public class LootGenerator : MonoBehaviour
 {
     public GameObject _HealtLoot; public Transform ContainerHealtLoot;
     private Pool healtLoot;
+    private Vector3 pointCont;
     private bool isTriger=false;
     private int thisHash;
     void Start()
     {
         healtLoot = new Pool(_HealtLoot, ContainerHealtLoot);
-        thisHash=this.gameObject.GetHashCode();
+        pointCont = ContainerHealtLoot.position;
+        thisHash =this.gameObject.GetHashCode();
     }
 
     private void OnEnable()
@@ -34,7 +36,7 @@ public class LootGenerator : MonoBehaviour
     {
         if (!isTriger & _thisHash == thisHash)
         {
-            healtLoot.GetObject();
+            healtLoot.GetObjectRandomPosition(pointCont,1);
             isTriger = true;
         }
     }

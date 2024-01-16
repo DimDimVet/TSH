@@ -56,6 +56,22 @@ public abstract class Healt : MonoBehaviour
             else { isRun = false; print($"Не установлены компоненты в {gameObject.name}"); }
         }
     }
+    public void GetHealts(int getHash, float getHealt)
+    {
+        if (isDead) { return; }
+        if (thisObjects == null) { thisObjects = SetChildrensObject(); }
+        for (int i = 0; i < thisObjects.Length; i++)
+        {
+            if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)
+            {
+                healtCount += (int)getHealt;
+                GetUIDamage(thisHash, healtCount);
+                if (healtCount >= defaultHealtCount) { healtCount = defaultHealtCount; }
+                break;
+            }
+        }
+        
+    }
     public int ControlDamage(int getHash, int damage)//проблема
     {
         if (isDead) { return 0; }
@@ -65,11 +81,9 @@ public abstract class Healt : MonoBehaviour
         {
             if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)
             {
-                print("принимаем");
                 healtCount -= damage;
                 GetUIDamage(thisHash, healtCount);
                 if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead, costObject); return thisHash; }
-                if (healtCount >= defaultHealtCount) { healtCount= defaultHealtCount; return thisHash; }
             }
         }
         return 0;
