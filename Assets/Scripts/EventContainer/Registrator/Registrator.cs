@@ -30,6 +30,7 @@ public class Registrator : ListDataBase
             {
                 Hash = thisHash,
                 ParentHashObject = thisHash,
+                GO= gameObject,
                 Transform = gameObject.transform,
                 HealtPlayer = GetComponent<HealtPlayer>(),
                 HealtEnemy = GetComponent<HealtEnemy>(),

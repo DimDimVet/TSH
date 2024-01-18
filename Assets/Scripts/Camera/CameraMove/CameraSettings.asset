@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: CameraSettings
   m_EditorClassIdentifier: 
   AxesX: 0
-  AxesY: 20
+  AxesY: 12
   AxesZ: -20
-  IsControlDistance: 1
-  LimitZ: 5
-  LimitX: 5
-  SpeedMove: 35
+  SpeedMove: 2
   IsUpDate: 0

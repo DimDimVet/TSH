@@ -9,10 +9,12 @@ public class CameraSettings : ScriptableObject
     public float AxesY = 0f;
     [Header("Установка по оси Z")]
     public float AxesZ = -30f;
-    [Header("Отключить контрорль дистанций")]
-    public bool IsControlDistance=true;
-    [Header("Дистанция включения триггера")]
-    public float LimitZ = 10f, LimitX = 10f;
+
+    public Vector3 GetAxes()
+    {
+        return new Vector3(AxesX, AxesY, AxesZ);
+    }
+
     [Header("Скорость перемещения камеры")]
     public float SpeedMove = 2f;
 

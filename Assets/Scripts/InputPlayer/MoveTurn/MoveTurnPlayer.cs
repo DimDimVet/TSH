@@ -49,6 +49,12 @@ public class MoveTurnPlayer : GetInputPlayer
                 ray = cameraMain.CameraComponent.ScreenPointToRay(currentMousePosition);//луч...до мышки
                 if (Physics.Raycast(ray, out RaycastHit hitInfo))
                 {
+                    var tt = hitInfo.collider.gameObject.GetHashCode();
+                    var temp = GetObjectHash(tt);
+                    print(temp.GO.name);
+
+
+
                     targetDirection = hitInfo.point - gameObject.transform.position;
                     targetRotation = Quaternion.LookRotation(targetDirection);
                     targetRotation.x = 0;
@@ -56,9 +62,14 @@ public class MoveTurnPlayer : GetInputPlayer
                     Debug.DrawRay(gameObject.transform.position, targetDirection, Color.blue);
                     gameObject.transform.rotation =
                         Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * speedTurn);
+
                 }
             }
         }
+    }
+    private void Test()
+    {
+        
     }
     private void FixedUpdate()
     {

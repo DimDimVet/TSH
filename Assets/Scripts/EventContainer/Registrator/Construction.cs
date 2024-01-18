@@ -6,6 +6,7 @@ public struct Construction: IConstructor
 {
     public int Hash { get; set; }
     public int ParentHashObject;
+    public GameObject GO;
     public Transform Transform;
     public bool SetActiv { get; set; }
     public HealtPlayer HealtPlayer;
