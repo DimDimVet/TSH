@@ -46,31 +46,45 @@ public class CameraMove : MonoBehaviour
     {
         if (isRun)
         {
-            rezultPositionZ = player.Transform.position.z - cameraPoint.transform.position.z+ setVector.z;
-            rezultPositionX = player.Transform.position.x - cameraPoint.transform.position.x + setVector.x;
-            if (isControlDistance)
-            {
-                if (rezultPositionZ > 0) { setZ = 1; } else if (rezultPositionZ < 0) { setZ = -1; }
-                if (Math.Abs(rezultPositionZ) > tempLimitZ)
-                {
-                    tempLimitZ = 1f;
-                    cameraPoint.transform.Translate(new Vector3(0, 0, setZ) * Time.deltaTime * speedMove, Space.World);
-                }
-                else { tempLimitZ = limitZ; }
-                //
-                if (rezultPositionX > 0) { setX = 1; } else if (rezultPositionX < 0) { setX = -1; }
-                if (Math.Abs(rezultPositionX) > tempLimitX)
-                {
-                    tempLimitX = 1f;
-                    cameraPoint.transform.Translate(new Vector3(setX, 0, 0) * Time.deltaTime * speedMove, Space.World);
-                }
-                else { tempLimitX = limitX; }
-            }
-            else
-            {
-                cameraPoint.transform.Translate(new Vector3(rezultPositionX, 0, rezultPositionZ) * Time.deltaTime * speedMove, Space.World);
-            }
+            //rezultPositionZ = player.Transform.position.z - cameraPoint.transform.position.z+ setVector.z;
+            //rezultPositionX = player.Transform.position.x - cameraPoint.transform.position.x + setVector.x;
+            //if (isControlDistance)
+            //{
+            //    if (rezultPositionZ > 0) { setZ = 1; } else if (rezultPositionZ < 0) { setZ = -1; }
+            //    if (Math.Abs(rezultPositionZ) > tempLimitZ)
+            //    {
+            //        tempLimitZ = 1f;
+            //        cameraPoint.transform.Translate(new Vector3(0, 0, setZ) * Time.deltaTime * speedMove, Space.World);
+            //    }
+            //    else { tempLimitZ = limitZ; }
+            //    //
+            //    if (rezultPositionX > 0) { setX = 1; } else if (rezultPositionX < 0) { setX = -1; }
+            //    if (Math.Abs(rezultPositionX) > tempLimitX)
+            //    {
+            //        tempLimitX = 1f;
+            //        cameraPoint.transform.Translate(new Vector3(setX, 0, 0) * Time.deltaTime * speedMove, Space.World);
+            //    }
+            //    else { tempLimitX = limitX; }
+            //}
+            //else
+            //{
+            //    cameraPoint.transform.Translate(new Vector3(rezultPositionX, 0, rezultPositionZ) * Time.deltaTime * speedMove, Space.World);
+            //}
         }
+    }
+
+    [SerializeField] private Vector3 _distanceFromObject; // Camera's distance from the object
+
+    private void LateUpdate() //Works after all update functions called
+    {
+        //Vector3 positionToGo = player.Transform.position + _distanceFromObject; //Target position of the camera
+        //Quaternion rotToGo = player.Transform.rotation;
+        //Vector3 smoothPosition = Vector3.Lerp(a: transform.position, b: positionToGo, t: 0.125F); //Smooth position of the camera
+        ////cameraPoint.transform.position = smoothPosition;
+        //cameraPoint.transform.position = positionToGo;
+        //cameraPoint.transform.rotation = rotToGo;
+        ////cameraPoint.transform.rotation = positionToGo.rotation;
+        //cameraPoint.transform.LookAt(player.Transform.position); //Camera will look(returns) to the object
     }
     private void Update()
     {
