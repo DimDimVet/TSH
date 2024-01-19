@@ -41,7 +41,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
         IsDead = parentObject.HealtPlayer.IsDead;
         if (isRun)
         {
-            if (InputData.MouseRightButton != 0 && InputData.ModeAction == mode)
+            if (/*InputData.MouseRightButton != 0 &&*/ InputData.ModeAction == mode)
             {
                 currentMousePosition = new Vector3(InputData.MousePosition.x, InputData.MousePosition.y, 0);
                 ray = cameraMain.CameraComponent.ScreenPointToRay(currentMousePosition);//луч...до мышки
@@ -50,6 +50,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
                 {
                     if (TargetObjectEnemy(hitInfo))
                     {
+                        SelectCursor(true);
                         targetDirection = hitInfo.point - gameObject.transform.position;
                         targetRotation = Quaternion.LookRotation(targetDirection);
                         Debug.DrawRay(gameObject.transform.position, targetDirection, Color.blue);
@@ -58,6 +59,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
                     }
                     else
                     {
+                        SelectCursor(false);
                         targetDirection = hitInfo.point - gameObject.transform.position;
                         targetRotation = Quaternion.LookRotation(targetDirection);
                         targetRotation.x = 0;

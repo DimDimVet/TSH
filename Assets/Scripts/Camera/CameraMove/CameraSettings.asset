@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CameraSettings
   m_EditorClassIdentifier: 
   AxesX: 0
-  AxesY: 12
+  AxesY: 15
   AxesZ: -20
   SpeedMove: 2
   IsUpDate: 0

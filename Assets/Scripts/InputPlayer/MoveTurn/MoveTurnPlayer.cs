@@ -43,7 +43,7 @@ public class MoveTurnPlayer : GetInputPlayer
         IsDead = parentObject.HealtPlayer.IsDead;
         if (isRun)
         {
-            if (InputData.MouseRightButton != 0 && InputData.ModeAction == mode)
+            if (/*InputData.MouseRightButton != 0 &&*/ InputData.ModeAction == mode)
             {
                 currentMousePosition = (Vector2)InputData.MousePosition;
                 ray = cameraMain.CameraComponent.ScreenPointToRay(currentMousePosition);//луч...до мышки
@@ -51,6 +51,7 @@ public class MoveTurnPlayer : GetInputPlayer
                 {
                     if (TargetObjectEnemy(hitInfo))
                     {
+                        SelectCursor(true);
                         targetDirection = hitInfo.point - gameObject.transform.position;
                         targetRotation = Quaternion.LookRotation(targetDirection);
                         Debug.DrawRay(gameObject.transform.position, targetDirection, Color.blue);
@@ -59,6 +60,7 @@ public class MoveTurnPlayer : GetInputPlayer
                     }
                     else 
                     {
+                        SelectCursor(false);
                         targetDirection = hitInfo.point - gameObject.transform.position;
                         targetRotation = Quaternion.LookRotation(targetDirection);
                         targetRotation.x = 0;

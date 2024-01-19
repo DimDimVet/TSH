@@ -39,6 +39,12 @@ public class EventManager
         return (Construction)OnGetCamera?.Invoke();
     }
 
+    //SelectCursor
+    public static Action<bool> OnSelectCursor;
+    public static void SelectCursor(bool isActivCursor)
+    {
+        OnSelectCursor?.Invoke(isActivCursor);
+    }
     //Особые события
     public static Action<int, bool, int> OnIsDead;
     public static void IsDead(int thisHash, bool isDead, int costObject)
