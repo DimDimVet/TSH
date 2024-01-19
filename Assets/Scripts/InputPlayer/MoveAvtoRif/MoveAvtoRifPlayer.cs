@@ -48,16 +48,37 @@ public class MoveAvtoRifPlayer : GetInputPlayer
 
                 if (Physics.Raycast(ray, out RaycastHit hitInfo))
                 {
-                    targetDirection = hitInfo.point - gameObject.transform.position;
-                    targetRotation = Quaternion.LookRotation(targetDirection);
-                    targetRotation.x = 0;
-                    targetRotation.z = 0;
-                    Debug.DrawRay(gameObject.transform.position, targetDirection, Color.blue);
-                    gameObject.transform.rotation =
-                        Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * speedTurn);
+                    if (TargetObjectEnemy(hitInfo))
+                    {
+                        targetDirection = hitInfo.point - gameObject.transform.position;
+                        targetRotation = Quaternion.LookRotation(targetDirection);
+                        Debug.DrawRay(gameObject.transform.position, targetDirection, Color.blue);
+                        gameObject.transform.rotation =
+                            Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * speedTurn);
+                    }
+                    else
+                    {
+                        targetDirection = hitInfo.point - gameObject.transform.position;
+                        targetRotation = Quaternion.LookRotation(targetDirection);
+                        targetRotation.x = 0;
+                        targetRotation.z = 0;
+                        Debug.DrawRay(gameObject.transform.position, targetDirection, Color.blue);
+                        gameObject.transform.rotation =
+                           Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * speedTurn);
+                    }
                 }
             }
         }
+    }
+    private bool TargetObjectEnemy(RaycastHit hitInfo)
+    {
+        if (hitInfo.collider != null)
+        {
+            var tt = hitInfo.collider.gameObject.GetHashCode();
+            var temp = GetObjectHash(tt);
+            if (temp.HealtEnemy != null) { return true; }
+        }
+        return false;
     }
     private void FixedUpdate()
     {
