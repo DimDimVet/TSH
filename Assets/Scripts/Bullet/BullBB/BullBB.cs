@@ -16,14 +16,14 @@ public class BullBB : Bullet
     {
         int tempHash;
         _damage = DamagRandom();
-        tempHash = GetDamage(hash, _damage);
+        tempHash = GetDamage(hash, _damage, TypeBullet);
         if (tempHash != 0) { hashObjectDamagAcceptance = tempHash; }
-        else{ hashObjectDamagAcceptance = hash; }
+        else { hashObjectDamagAcceptance = hash; }
         isKillObjectAcceptance = KillObjectAcceptance(hashObjectDamagAcceptance);
     }
     private bool KillObjectAcceptance(int hashObjectDamagAcceptance)
     {
-        if (hashObjectDamagAcceptance== hashTarget) { return isDeadTarget; }
+        if (hashObjectDamagAcceptance == hashTarget) { return isDeadTarget; }
         else { return false; }
     }
     public override void IsDeadTargetObject(int thisHash, bool isDead, int costObject)

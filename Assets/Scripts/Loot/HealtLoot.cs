@@ -8,7 +8,6 @@ public class HealtLoot : Loot
     }
     public override void ReternEssence()//возвращаем лут
     {
-        //print(this.gameObject.GetHashCode());
        IsReternLoot(this.gameObject.GetHashCode());
     }
 }

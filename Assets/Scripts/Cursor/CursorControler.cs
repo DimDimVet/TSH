@@ -5,11 +5,12 @@ public class CursorControler : MonoBehaviour
 {
     [SerializeField] private Texture2D defaultCur;
     [SerializeField] private Texture2D activCur;
-
+    [SerializeField, Range(0, 512)] private float positionDefaultCurX, positionDefaultCurY;
+    private Vector2 setDefaultCur;
     private void Start()
     {
-        Cursor.SetCursor(defaultCur, Vector2.zero, CursorMode.Auto);
-        //Cursor.SetCursor(activCur, Vector2.zero, CursorMode.Auto);
+        setDefaultCur = new Vector2(positionDefaultCurX, positionDefaultCurY);
+        Cursor.SetCursor(defaultCur, setDefaultCur, CursorMode.Auto);
     }
     private void OnEnable()
     {
@@ -18,7 +19,7 @@ public class CursorControler : MonoBehaviour
 
     private void SwitchCursor(bool isActivCursor)
     {
-        if (isActivCursor) { Cursor.SetCursor(activCur, Vector2.zero, CursorMode.Auto); }
-        else { Cursor.SetCursor(defaultCur, Vector2.zero, CursorMode.Auto); }
+        if (isActivCursor) { Cursor.SetCursor(activCur, setDefaultCur, CursorMode.Auto); }
+        else { Cursor.SetCursor(defaultCur, setDefaultCur, CursorMode.Auto); }
     }
 }

@@ -58,10 +58,10 @@ public class EventManager
         OnIsReternBull?.Invoke(thisHash, hashObjectDamagAcceptance, costObject, isKillObjectAcceptance, setDamage, hit);
     }
 
-    public static Func<int, int, int> OnGetDamage;
-    public static int GetDamage(int getHash, int damage)
+    public static Func<int, int, TypeBullet, int> OnGetDamage;
+    public static int GetDamage(int getHash, int damage, TypeBullet typeBullet)
     {
-        return (int)OnGetDamage?.Invoke(getHash, damage);
+        return (int)OnGetDamage?.Invoke(getHash, damage, typeBullet);
     }
 
     public static Func<int, float, bool> OnGetEssence;

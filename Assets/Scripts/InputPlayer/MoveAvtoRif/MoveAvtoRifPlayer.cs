@@ -7,12 +7,13 @@ public class MoveAvtoRifPlayer : GetInputPlayer
     private Mode mode = Mode.AvtoRif;
     //êýø
     private Construction cameraMain;
-    private Construction parentObject;
+    private Construction parentObject, tempTarget;
     private Vector3 currentMousePosition;
     private Ray ray;
     private Vector3 targetDirection;
     private Quaternion targetRotation;
     private float speedTurn;
+    private int tempHash;
     private bool isRun = false;
 
     void Start()
@@ -76,9 +77,16 @@ public class MoveAvtoRifPlayer : GetInputPlayer
     {
         if (hitInfo.collider != null)
         {
-            var tt = hitInfo.collider.gameObject.GetHashCode();
-            var temp = GetObjectHash(tt);
-            if (temp.HealtEnemy != null) { return true; }
+            if (hitInfo.collider != null)
+            {
+                tempHash = hitInfo.collider.gameObject.GetHashCode();
+                tempTarget = GetObjectHash(tempHash);
+                if (tempTarget.HealtEnemy != null)
+                {
+                    if (tempTarget.HealtEnemy.IsDead == false) { return true; }
+                }
+            }
+            return false;
         }
         return false;
     }

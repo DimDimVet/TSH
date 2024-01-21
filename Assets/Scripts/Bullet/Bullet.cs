@@ -1,6 +1,14 @@
 using UnityEngine;
 using static EventManager;
 
+public enum TypeBullet
+{
+    Sleeve,
+    PlayerBull,
+    PlayerRif,
+    EnemyBull,
+    EnemyRif
+}
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private BulletSettings bullSettings;
@@ -16,6 +24,8 @@ public class Bullet : MonoBehaviour
     private int hashGetObject;
     private float killTime, defaultTime;
     private float damage, percentDamage;
+    public TypeBullet TypeBullet { get { return typeBullet; } }
+    private TypeBullet typeBullet;
 
     private Vector3 startPos;
     private RaycastHit hit;
@@ -37,6 +47,7 @@ public class Bullet : MonoBehaviour
     }
     private void GetSetting()
     {
+        typeBullet = bullSettings.TypeBullet;
         speedBullet = bullSettings.SpeedBullet;
         killTime = bullSettings.KillTime;
         defaultTime = killTime;

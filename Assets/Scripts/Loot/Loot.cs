@@ -9,7 +9,6 @@ public class Loot : MonoBehaviour
     private int hashGetObject;
     private Vector3 startPos,endPos;
     private RaycastHit hit;
-    private Vector3 ff = new Vector3(10, 10, 10);
     public float Healt { get { return healt; } }
     private float healt;
     //
@@ -23,7 +22,7 @@ public class Loot : MonoBehaviour
     private void OnEnable()
     {
         startPos = this.gameObject.transform.position;
-        endPos = startPos + (new Vector3(1, 1, 1));
+        endPos = startPos + (new Vector3(1f, 1f, 1f));
     }
     private void GetSetting()
     {
@@ -75,7 +74,7 @@ public class Loot : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(startPos, transform.position);
     }
     private void FixedUpdate()

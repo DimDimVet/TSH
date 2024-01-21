@@ -1,3 +1,4 @@
+using Codice.Utils;
 using UnityEngine;
 using static EventManager;
 
@@ -8,12 +9,13 @@ public class MoveTurnPlayer : GetInputPlayer
     private Mode mode = Mode.Turn;
     //êýø
     private Construction cameraMain;
+    private Construction parentObject, tempTarget;
     private Vector3 currentMousePosition;
     private Ray ray;
     private Vector3 targetDirection;
     private Quaternion targetRotation;
     private float speedTurn;
-    private Construction parentObject;
+    private int tempHash;
     private bool isRun = false;
 
     void Start()
@@ -76,11 +78,14 @@ public class MoveTurnPlayer : GetInputPlayer
     }
     private bool TargetObjectEnemy(RaycastHit hitInfo)
     {
-        if (hitInfo.collider != null) 
+        if (hitInfo.collider != null)
         {
-            var tt = hitInfo.collider.gameObject.GetHashCode();
-            var temp = GetObjectHash(tt);
-            if (temp.HealtEnemy != null) { return true; }
+            tempHash = hitInfo.collider.gameObject.GetHashCode();
+            tempTarget = GetObjectHash(tempHash);
+            if (tempTarget.HealtEnemy != null) 
+            {
+                if (tempTarget.HealtEnemy.IsDead == false) { return true; }
+            }
         }
         return false;
     }

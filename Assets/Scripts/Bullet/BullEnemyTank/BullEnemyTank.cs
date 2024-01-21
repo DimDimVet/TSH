@@ -16,7 +16,7 @@ public class BullEnemyTank : Bullet
     {
         _damage = DamagRandom();
         hashObjectDamagAcceptance = hash;
-        GetDamage(hashObjectDamagAcceptance, _damage);
+        GetDamage(hashObjectDamagAcceptance, _damage, TypeBullet);
         isKillObjectAcceptance = KillObjectAcceptance(hashObjectDamagAcceptance);
     }
     private bool KillObjectAcceptance(int hashObjectDamagAcceptance)

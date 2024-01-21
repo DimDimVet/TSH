@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BullEnemyTank
   m_EditorClassIdentifier: 
   IsHealt: 1
+  TypeBullet: 3
   SpeedBullet: 25
   KillTime: 5
-  DiametrCollider: 0.3
   Damage: 3
   PercentDamage: 50
   IsUpDate: 0

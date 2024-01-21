@@ -15,6 +15,7 @@ public abstract class Healt : MonoBehaviour
     private Construction thisObject;
     private Construction[] thisObjects;
     private Masiv<Construction> _masiv = new Masiv<Construction>();
+    private TypeBullet[] typeBullets;
 
     private bool isRun = false, isDead = false;
     private void Start()
@@ -43,6 +44,7 @@ public abstract class Healt : MonoBehaviour
     }
     private void GetSetting()
     {
+        typeBullets = settingsHealt.TypeBullets;
         healtCount = settingsHealt.HealtCount;
         defaultHealtCount = healtCount;
         costObject = settingsHealt.CostObject;
@@ -72,11 +74,22 @@ public abstract class Healt : MonoBehaviour
         }
         
     }
-    public int ControlDamage(int getHash, int damage)//проблема
+    public int ControlDamage(int getHash, int damage, TypeBullet typeBullet)//проблема
     {
         if (isDead) { return 0; }
         if (thisObjects == null) { thisObjects = SetChildrensObject(); }
 
+        for (int y = 0; y < typeBullets.Length; y++)
+        {
+            if (typeBullets[y]== typeBullet)//ограничем по типу пули
+            {
+                return ExecutorDamage(getHash, damage);
+            }
+        }
+        return 0;
+    }
+    private int ExecutorDamage(int getHash, int damage)
+    {
         for (int i = 0; i < thisObjects.Length; i++)
         {
             if (thisObjects[i].Hash == getHash || thisObjects[i].ParentHashObject == getHash)

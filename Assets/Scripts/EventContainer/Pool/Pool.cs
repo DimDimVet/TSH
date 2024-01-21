@@ -1,3 +1,4 @@
+using Codice.CM.Client.Differences.Merge;
 using System;
 using UnityEngine;
 
@@ -58,17 +59,21 @@ public class Pool
     public GameObject GetObjectRandomPosition(Vector3 pointDefault, float range)
     {
         int index = GetQueue();
-        pointDefault *= 2;
+        //pointDefault *= 2;
         RaycastHit tempHit = new RaycastHit();
         //
-        Vector3 newVector = new Vector3(UnityEngine.Random.Range(-pointDefault.x - range, pointDefault.x + range),
-                                        range/2,
-                                        UnityEngine.Random.Range(-pointDefault.z - range, pointDefault.z + range));
-
-        tempHit.point = newVector;
+        tempHit.point = pointDefault+RandVector(range);
+        Debug.Log($"{tempHit.point} {pointDefault}");
         SetTransformHit(containerObject[index], tempHit);
         containerObject[index].Object.gameObject.SetActive(true);
         return containerObject[index].Object;
+    }
+    private Vector3 RandVector(float range)
+    {
+        Vector3 newVector = new Vector3(UnityEngine.Random.Range( - range,  + range),
+                                        1,
+                                        UnityEngine.Random.Range( - range, + range));
+        return newVector;
     }
     private int GetQueue()
     {

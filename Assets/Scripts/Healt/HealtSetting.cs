@@ -7,6 +7,6 @@ public class HealtSetting : ScriptableObject
     public int HealtCount = 1000;
     [Header("Стоимость объекта")]
     public int CostObject = 1;
-    //[Header("Скорость поворота")]
-    //public float SpeedTurn = 0.1f;
+    [Header("Событие по типу пуль")]
+    public TypeBullet[] TypeBullets;
 }

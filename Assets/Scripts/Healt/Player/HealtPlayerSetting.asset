@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: HealtPlayerSetting
   m_EditorClassIdentifier: 
   HealtCount: 5000
+  CostObject: 1
+  TypeBullets: 0300000004000000

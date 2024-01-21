@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BullEnemyAvto
   m_EditorClassIdentifier: 
   IsHealt: 1
+  TypeBullet: 4
   SpeedBullet: 35
   KillTime: 5
-  DiametrCollider: 0.1
   Damage: 1
   PercentDamage: 50
   IsUpDate: 0

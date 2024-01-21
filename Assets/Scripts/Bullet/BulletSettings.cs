@@ -5,6 +5,8 @@ public class BulletSettings : ScriptableObject
 {
     [Header("true-триггер по HealtPlayer, false-триггер по HealtEnemy")]
     public bool IsHealt = false;
+    [Header("Тип пули")]
+    public TypeBullet TypeBullet;
     [Header("Скорость пули")]
     public float SpeedBullet = 5f;
     [Header("Время жизни пули")]

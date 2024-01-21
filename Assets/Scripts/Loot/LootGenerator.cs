@@ -14,6 +14,7 @@ public class LootGenerator : MonoBehaviour
         healtLoot = new Pool(_HealtLoot, ContainerHealtLoot);
         pointCont = ContainerHealtLoot.position;
         thisHash =this.gameObject.GetHashCode();
+        print(pointCont);
     }
 
     private void OnEnable()
@@ -34,9 +35,10 @@ public class LootGenerator : MonoBehaviour
 
     private void SetLoot(int _thisHash, bool isDead, int costObject)
     {
+        pointCont= ContainerHealtLoot.position;
         if (!isTriger & _thisHash == thisHash)
         {
-            healtLoot.GetObjectRandomPosition(pointCont,1);
+            healtLoot.GetObjectRandomPosition(pointDefault:pointCont,range:1.5f);
             isTriger = true;
         }
     }

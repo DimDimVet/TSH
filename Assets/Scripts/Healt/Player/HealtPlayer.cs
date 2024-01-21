@@ -12,11 +12,9 @@ public class HealtPlayer : Healt
     {
         OnGetEssence -= GetHealt;
     }
-
     private bool GetHealt(int getHash, float essence)
     {
-        GetHealts(getHash,(int)essence);
+        GetHealts(getHash, (int)essence);
         return true;
     }
-
 }
