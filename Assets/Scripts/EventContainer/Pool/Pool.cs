@@ -59,11 +59,9 @@ public class Pool
     public GameObject GetObjectRandomPosition(Vector3 pointDefault, float range)
     {
         int index = GetQueue();
-        //pointDefault *= 2;
         RaycastHit tempHit = new RaycastHit();
         //
         tempHit.point = pointDefault+RandVector(range);
-        Debug.Log($"{tempHit.point} {pointDefault}");
         SetTransformHit(containerObject[index], tempHit);
         containerObject[index].Object.gameObject.SetActive(true);
         return containerObject[index].Object;

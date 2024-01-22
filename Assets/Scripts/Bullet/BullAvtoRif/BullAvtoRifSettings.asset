@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsHealt: 0
   TypeBullet: 2
-  SpeedBullet: 35
+  SpeedBullet: 45
   KillTime: 5
-  Damage: 1
+  Damage: 5
   PercentDamage: 50
   IsUpDate: 0

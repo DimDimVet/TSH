@@ -14,7 +14,6 @@ public class LootGenerator : MonoBehaviour
         healtLoot = new Pool(_HealtLoot, ContainerHealtLoot);
         pointCont = ContainerHealtLoot.position;
         thisHash =this.gameObject.GetHashCode();
-        print(pointCont);
     }
 
     private void OnEnable()

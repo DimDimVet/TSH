@@ -16,6 +16,6 @@ MonoBehaviour:
   TypeBullet: 3
   SpeedBullet: 25
   KillTime: 5
-  Damage: 3
+  Damage: 50
   PercentDamage: 50
   IsUpDate: 0

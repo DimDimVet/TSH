@@ -59,44 +59,5 @@ public class StatisticPlayer : MonoBehaviour
     {
         return countCost + _countCost;
     }
-    //
-    //private void Clean(Statistic[] massivObject)
-    //{
-    //    if (massivObject != null)
-    //    {
-    //        Array.Clear(massivObject, 0, massivObject.Length);
-    //        return;
-    //    }
-    //}
-    //private Statistic[] Creat(Statistic intObject, Statistic[] massivObject)
-    //{
-    //    bool isStop = false;
-    //    if (massivObject != null)
-    //    {
-    //        for (int i = 0; i < massivObject.Length; i++)
-    //        {
-    //            if (!isStop)
-    //            {
-    //                if (massivObject[i].Hash == 0)
-    //                {
-    //                    massivObject[i] = intObject;
-    //                    isStop = true;
-    //                }
-    //            }
-    //        }
-    //        if (!isStop)
-    //        {
-    //            int newLength = massivObject.Length + 1;
-    //            Array.Resize(ref massivObject, newLength);
-    //            massivObject[newLength - 1] = intObject;
-    //            return massivObject;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        massivObject = new Statistic[] { intObject };
-    //        return massivObject;
-    //    }
-    //    return massivObject;
-    //}
+
 }

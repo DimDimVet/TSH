@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: LootSettings
   m_EditorClassIdentifier: 
   IsHealt: 1
-  DiametrCollider: 1
-  Healt: 500
+  Healt: 1000
   IsUpDate: 0

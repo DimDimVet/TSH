@@ -13,8 +13,7 @@ public class Shoot : GetInputPlayer
     private int maxCountClip, currentCountClip;
     private bool isBullReLoad = false, isClipReLoad=false, isTrigerSleeve = true, isInputPlayer,isScriptAction=false;
     public bool IsScriptAction { get { return isScriptAction; } set { isScriptAction = value; } }
-    //public bool IsDead { set { isDead = value; } }
-    private bool isRun = false/*, isDead = false*/;
+    private bool isRun = false;
 
     void Start()
     {
@@ -98,7 +97,6 @@ public class Shoot : GetInputPlayer
             {
                 if (InputData.MouseLeftButton != 0)
                 {
-                    //currentCountClip--;
                     ShootBullet();
                     isBullReLoad = true;
                 }

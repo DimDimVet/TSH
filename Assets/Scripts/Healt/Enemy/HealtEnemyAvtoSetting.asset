@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b9318b05a05df439e9a8871d2165e2, type: 3}
   m_Name: HealtEnemyAvtoSetting
   m_EditorClassIdentifier: 
-  HealtCount: 50
+  HealtCount: 1000
   CostObject: 300
   TypeBullets: 0100000002000000

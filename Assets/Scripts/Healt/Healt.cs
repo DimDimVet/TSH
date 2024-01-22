@@ -8,7 +8,7 @@ public abstract class Healt : MonoBehaviour
     [SerializeField] private HealtSetting settingsHealt;
     public int HealtCount { get { return healtCount; } set { healtCount = value; } }
     public bool IsDead { get { return isDead; } set { isDead = value; } }
-    private int thisHash;
+    private int thisHash, tempHash;
     public int ThisHash { get { return thisHash; } }
     private int costObject;
     [SerializeField] private int healtCount = 0, defaultHealtCount;
@@ -72,21 +72,22 @@ public abstract class Healt : MonoBehaviour
                 break;
             }
         }
-        
+
     }
-    public int ControlDamage(int getHash, int damage, TypeBullet typeBullet)//проблема
+    public void ControlDamage(int getHash, int damage, TypeBullet typeBullet)//проблема
     {
-        if (isDead) { return 0; }
+        if (isDead) { return; }
         if (thisObjects == null) { thisObjects = SetChildrensObject(); }
 
         for (int y = 0; y < typeBullets.Length; y++)
         {
-            if (typeBullets[y]== typeBullet)//ограничем по типу пули
+
+            if (typeBullets[y] == typeBullet)//ограничем по типу пули
             {
-                return ExecutorDamage(getHash, damage);
+                tempHash= ExecutorDamage(getHash, damage);
+                ControlHashDamage(tempHash);
             }
         }
-        return 0;
     }
     private int ExecutorDamage(int getHash, int damage)
     {
@@ -96,7 +97,12 @@ public abstract class Healt : MonoBehaviour
             {
                 healtCount -= damage;
                 GetUIDamage(thisHash, healtCount);
-                if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead, costObject); return thisHash; }
+                if (healtCount <= 0)
+                {
+                    isDead = true;
+                    IsDead(thisHash, isDead, costObject);
+                    return thisHash;
+                }
             }
         }
         return 0;

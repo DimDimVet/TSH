@@ -7,6 +7,7 @@ public class BullBB : Bullet
     private int _damage, hashObjectDamagAcceptance, costTargetObject;
     private bool isKillObjectAcceptance;
     private int hashTarget;
+    private int tempHash;
     private bool isDeadTarget;
     public override void ReternBullet()
     {
@@ -14,11 +15,12 @@ public class BullBB : Bullet
     }
     public override void SetDamage(int hash)
     {
-        int tempHash;
         _damage = DamagRandom();
-        tempHash = GetDamage(hash, _damage, TypeBullet);
-        if (tempHash != 0) { hashObjectDamagAcceptance = tempHash; }
-        else { hashObjectDamagAcceptance = hash; }
+         GetDamage(hash, _damage, TypeBullet);
+        tempHash = ControlHash;
+
+        if (tempHash != 0) { hashObjectDamagAcceptance = tempHash;  }
+        else { hashObjectDamagAcceptance = hash;  }//
         isKillObjectAcceptance = KillObjectAcceptance(hashObjectDamagAcceptance);
     }
     private bool KillObjectAcceptance(int hashObjectDamagAcceptance)

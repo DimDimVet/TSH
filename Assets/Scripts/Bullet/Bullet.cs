@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static EventManager;
 
@@ -27,6 +28,8 @@ public class Bullet : MonoBehaviour
     public TypeBullet TypeBullet { get { return typeBullet; } }
     private TypeBullet typeBullet;
 
+    public int ControlHash { get { return contorlHash; } }
+    private int contorlHash;
     private Vector3 startPos;
     private RaycastHit hit;
 
@@ -44,7 +47,9 @@ public class Bullet : MonoBehaviour
         startPos = transform.position;
         killTime = defaultTime;
         OnIsDead += IsDeadTargetObject;
+        OnControlHashDamage += ControlHashTarget;
     }
+
     private void GetSetting()
     {
         typeBullet = bullSettings.TypeBullet;
@@ -62,6 +67,11 @@ public class Bullet : MonoBehaviour
         {
             isRun = true;
         }
+    }
+
+    private void ControlHashTarget(int _contorlHash)
+    {
+        contorlHash = _contorlHash;
     }
     public virtual void IsDeadTargetObject(int thisHash, bool isDead, int costObject)
     {
@@ -123,11 +133,10 @@ public class Bullet : MonoBehaviour
         if (isRun && !typeSleeve)
         {
             body.velocity = transform.forward * speedBullet;
-            //gameObject.transform.Translate(Vector3.forward * speedBullet * Time.deltaTime);
             isBullKill = true;
-            if (KillTimeBullet())
-            { ReternBullet(); }
             if (ConnectObject())
+            { ReternBullet();}
+            if (KillTimeBullet())
             { ReternBullet(); }
         }
         else if (typeSleeve)
