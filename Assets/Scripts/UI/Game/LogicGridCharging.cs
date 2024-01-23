@@ -39,11 +39,16 @@ public class LogicGridCharging : MonoBehaviour
     {
         OnSelectParametr += Select;
         OnChargingParametr += Charging;
+        OnEnableUIElement += OffUIElement;
     }
     private void OnDisable()
     {
         OnSelectParametr -= Select;
         OnChargingParametr -= Charging;
+    }
+    private void OffUIElement(bool isOffUIElement)
+    {
+        grid.gameObject.SetActive(!isOffUIElement);
     }
     private void Select(Mode mode)
     {

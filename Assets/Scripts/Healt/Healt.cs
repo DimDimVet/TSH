@@ -97,12 +97,7 @@ public abstract class Healt : MonoBehaviour
             {
                 healtCount -= damage;
                 GetUIDamage(thisHash, healtCount);
-                if (healtCount <= 0)
-                {
-                    isDead = true;
-                    IsDead(thisHash, isDead, costObject);
-                    return thisHash;
-                }
+                if (healtCount <= 0){isDead = true;IsDead(thisHash, isDead, costObject);return thisHash;}
             }
         }
         return 0;

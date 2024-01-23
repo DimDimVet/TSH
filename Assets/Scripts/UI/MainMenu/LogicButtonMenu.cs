@@ -18,9 +18,6 @@ public class LogicButtonMenu : MonoBehaviour
     [Header("Кнопка Результат")]
     [SerializeField] private Button rezultButton;
     [SerializeField] private GameObject rezultPanel;
-    [Header("Кнопка История")]
-    [SerializeField] private Button historyButton;
-    [SerializeField] private GameObject historyPanel;
     [Header("Кнопка Выход")]
     [SerializeField] private Button exitButton;
     private AudioSource audioSource;
@@ -28,7 +25,7 @@ public class LogicButtonMenu : MonoBehaviour
     private void Start()
     {
         if (sceneSetting!=null & gameButton != null & settButton != null &
-            rezultButton != null & historyButton != null & exitButton != null)
+            rezultButton != null & exitButton != null)
         {
             SetEventButton();
             SetPanel();
@@ -61,14 +58,12 @@ public class LogicButtonMenu : MonoBehaviour
         gameButton.onClick.AddListener(StartGame);
         settButton.onClick.AddListener(SettGame);
         rezultButton.onClick.AddListener(RezultGame);
-        historyButton.onClick.AddListener(HistoryGame);
         exitButton.onClick.AddListener(ExitGame);
     }
     private void SetPanel()
     {
         settPanel.SetActive(false);
         rezultPanel.SetActive(false);
-        historyPanel.SetActive(false);
     }
     private void AudioClick()
     {
@@ -89,12 +84,6 @@ public class LogicButtonMenu : MonoBehaviour
     {
         AudioClick();
         rezultPanel.SetActive(true);
-        IsRunMainPanel(false);
-    }
-    private void HistoryGame()
-    {
-        AudioClick();
-        historyPanel.SetActive(true);
         IsRunMainPanel(false);
     }
     private void ExitGame()

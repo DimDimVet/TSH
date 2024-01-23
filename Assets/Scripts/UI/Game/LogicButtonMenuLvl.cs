@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -48,6 +49,7 @@ public class LogicButtonMenuLvl : MonoBehaviour
     {
         OnUpDateAudioParametr += UpDateAudio;
         OnIsRunMainPanel += IsStartpanel;
+        OnEnableUIElement += OffUIElement;
     }
     private void OnDisable()
     {
@@ -79,6 +81,10 @@ public class LogicButtonMenuLvl : MonoBehaviour
         settPanel.SetActive(false);
         pauseMenuPanel.SetActive(false);
 
+    }
+    private void OffUIElement(bool isOffUIElement)
+    {
+        pauseMenuButton.gameObject.SetActive(!isOffUIElement);
     }
     private void AudioClick()
     {

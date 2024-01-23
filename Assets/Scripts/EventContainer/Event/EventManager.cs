@@ -47,9 +47,21 @@ public class EventManager
     }
     //Особые события
     public static Action<int, bool, int> OnIsDead;
-    public static void IsDead(int thisHash, bool isDead, int costObject)
+    public static void IsDead(int thisHash, bool isDead, int costObject)//kill person
     {
         OnIsDead?.Invoke(thisHash, isDead, costObject);
+    }
+
+    public static Action<int, bool> OnIsVictory;
+    public static void IsVictory(int thisHash, bool isVictory)//Победа игрока
+    {
+        OnIsVictory?.Invoke(thisHash, isVictory);
+    }
+
+    public static Action<bool> OnEnableUIElement;//отключение элементов интерфейса
+    public static void EnableUIElement(bool isOffUIElement)
+    {
+        OnEnableUIElement?.Invoke(isOffUIElement);
     }
 
     public static Action<int, int, int, bool, int, RaycastHit> OnIsReternBull;//возврат пули с данными об попадании

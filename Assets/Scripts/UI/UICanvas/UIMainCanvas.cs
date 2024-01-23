@@ -7,6 +7,7 @@ public class UIMainCanvas : MonoBehaviour
 {
     [SerializeField] private Text CountPlayerText;
     [SerializeField] private Text InfoCountPlayerText;
+    [SerializeField] private Image gndPanel;
     //кэш
     private Camera currentCamera;
     private Canvas canvas;
@@ -16,6 +17,11 @@ public class UIMainCanvas : MonoBehaviour
     private float countAlfa = 0.5f;
     private Color currColorAlfa;
 
+    [SerializeField, Range(0, 1)] private float timerGndPanel;
+    private float countGndPanel = 0.5f;
+    private Color colorGndPanel;
+
+    private bool isDeadPlayer=false, isVictory=false;
     private bool isUpDate=false;
     private bool isRun = false;
     private void GetSet()
@@ -25,17 +31,22 @@ public class UIMainCanvas : MonoBehaviour
         thisObject = GetPlayer();
         currentCamera = cameraObject.CameraComponent;
         canvas.worldCamera = currentCamera;
-        canvas.planeDistance = 15f;
+        canvas.planeDistance = 5f;
         //
         currColorAlfa = InfoCountPlayerText.color;
         currColorAlfa.a = 0f;
         InfoCountPlayerText.color = currColorAlfa;
+        //
+        colorGndPanel = new Color(0f, 0f, 0f, 0f);
+        gndPanel.color= colorGndPanel;
     }
     private void OnEnable()
     {
         OnUIStaistic += GetStat;
         CountPlayerText.text = $"{0}";
         InfoCountPlayerText.text = $"{0}";
+        OnIsDead += KillPlayer;
+        OnIsVictory += VictoryPlayer;
     }
     private void OnDisable()
     {
@@ -69,6 +80,40 @@ public class UIMainCanvas : MonoBehaviour
             }
         }
     }
+    private void VictoryPlayer(int thisHash, bool _isVictory)
+    {
+        if (thisObject.Hash == thisHash & _isVictory == true) { isVictory = _isVictory; }
+    }
+    private void KillPlayer(int thisHash, bool isDead, int costObject)//kill player
+    {
+        if (thisObject.Hash == thisHash & isDead==true) { isDeadPlayer=isDead; }
+    }
+
+    private void ColorGndPanel()
+    {
+        if (isDeadPlayer || isVictory)
+        {
+            if (countGndPanel <= timerGndPanel)
+            {
+                countGndPanel = countGndPanel + 0.1f;
+            }
+            else
+            {
+                countGndPanel = 0;
+                colorGndPanel.a = colorGndPanel.a + 0.1f;
+
+                if (isDeadPlayer) { colorGndPanel.r = colorGndPanel.r + 0.1f; }
+                if (isVictory) { colorGndPanel.g = colorGndPanel.g + 0.1f; }
+
+                if (colorGndPanel.a >= 1) { /*isDeadPlayer = !isDeadPlayer;*/ EnableUIElement(true); OffUIElement(true); }
+                gndPanel.color = colorGndPanel;
+            }
+        }
+    }
+    private void OffUIElement(bool isOffUIElement)
+    {
+        CountPlayerText.gameObject.SetActive(!isOffUIElement);
+    }
     private void GetIsRun()
     {
         if (!isRun)//если общее разрешение на запуск false
@@ -86,5 +131,6 @@ public class UIMainCanvas : MonoBehaviour
         }
         //
         InfoCountAlfa();
+        ColorGndPanel();
     }
 }
