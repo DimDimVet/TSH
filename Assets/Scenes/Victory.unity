@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731703, g: 0.13414727, b: 0.121078506, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -199,6 +199,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1354869355146974891, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 6605227238ec4c54e8bc693011d9b2a0, type: 2}
+    - target: {fileID: 3038628310980825513, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3698795086199047462, guid: f1afb01a75de92347bcdac47a06dd0cb,
         type: 3}
       propertyPath: m_Pivot.x
@@ -309,20 +319,58 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1331789416}
+    - target: {fileID: 7882360950037640381, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506913992569485355, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506913992569485355, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9169811
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506913992569485355, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.24256043
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059706689720084433, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3669085571916184681, guid: f1afb01a75de92347bcdac47a06dd0cb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1afb01a75de92347bcdac47a06dd0cb, type: 3}
---- !u!1 &879114328 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3669085571916184681, guid: f1afb01a75de92347bcdac47a06dd0cb,
+--- !u!114 &879114328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8506913992569485355, guid: f1afb01a75de92347bcdac47a06dd0cb,
     type: 3}
   m_PrefabInstance: {fileID: 879114327}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &879114329 stripped
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &879114329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9059706689720084433, guid: f1afb01a75de92347bcdac47a06dd0cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 879114327}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &879114330 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5941592346970663907, guid: f1afb01a75de92347bcdac47a06dd0cb,
+  m_CorrespondingSourceObject: {fileID: 7393796001604407406, guid: f1afb01a75de92347bcdac47a06dd0cb,
     type: 3}
   m_PrefabInstance: {fileID: 879114327}
   m_PrefabAsset: {fileID: 0}
@@ -433,7 +481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8010783646013237144}
-  - component: {fileID: 8010783646013237145}
+  - component: {fileID: 8010783646013237146}
   m_Layer: 0
   m_Name: SceneLogic
   m_TagString: Untagged
@@ -456,7 +504,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8010783646013237145
+--- !u!114 &8010783646013237146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -469,9 +517,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSetting: {fileID: 11400000, guid: ff106710eb485fe43877e75479454094, type: 2}
-  returnButton: {fileID: 879114329}
-  thisPanel: {fileID: 879114328}
+  returnButton: {fileID: 879114330}
+  thisPanel: {fileID: 879114329}
   sceneSetting: {fileID: 11400000, guid: 5440effb5e2b4234abae6279f9c2ac11, type: 2}
+  scriptableObjectStstistic: {fileID: 11400000, guid: 97fbd769816d14047baaaba5ecf178e3,
+    type: 2}
+  rezultText: {fileID: 879114328}
+  dopText: "\u041F\u043E\u0431\u0435\u0434\u0430: "
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

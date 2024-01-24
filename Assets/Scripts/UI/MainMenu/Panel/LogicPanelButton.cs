@@ -1,5 +1,5 @@
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 using static UnityEngine.PlayerLoop.PostLateUpdate;
 
 public class LogicPanelButton : MonoBehaviour

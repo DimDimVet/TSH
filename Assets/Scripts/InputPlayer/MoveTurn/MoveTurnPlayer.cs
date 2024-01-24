@@ -1,6 +1,6 @@
 using Codice.Utils;
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 
 public class MoveTurnPlayer : GetInputPlayer
 {

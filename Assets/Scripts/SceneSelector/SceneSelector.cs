@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static EventManager;
+using static EventBus;
 
 public class SceneSelector : MonoBehaviour
 {

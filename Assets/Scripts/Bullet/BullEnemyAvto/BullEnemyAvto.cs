@@ -1,5 +1,5 @@
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 public class BullEnemyAvto : Bullet
 {
     private float percent, currentDamag;

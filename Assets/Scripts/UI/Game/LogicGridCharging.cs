@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static EventManager;
+using static EventBus;
 
 public struct ElementGrid
 {
@@ -48,7 +48,8 @@ public class LogicGridCharging : MonoBehaviour
     }
     private void OffUIElement(bool isOffUIElement)
     {
-        grid.gameObject.SetActive(!isOffUIElement);
+        if (grid!=null) { grid.gameObject.SetActive(!isOffUIElement); }
+       
     }
     private void Select(Mode mode)
     {

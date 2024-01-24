@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 
 public class ConditionsVictory : MonoBehaviour
 {

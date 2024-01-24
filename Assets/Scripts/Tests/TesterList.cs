@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 
 public class TesterList : MonoBehaviour
 {

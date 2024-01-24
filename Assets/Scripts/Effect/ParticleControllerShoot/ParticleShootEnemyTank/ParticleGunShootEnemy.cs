@@ -1,4 +1,4 @@
-using static EventManager;
+using static EventBus;
 
 public class ParticleGunShootEnemy : ParticleControllerShoot
 {

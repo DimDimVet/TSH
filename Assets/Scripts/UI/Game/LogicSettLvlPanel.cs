@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static EventManager;
+using static EventBus;
 
 public class LogicSettLvlPanel : LogicPanel
 {

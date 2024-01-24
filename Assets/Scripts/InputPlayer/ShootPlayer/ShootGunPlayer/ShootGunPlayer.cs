@@ -1,5 +1,5 @@
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 public class ShootGunPlayer : Shoot
 {
     public GameObject _BullBB; public Transform ContainerBullBB;

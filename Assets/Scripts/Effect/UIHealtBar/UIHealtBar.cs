@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static EventManager;
+using static EventBus;
 
 public class UIHealtBar : MonoBehaviour
 {

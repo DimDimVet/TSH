@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static EventManager;
+using static EventBus;
 public enum Mode
 {
     Turn,

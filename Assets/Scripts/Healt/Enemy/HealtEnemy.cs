@@ -1,5 +1,5 @@
 using System;
-using static EventManager;
+using static EventBus;
 public class HealtEnemy : Healt
 {
 

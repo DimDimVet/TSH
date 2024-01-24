@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static EventManager;
+using static EventBus;
 
 public class LogicButtonMenuLvl : MonoBehaviour
 {
@@ -84,7 +84,7 @@ public class LogicButtonMenuLvl : MonoBehaviour
     }
     private void OffUIElement(bool isOffUIElement)
     {
-        pauseMenuButton.gameObject.SetActive(!isOffUIElement);
+        if (pauseMenuButton != null) { pauseMenuButton.gameObject.SetActive(!isOffUIElement); }
     }
     private void AudioClick()
     {

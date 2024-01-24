@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager
+public class EventBus
 {
     //Запрос листа
     public static Func<List<Construction>> OnGetList;

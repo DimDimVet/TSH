@@ -1,7 +1,7 @@
 using Processing.Masiv;
 using System;
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 
 public class ScanEnemy : MonoBehaviour
 {

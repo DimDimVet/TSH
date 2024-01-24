@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 
 public enum TypeBullet
 {

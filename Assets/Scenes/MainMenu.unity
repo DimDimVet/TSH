@@ -123,18 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &176466779 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 440300210848839819, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
+--- !u!1 &190185053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4016994712712835387, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
     type: 3}
   m_PrefabInstance: {fileID: 913824909}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &234151611
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,12 +386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &517996290 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4016994712712835387, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
-    type: 3}
-  m_PrefabInstance: {fileID: 913824909}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &539075911
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +486,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4902429965811069608, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 606795214912494745, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
         type: 3}
       propertyPath: m_Pivot.x
@@ -810,16 +803,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1313810611 stripped
+--- !u!114 &1343008240 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4326571001229307585, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
+  m_CorrespondingSourceObject: {fileID: 3213804427713808004, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
     type: 3}
   m_PrefabInstance: {fileID: 913824909}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1399345401 stripped
@@ -840,6 +833,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 913824909}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1590370145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4326571001229307585, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
+    type: 3}
+  m_PrefabInstance: {fileID: 913824909}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1838795679 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6803520365777969659, guid: f50e9f8258e6a2847b4f9cc3734e3e33,
@@ -877,11 +882,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSetting: {fileID: 11400000, guid: ff106710eb485fe43877e75479454094, type: 2}
-  returnButton: {fileID: 176466779}
-  thisPanel: {fileID: 517996290}
+  returnButton: {fileID: 1343008240}
+  thisPanel: {fileID: 190185053}
   scriptableObjectStstistic: {fileID: 11400000, guid: 97fbd769816d14047baaaba5ecf178e3,
     type: 2}
-  rezultText: {fileID: 1313810611}
+  rezultText: {fileID: 1590370145}
   dopText: "\u0421\u0447\u0435\u0442 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0433\u043E
     \u0431\u043E\u044F:"
 --- !u!114 &1746173408379789589
@@ -936,9 +941,7 @@ MonoBehaviour:
   settButton: {fileID: 2039038218}
   settPanel: {fileID: 919190855}
   rezultButton: {fileID: 978218937}
-  rezultPanel: {fileID: 517996290}
-  historyButton: {fileID: 0}
-  historyPanel: {fileID: 0}
+  rezultPanel: {fileID: 190185053}
   exitButton: {fileID: 936116722}
 --- !u!114 &6234761990799821422
 MonoBehaviour:

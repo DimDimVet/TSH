@@ -1,7 +1,6 @@
 using Processing.Masiv;
-using System;
 using UnityEngine;
-using static EventManager;
+using static EventBus;
 
 public class StatisticPlayer : MonoBehaviour
 {
@@ -15,6 +14,12 @@ public class StatisticPlayer : MonoBehaviour
     private void Start()
     {
         thisHash = gameObject.GetHashCode();
+        tempStat = new Statistic
+        {
+            HashPlayer = thisHash,
+            CostTargetObject = 0,
+        };
+        scriptableObjectStstistic.SaveStat(tempStat);
     }
     private void OnEnable()
     {
