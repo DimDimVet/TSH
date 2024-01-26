@@ -32,6 +32,13 @@ public class EventBus
         return (Construction)OnGetPlayer?.Invoke();
     }
 
+    //Запрос Enemys
+    public static Func<Construction[]> OnGetEnemys;
+    public static Construction[] GetEnemys()
+    {
+        return (Construction[])OnGetEnemys?.Invoke();
+    }
+
     //Запрос Camera
     public static Func<Construction> OnGetCamera;
     public static Construction GetCamera()
@@ -146,6 +153,12 @@ public class EventBus
     public static void UIStaistic(Statistic stat)
     {
         OnUIStaistic?.Invoke(stat);
+    }
+    //счетчик врагов
+    public static Action<int> OnUICountEnemys;
+    public static void UICountEnemys(int enemys)
+    {
+        OnUICountEnemys?.Invoke(enemys);
     }
     //События активности Enemy
     //Передать группе Enemy TargetPlayer

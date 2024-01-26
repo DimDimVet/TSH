@@ -34,7 +34,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
             parentObject = OnGetPlayer();
             cameraMain = GetCamera();//получаем данные из листа
             if (cameraMain.CameraComponent != null & parentObject.Hash != 0) { isRun = true; }
-            else { isRun = false; print($"MoveTurnPlayer не получила CameraComponent"); }
+            else { isRun = false; }
         }
     }
     private void TurnMove()

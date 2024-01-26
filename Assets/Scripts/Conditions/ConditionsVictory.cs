@@ -1,22 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static EventBus;
 
 public class ConditionsVictory : MonoBehaviour
 {
     private Construction thisObject;
-    public bool test;
-
     private bool isVictory = false;
     private bool isRun = false;
-    private void Start()
-    {
-        
-    }
     private void OnEnable()
     {
-
+        OnUICountEnemys += GetEnemys;
     }
     private void GetSet()
     {
@@ -27,12 +19,15 @@ public class ConditionsVictory : MonoBehaviour
         if (!isRun)//если общее разрешение на запуск false
         {
             if (thisObject.Hash != 0) { isRun = true; }
-            else { isRun = false; GetSet(); print($"Не установлены компоненты в {gameObject.name}"); }
+            else { isRun = false; GetSet(); }
         }
+    }
+    private void GetEnemys(int enemys)
+    {
+        if (enemys == 0) { isVictory = true; }
     }
     private void EventVictory()
     {
-        isVictory = test;
         if (isVictory) { IsVictory(thisObject.Hash, isVictory); }
     }
     private void FixedUpdate()

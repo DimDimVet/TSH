@@ -1,17 +1,20 @@
+using Processing.Masiv;
 using System.Collections.Generic;
+using UnityEngine;
 using static EventBus;
 
 public class Executor : ListDataBase
 {
     private List<Construction> listData;
+    private Construction[] tempEnemys;
     private void OnEnable()
     {
         ClearData();
         OnGetObjectHash += SetObjectHash;
-        //OnIsActivObjectHash += SetIsActivObjectHash;
         OnGetList += SetList;
         OnGetPlayer += SetPlayer;
         OnGetCamera += SetCamera;
+        OnGetEnemys += SetEnemys;
     }
     private void OnDisable()
     {
@@ -19,6 +22,7 @@ public class Executor : ListDataBase
         OnGetList -= SetList;
         OnGetPlayer -= SetPlayer;
         OnGetCamera -= SetCamera;
+        OnGetEnemys -= SetEnemys;
     }
     //Отдадим весь лист
     private List<Construction> SetList()
@@ -64,5 +68,19 @@ public class Executor : ListDataBase
             }
         }
         return new Construction();
+    }
+    //Найдем и отдадим объекты-Enemys в списке
+    private Construction[] SetEnemys()
+    {
+        Masiv<Construction> tempMassiv=new Masiv<Construction>();
+        listData = GetData();
+        for (int i = 0; i < listData.Count; i++)
+        {
+            if (listData[i].HealtEnemy is HealtEnemy)
+            {
+                tempEnemys = tempMassiv.Creat(listData[i], tempEnemys);
+            }
+        }
+        return tempEnemys;
     }
 }

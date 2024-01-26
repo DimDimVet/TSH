@@ -60371,10 +60371,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealtBar
       objectReference: {fileID: 0}
+    - target: {fileID: 5315060309022885586, guid: 023adf9c5618f9846bbc29eb730750ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7472612929453032774, guid: 023adf9c5618f9846bbc29eb730750ba,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8395658355873952761, guid: 023adf9c5618f9846bbc29eb730750ba,
         type: 3}

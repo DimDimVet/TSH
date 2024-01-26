@@ -1,4 +1,3 @@
-using Codice.CM.Client.Differences.Merge;
 using System;
 using UnityEngine;
 
@@ -39,7 +38,7 @@ public class Pool
         if (element.Object.transform.position != (hit.point + hit.normal * 0.001f))
         {
             element.Object.transform.position = hit.point + hit.normal * 0.001f;
-            element.Object.transform.rotation = Quaternion.LookRotation(-hit.normal);
+            if (hit.normal != Vector3.zero) { element.Object.transform.rotation = Quaternion.LookRotation(-hit.normal); }
         }
     }
     public GameObject GetObject()
@@ -61,16 +60,16 @@ public class Pool
         int index = GetQueue();
         RaycastHit tempHit = new RaycastHit();
         //
-        tempHit.point = pointDefault+RandVector(range);
+        tempHit.point = pointDefault + RandVector(range);
         SetTransformHit(containerObject[index], tempHit);
         containerObject[index].Object.gameObject.SetActive(true);
         return containerObject[index].Object;
     }
     private Vector3 RandVector(float range)
     {
-        Vector3 newVector = new Vector3(UnityEngine.Random.Range( - range,  + range),
+        Vector3 newVector = new Vector3(UnityEngine.Random.Range(-range, +range),
                                         1,
-                                        UnityEngine.Random.Range( - range, + range));
+                                        UnityEngine.Random.Range(-range, +range));
         return newVector;
     }
     private int GetQueue()

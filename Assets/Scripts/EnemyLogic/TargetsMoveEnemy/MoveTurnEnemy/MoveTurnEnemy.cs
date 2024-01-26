@@ -25,7 +25,7 @@ public class MoveTurnEnemy : TargetRotateEnemy
         if (!isRun)//если общее разрешение на запуск false
         {
             if (ThisObject.NavMeshAgent != null) { isRun = true; }
-            else { isRun = false; SetTargetDefault(); print($"{gameObject.name} не получил NavMeshAgent"); }
+            else { isRun = false; SetTargetDefault(); }
         }
     }
     private void DefaultPosition()

@@ -30,7 +30,7 @@ public class MoveEnemy : TargetsMoveEnemy
         if (!isRun)//если общее разрешение на запуск false
         {
             if (ThisObject.NavMeshAgent != null) { isRun = true; SetNavComponent(); }
-            else { isRun = false; SetTargetDefault(); print($"{gameObject.name} не получил NavMeshAgent"); }
+            else { isRun = false; SetTargetDefault(); }
         }
     }
     private void SetNavComponent()

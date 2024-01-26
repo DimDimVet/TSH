@@ -46,7 +46,7 @@ public class SceneSelector : MonoBehaviour
         if (!isRun)//если общее разрешение на запуск false
         {
             if (thisObject.Hash != 0) { isRun = true; }
-            else { isRun = false; GetSet(); print($"Не установлены компоненты в {gameObject.name}"); }
+            else { isRun = false; GetSet();  }
         }
     }
     private void FixedUpdate()

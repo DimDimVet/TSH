@@ -54,7 +54,7 @@ public class UIHealtBar : MonoBehaviour
         if (!isRun)//если общее разрешение на запуск false
         {
             if (slider != null & currentCamera != null & trackingObject != null) { isRun = true; }
-            else { isRun = false; GetSet(); print($"Не установлены компоненты в {gameObject.name}"); }
+            else { isRun = false; GetSet(); }
         }
     }
     void Update()

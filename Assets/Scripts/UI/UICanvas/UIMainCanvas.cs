@@ -8,6 +8,8 @@ public class UIMainCanvas : MonoBehaviour
     [SerializeField] private Text CountPlayerText;
     [SerializeField] private Text InfoCountPlayerText;
     [SerializeField] private Image gndPanel;
+    //
+    [SerializeField] private Text CountEnemysText;
     //кэш
     private Camera currentCamera;
     private Canvas canvas;
@@ -43,14 +45,18 @@ public class UIMainCanvas : MonoBehaviour
     private void OnEnable()
     {
         OnUIStaistic += GetStat;
+        CountEnemysText.text = $"{0}";
         CountPlayerText.text = $"{0}";
         InfoCountPlayerText.text = $"{0}";
         OnIsDead += KillPlayer;
         OnIsVictory += VictoryPlayer;
+        //
+        OnUICountEnemys += GetEnemys;
     }
     private void OnDisable()
     {
         OnUIStaistic -= GetStat;
+        OnUICountEnemys -= GetEnemys;
     }
     private void GetStat(Statistic stat)
     {
@@ -79,6 +85,10 @@ public class UIMainCanvas : MonoBehaviour
                 InfoCountPlayerText.color = currColorAlfa;
             }
         }
+    }
+    private void GetEnemys(int enemys)
+    {
+        CountEnemysText.text = $"{enemys}";
     }
     private void VictoryPlayer(int thisHash, bool _isVictory)
     {
@@ -119,7 +129,7 @@ public class UIMainCanvas : MonoBehaviour
         if (!isRun)//если общее разрешение на запуск false
         {
             if (currentCamera != null) { isRun = true; }
-            else { isRun = false; GetSet(); print($"Не установлены компоненты в {gameObject.name}"); }
+            else { isRun = false; GetSet(); }
         }
     }
     private void FixedUpdate()

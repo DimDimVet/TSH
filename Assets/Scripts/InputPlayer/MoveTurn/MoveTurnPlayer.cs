@@ -1,4 +1,3 @@
-using Codice.Utils;
 using UnityEngine;
 using static EventBus;
 
@@ -35,9 +34,9 @@ public class MoveTurnPlayer : GetInputPlayer
         {
             parentObject = OnGetPlayer();
             cameraMain = GetCamera();//получаем данные из листа
-            if (cameraMain.CameraComponent != null & parentObject.Hash!=0) { isRun = true; }
-            else { isRun = false; print($"MoveTurnPlayer не получила CameraComponent");return; }
-            
+            if (cameraMain.CameraComponent != null & parentObject.Hash != 0) { isRun = true; }
+            else { isRun = false; return; }
+
         }
     }
     private void TurnMove()
@@ -60,7 +59,7 @@ public class MoveTurnPlayer : GetInputPlayer
                         gameObject.transform.rotation =
                             Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * speedTurn);
                     }
-                    else 
+                    else
                     {
                         SelectCursor(false);
                         targetDirection = hitInfo.point - gameObject.transform.position;
@@ -82,7 +81,7 @@ public class MoveTurnPlayer : GetInputPlayer
         {
             tempHash = hitInfo.collider.gameObject.GetHashCode();
             tempTarget = GetObjectHash(tempHash);
-            if (tempTarget.HealtEnemy != null) 
+            if (tempTarget.HealtEnemy != null)
             {
                 if (tempTarget.HealtEnemy.IsDead == false) { return true; }
             }
