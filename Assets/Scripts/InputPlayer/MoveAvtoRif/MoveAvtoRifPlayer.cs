@@ -19,7 +19,7 @@ public class MoveAvtoRifPlayer : GetInputPlayer
     void Start()
     {
         if (avtoRifSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); }
-        GetIsRun();
+        //GetIsRun();
         GetSetting();
     }
     private void GetSetting()

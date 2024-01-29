@@ -18,7 +18,7 @@ public class Shoot : GetInputPlayer
     void Start()
     {
         if (shootSettings == null) { print($"Не установлен Settings в ShootPlayer");}
-        GetIsRun();
+        //GetIsRun();
         GetSetting();
         Set();
     }

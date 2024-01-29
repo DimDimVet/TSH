@@ -24,7 +24,7 @@ public class ScanEnemy : MonoBehaviour
     {
         if (scanEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); }
         GetSetting();
-        GetIsRun();
+        //GetIsRun();
         SetThisObject();
     }
     private void OnEnable()

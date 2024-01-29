@@ -5,15 +5,15 @@ public class MoveBodyPlayer : GetInputPlayer
 {
     [SerializeField] private MoveSettings moveSettings;
     //кэш движений
-    private float speedForward, speedBack, speedTurn;
+    private float speedForward, speedBack/*, speedTurn*/;
     private float weight;
     private Rigidbody rigidbodyGameObject;
-    private Vector3 newPosition;
+    //private Vector3 newPosition;
     private Vector3 eulerAngleVelocity;
     private Quaternion deltaRotation;
     private bool isRun = false;
 
-    float kof;
+    //float kof;
 
     void Start()
     {

@@ -9,10 +9,10 @@ public class ParticleControllerMovePlayer : GetInputPlayer
     private float2 distans;
     private bool isPartIdle = true;
     private bool isRun = false;
-    void Start()
-    {
-        if (partDinamic == null & partIdle == null) { print($"Не установлен ParticleSystem в ParticleDrive"); }
-    }
+    //void Start()
+    //{
+    //    if (partDinamic == null & partIdle == null) { print($"Не установлен ParticleSystem в ParticleDrive"); }
+    //}
     private void GetIsRun()
     {
         if (!isRun)//если общее разрешение на запуск false

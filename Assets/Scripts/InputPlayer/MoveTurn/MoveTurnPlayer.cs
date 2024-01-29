@@ -20,7 +20,7 @@ public class MoveTurnPlayer : GetInputPlayer
     void Start()
     {
         if (turnSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); }
-        GetIsRun();
+        //GetIsRun();
         GetSetting();
     }
     private void GetSetting()

@@ -11,7 +11,7 @@ public class AnimControllerPlayer : GetInputPlayer
     void Start()
     {
         if (animSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); }
-        GetIsRun();
+        //GetIsRun();
         GetSetting();
     }
     private void GetSetting()

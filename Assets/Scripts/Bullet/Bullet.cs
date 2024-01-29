@@ -36,10 +36,10 @@ public class Bullet : MonoBehaviour
     private bool isBullKill = true, isShootTriger = true;
     private bool isRun = false;
 
-    void Awake()
+    void Start()
     {
         if (bullSettings == null) { print($"Не установлен {bullSettings.name} в Bullet"); }
-        GetIsRun();
+        //GetIsRun();
         GetSetting();
     }
     private void OnEnable()

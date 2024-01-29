@@ -15,7 +15,7 @@ public class MoveEnemy : TargetsMoveEnemy
         if (moveEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
         if (NotActionClass) { return; }//Проверка разрешнения
         GetSetting();
-        GetIsRun();
+        //GetIsRun();
         SetTargetDefault();
     }
     private void GetSetting()

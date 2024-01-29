@@ -94,6 +94,7 @@ public class EventBus
     {
         return (bool)OnGetEssence?.Invoke(getHash, essence);
     }
+
     public static Action<int> OnIsReternLoot;//возврат loot
     public static void IsReternLoot(int thisHash)
     {
