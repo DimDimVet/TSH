@@ -12,6 +12,7 @@ public class LogicButtonMenuLvl : MonoBehaviour
     [Header("Кнопка пауза")]
     [SerializeField] private Button pauseMenuButton;
     [SerializeField] private GameObject pauseMenuPanel;
+    [SerializeField] private GameObject sliderHealt;
     [Header("Кнопка Настройка")]
     [SerializeField] private Button settButton;
     [SerializeField] private GameObject settPanel;
@@ -84,7 +85,7 @@ public class LogicButtonMenuLvl : MonoBehaviour
     }
     private void OffUIElement(bool isOffUIElement)
     {
-        if (pauseMenuButton != null) { pauseMenuButton.gameObject.SetActive(!isOffUIElement); }
+        if (pauseMenuButton != null) { pauseMenuButton.gameObject.SetActive(!isOffUIElement);}
     }
     private void AudioClick()
     {
@@ -95,6 +96,7 @@ public class LogicButtonMenuLvl : MonoBehaviour
         AudioClick();
         Time.timeScale = 0f;
         pauseMenuPanel.SetActive(true);
+        sliderHealt.gameObject.SetActive(false);
         pauseMenuButton.gameObject.SetActive(false);
     }
     private void SettGame()
@@ -119,6 +121,7 @@ public class LogicButtonMenuLvl : MonoBehaviour
         AudioClick();
         Time.timeScale = 1f;
         pauseMenuPanel.SetActive(false);
+        sliderHealt.gameObject.SetActive(true);
         pauseMenuButton.gameObject.SetActive(true);
     }
 

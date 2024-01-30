@@ -379,7 +379,7 @@ MonoBehaviour:
   scriptableObjectStstistic: {fileID: 11400000, guid: 97fbd769816d14047baaaba5ecf178e3,
     type: 2}
   rezultText: {fileID: 6127603707652251090}
-  dopText: "\u041F\u043E\u0440\u0430\u0436\u0435\u043D\u0438\u0435:"
+  dopText: "\u041F\u043E\u0440\u0430\u0436\u0435\u043D\u0438\u0435"
 --- !u!1001 &6127603707652251089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -512,6 +512,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506913992569485355, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
+      propertyPath: m_Text
+      value: testtest
       objectReference: {fileID: 0}
     - target: {fileID: 8506913992569485355, guid: f1afb01a75de92347bcdac47a06dd0cb,
         type: 3}

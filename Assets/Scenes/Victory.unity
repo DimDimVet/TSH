@@ -326,6 +326,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8506913992569485355, guid: f1afb01a75de92347bcdac47a06dd0cb,
         type: 3}
+      propertyPath: m_Text
+      value: testtest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506913992569485355, guid: f1afb01a75de92347bcdac47a06dd0cb,
+        type: 3}
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
@@ -523,7 +528,7 @@ MonoBehaviour:
   scriptableObjectStstistic: {fileID: 11400000, guid: 97fbd769816d14047baaaba5ecf178e3,
     type: 2}
   rezultText: {fileID: 879114328}
-  dopText: "\u041F\u043E\u0431\u0435\u0434\u0430: "
+  dopText: "\u041F\u043E\u0431\u0435\u0434\u0430"
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
