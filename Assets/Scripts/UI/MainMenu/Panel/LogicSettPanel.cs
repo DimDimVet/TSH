@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,7 +54,7 @@ public class LogicSettPanel : LogicPanel
     private void AudioSet()
     {
         //Audio
-        AudioSetting.GetAudioParametr(/*out muzVol, out effectVol*/);
+        AudioSetting.GetAudioParametr();
         muzVol = AudioSetting.MuzVol;
         effectVol = AudioSetting.EfectVol;
 
@@ -86,12 +85,11 @@ public class LogicSettPanel : LogicPanel
         Screen.SetResolution(_currentScreen.width, _currentScreen.height, fullScreen);
     }
 
-    private void SetNewAudio(float newMuz,float newEffect)
+    private void SetNewAudio(float newMuz, float newEffect)
     {
         AudioSetting.SetAudioParametr(newMuz, newEffect);
         UpDateAudioParametr();
     }
-    //
     private Resolution[] CreatResolution(Resolution intObject, Resolution[] massivObject)
     {
         if (massivObject != null)
@@ -107,7 +105,6 @@ public class LogicSettPanel : LogicPanel
             return massivObject;
         }
     }
-    //
     private void Update()
     {
         if (muzSlider.value != muzVol || effectSlider.value != effectVol)

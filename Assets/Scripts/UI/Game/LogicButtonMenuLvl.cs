@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -39,7 +38,7 @@ public class LogicButtonMenuLvl : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioSetting.AudioClipButton;
             audioSource.volume = (audioSetting.EfectVol);
-            //
+
             audioSourceMuz = gameObject.AddComponent<AudioSource>();
             audioSourceMuz.clip = audioSetting.AudioClipGnd;
             audioSourceMuz.volume = (audioSetting.MuzVol);
@@ -85,7 +84,7 @@ public class LogicButtonMenuLvl : MonoBehaviour
     }
     private void OffUIElement(bool isOffUIElement)
     {
-        if (pauseMenuButton != null) { pauseMenuButton.gameObject.SetActive(!isOffUIElement);}
+        if (pauseMenuButton != null) { pauseMenuButton.gameObject.SetActive(!isOffUIElement); }
     }
     private void AudioClick()
     {

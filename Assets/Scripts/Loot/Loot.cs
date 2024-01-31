@@ -7,7 +7,7 @@ public class Loot : MonoBehaviour
     private Construction hitObject;
     private bool isHealt;
     private int hashGetObject;
-    private Vector3 startPos,endPos;
+    private Vector3 startPos, endPos;
     private RaycastHit hit;
     public float Healt { get { return healt; } }
     private float healt;
@@ -31,7 +31,7 @@ public class Loot : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             isRun = true;
         }
@@ -57,13 +57,11 @@ public class Loot : MonoBehaviour
         return false;
     }
 
-    public virtual void SetEssence(int hash)//что то предаем в найденый объект
+    public virtual void SetEssence(int hash)
     {
-        //
     }
-    public virtual void ReternEssence()//возвращаем лут
+    public virtual void ReternEssence()
     {
-        //
     }
     private void RunLoot()
     {
@@ -84,7 +82,7 @@ public class Loot : MonoBehaviour
             GetSetting();
             lootSettings.IsUpDate = false;
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

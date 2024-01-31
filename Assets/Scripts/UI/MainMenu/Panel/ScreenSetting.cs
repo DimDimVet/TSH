@@ -7,7 +7,7 @@ public class ScreenSetting : ScriptableObject
     public int MinWidth = 1280;
     [Header("Мин высота(height)")]
     public int MinHeight = 1024;
-    //
+
     public void SetResolution(Resolution currentScreen)
     {
         PlayerPrefs.SetInt("CurrentWidth", currentScreen.width);

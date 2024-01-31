@@ -1,6 +1,6 @@
 using Processing;
 
-public struct Statistic:IConstructor
+public struct Statistic : IConstructor
 {
     public int HashPlayer;
     public int Hash { get; set; }

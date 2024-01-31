@@ -3,19 +3,14 @@ using UnityEngine;
 
 public class ParticleControllerMovePlayer : GetInputPlayer
 {
-    //кэш
     [SerializeField] private ParticleSystem partDinamic, partIdle;
     private float refDistance = 0.01f;
     private float2 distans;
     private bool isPartIdle = true;
     private bool isRun = false;
-    //void Start()
-    //{
-    //    if (partDinamic == null & partIdle == null) { print($"Не установлен ParticleSystem в ParticleDrive"); }
-    //}
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             if (partIdle != null) { isRun = true; }
             else if (partDinamic != null) { isRun = true; }
@@ -71,7 +66,7 @@ public class ParticleControllerMovePlayer : GetInputPlayer
     {
         if (IsDead) { return; }
 
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

@@ -5,7 +5,7 @@ public class LogicVictoryPanel : LogicPanel
 {
     [SerializeField] private SceneSetting sceneSetting;
     private AudioSource audioSourceMuz;
-    //
+
     [Header("Подключим ScriptableObjectStstistic")]
     [SerializeField] private ScriptableObjectStstistic scriptableObjectStstistic;
     [Header("Подключим текстовое поле")]
@@ -18,7 +18,7 @@ public class LogicVictoryPanel : LogicPanel
         audioSourceMuz.clip = AudioSetting.AudioClipGnd;
         audioSourceMuz.volume = (AudioSetting.MuzVol);
         audioSourceMuz.Play();
-        //
+
         statistic = scriptableObjectStstistic.LoadStat();
         rezultText.text = $"{dopText} \n{statistic.CountCost}";
     }

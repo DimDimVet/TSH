@@ -6,7 +6,6 @@ public class MoveTurnPlayer : GetInputPlayer
     [SerializeField] private TurnSettings turnSettings;
     [SerializeField] GameObject objectMaus;
     private Mode mode = Mode.Turn;
-    //кэш
     private Construction cameraMain;
     private Construction parentObject, tempTarget;
     private Vector3 currentMousePosition;
@@ -20,20 +19,19 @@ public class MoveTurnPlayer : GetInputPlayer
     void Start()
     {
         if (turnSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); }
-        //GetIsRun();
         GetSetting();
     }
     private void GetSetting()
     {
-        speedTurn = turnSettings.SpeedTurn;//
+        speedTurn = turnSettings.SpeedTurn;
         turnSettings.IsUpDate = false;
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             parentObject = OnGetPlayer();
-            cameraMain = GetCamera();//получаем данные из листа
+            cameraMain = GetCamera();
             if (cameraMain.CameraComponent != null & parentObject.Hash != 0) { isRun = true; }
             else { isRun = false; return; }
 
@@ -44,7 +42,7 @@ public class MoveTurnPlayer : GetInputPlayer
         IsDead = parentObject.HealtPlayer.IsDead;
         if (isRun)
         {
-            if (/*InputData.MouseRightButton != 0 &&*/ InputData.ModeAction == mode)
+            if (InputData.ModeAction == mode)
             {
                 currentMousePosition = (Vector2)InputData.MousePosition;
                 ray = cameraMain.CameraComponent.ScreenPointToRay(currentMousePosition);//луч...до мышки
@@ -96,7 +94,7 @@ public class MoveTurnPlayer : GetInputPlayer
         {
             GetSetting();
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

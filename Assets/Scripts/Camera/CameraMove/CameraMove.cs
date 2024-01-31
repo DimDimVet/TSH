@@ -14,7 +14,6 @@ public class CameraMove : MonoBehaviour
     void Start()
     {
         GetSetting();
-        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void GetSetting()
@@ -26,11 +25,11 @@ public class CameraMove : MonoBehaviour
         cameraTransf = this.gameObject.transform;
         if (cameraTarget != null) { cameraTarget.transform.position = setVector; }
     }
-    private void GetIsRun()//получаем ращрешение по результату данных из листа
+    private void GetIsRun()
     {
         if (!isRun)
         {
-            player = GetPlayer();//получаем данные из листа
+            player = GetPlayer();
             if (player.MovePlayer != null)
             {
                 cameraTarget = new GameObject("cameraTarget");
@@ -51,7 +50,7 @@ public class CameraMove : MonoBehaviour
                                                  t: Time.deltaTime * speedMove);
             var currRot = Quaternion.LookRotation(cameraTarget.transform.position - cameraTransf.position);
             cameraTransf.rotation = Quaternion.Lerp(a: cameraTransf.rotation,
-                                                    b: currRot, 
+                                                    b: currRot,
                                                     t: Time.deltaTime * speedMove);
             cameraTransf.LookAt(player.Transform.position);
         }
@@ -63,7 +62,7 @@ public class CameraMove : MonoBehaviour
             GetSetting();
         }
 
-        if (!isRun)//если нет разрешения, пытаемся подключать лист
+        if (!isRun)
         {
             GetIsRun();
         }

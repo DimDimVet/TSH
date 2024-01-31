@@ -4,13 +4,10 @@ using static EventBus;
 public class TargetRotateEnemy : MonoBehaviour
 {
     [SerializeField] private GameObject parentObject;
-    //êýø
     private Transform defaultTransform;
     public Transform DefaultTransform { get { return defaultTransform; } }
-
     private Transform target;
     public Transform Target { get { return target; } }
-
     private int thisHash;
     public int ThisHash { get { return thisHash; } }
     private Construction thisObject;
@@ -48,8 +45,8 @@ public class TargetRotateEnemy : MonoBehaviour
             {
                 for (int y = 0; y < players.Length; y++)
                 {
-                    if (players[y].Hash != 0){CreatTarget(players[y]);}
-                    else{ClearTarget();}
+                    if (players[y].Hash != 0) { CreatTarget(players[y]); }
+                    else { ClearTarget(); }
                 }
             }
         }
@@ -61,6 +58,5 @@ public class TargetRotateEnemy : MonoBehaviour
     private void ClearTarget()
     {
         target = null;
-        //target = Vector3.zero;
     }
 }

@@ -9,13 +9,13 @@ public class BullEnemyAvto : Bullet
     private bool isDeadTarget;
     public override void ReternBullet()
     {
-        IsReternBull(this.gameObject.GetHashCode(),hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance, _damage, Hit);
+        IsReternBull(this.gameObject.GetHashCode(), hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance, _damage, Hit);
     }
     public override void SetDamage(int hash)
     {
         _damage = DamagRandom();
         hashObjectDamagAcceptance = hash;
-        GetDamage(hashObjectDamagAcceptance, _damage,TypeBullet);
+        GetDamage(hashObjectDamagAcceptance, _damage, TypeBullet);
         isKillObjectAcceptance = KillObjectAcceptance(hashObjectDamagAcceptance);
     }
     private bool KillObjectAcceptance(int hashObjectDamagAcceptance)

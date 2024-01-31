@@ -21,13 +21,12 @@ public class CountEnemy : MonoBehaviour
     }
     private void GetSetting()
     {
-        //
     }
     private void GetIsRun()
     {
         if (!isRun)
         {
-            enemys = GetEnemys();//получаем данные из листа
+            enemys = GetEnemys();
             if (enemys != null)
             {
                 isRun = true;
@@ -57,10 +56,6 @@ public class CountEnemy : MonoBehaviour
         if (!isRun)
         {
             GetIsRun();
-        }
-        else
-        {
-            //
         }
     }
 }

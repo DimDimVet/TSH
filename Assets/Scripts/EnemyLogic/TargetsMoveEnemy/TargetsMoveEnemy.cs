@@ -5,11 +5,10 @@ using static EventBus;
 public class TargetsMoveEnemy : MonoBehaviour
 {
     [SerializeField] private Transform[] defaultPositions;
-    //êýø
     private Vector3[] defaultPositionsVector;
     public Vector3[] DefaultPositionsVector { get { return defaultPositionsVector; } }
     private Vector3[] targets;
-    public Vector3[] Targets { get { return targets; }}
+    public Vector3[] Targets { get { return targets; } }
     private int thisHash;
     private Construction thisObject;
     public Construction ThisObject { get { return thisObject; } }
@@ -45,7 +44,7 @@ public class TargetsMoveEnemy : MonoBehaviour
         else
         {
             defaultPositions = new Transform[] { gameObject.transform };
-            defaultPositionsVector=new Vector3[] { defaultPositions[0].position };
+            defaultPositionsVector = new Vector3[] { defaultPositions[0].position };
         }
     }
     private void GetTarget(Construction[] players, Construction[] grupEnemys)
@@ -56,7 +55,7 @@ public class TargetsMoveEnemy : MonoBehaviour
             {
                 for (int y = 0; y < players.Length; y++)
                 {
-                    if (players[y].Hash != 0 & players[y].HealtPlayer!=null)
+                    if (players[y].Hash != 0 & players[y].HealtPlayer != null)
                     {
                         CreatTarget(players[y]);
                     }
@@ -78,7 +77,7 @@ public class TargetsMoveEnemy : MonoBehaviour
                 {
                     return;
                 }
-                if (targets[i].magnitude==0)
+                if (targets[i].magnitude == 0)
                 {
                     targets[i] = objectTarget.Transform.position;
                     return;
@@ -90,12 +89,15 @@ public class TargetsMoveEnemy : MonoBehaviour
         }
         else
         {
-            targets = new Vector3[] { objectTarget.Transform.position};
+            targets = new Vector3[] { objectTarget.Transform.position };
         }
     }
     private void ClearTarget()
     {
-        Array.Clear(targets, 0, targets.Length);
-        if (targets.Length > 200 ) { Array.Resize(ref targets, 1); }
+        if(targets!=null)
+        {
+            Array.Clear(targets, 0, targets.Length);
+            if (targets.Length > 200) { Array.Resize(ref targets, 1); }
+        }
     }
 }

@@ -48,8 +48,8 @@ public class LogicGridCharging : MonoBehaviour
     }
     private void OffUIElement(bool isOffUIElement)
     {
-        if (grid!=null) { grid.gameObject.SetActive(!isOffUIElement); }
-       
+        if (grid != null) { grid.gameObject.SetActive(!isOffUIElement); }
+
     }
     private void Select(Mode mode)
     {

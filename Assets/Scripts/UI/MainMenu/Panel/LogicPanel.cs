@@ -4,7 +4,7 @@ using static EventBus;
 
 public class LogicPanel : MonoBehaviour
 {
-    public AudioSetting AudioSetting { get { return audioSetting; } set{ audioSetting = value; } }
+    public AudioSetting AudioSetting { get { return audioSetting; } set { audioSetting = value; } }
     [SerializeField] private AudioSetting audioSetting;
 
     [Header("Кнопка Назад")]
@@ -22,7 +22,7 @@ public class LogicPanel : MonoBehaviour
         }
         else { print($"Не заполнены поля в {gameObject.name}"); return; }
 
-        if (audioSetting != null)//
+        if (audioSetting != null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = audioSetting.AudioClipButton;
@@ -47,11 +47,9 @@ public class LogicPanel : MonoBehaviour
     }
     public virtual void SetEventButton()
     {
-        //
     }
     public virtual void SetPanel()
     {
-        //
     }
     public void AudioClick()
     {

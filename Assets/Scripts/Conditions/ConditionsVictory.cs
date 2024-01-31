@@ -16,7 +16,7 @@ public class ConditionsVictory : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             if (thisObject.Hash != 0) { isRun = true; }
             else { isRun = false; GetSet(); }
@@ -32,7 +32,7 @@ public class ConditionsVictory : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

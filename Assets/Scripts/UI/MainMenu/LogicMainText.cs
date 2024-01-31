@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using static EventBus;
-using static UnityEngine.PlayerLoop.PostLateUpdate;
 
 public class LogicMainText : MonoBehaviour
 {

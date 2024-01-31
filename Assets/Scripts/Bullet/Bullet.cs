@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using static EventBus;
 
@@ -39,7 +38,6 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         if (bullSettings == null) { print($"Не установлен {bullSettings.name} в Bullet"); }
-        //GetIsRun();
         GetSetting();
     }
     private void OnEnable()
@@ -63,7 +61,7 @@ public class Bullet : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             isRun = true;
         }
@@ -75,7 +73,6 @@ public class Bullet : MonoBehaviour
     }
     public virtual void IsDeadTargetObject(int thisHash, bool isDead, int costObject)
     {
-        //
     }
     private bool DetectObject()
     {
@@ -104,7 +101,6 @@ public class Bullet : MonoBehaviour
     }
     public virtual void SetDamage(int hash)
     {
-        //
     }
     private void OnDrawGizmosSelected()
     {
@@ -135,7 +131,7 @@ public class Bullet : MonoBehaviour
             body.velocity = transform.forward * speedBullet;
             isBullKill = true;
             if (ConnectObject())
-            { ReternBullet();}
+            { ReternBullet(); }
             if (KillTimeBullet())
             { ReternBullet(); }
         }
@@ -151,11 +147,9 @@ public class Bullet : MonoBehaviour
     }
     public virtual void ReternBullet()
     {
-        //
     }
     public virtual void ShootSleeve()
     {
-        //
     }
     private void FixedUpdate()
     {
@@ -164,7 +158,7 @@ public class Bullet : MonoBehaviour
             GetSetting();
             bullSettings.IsUpDate = false;
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

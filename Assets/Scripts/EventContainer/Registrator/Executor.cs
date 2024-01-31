@@ -1,6 +1,5 @@
 using Processing.Masiv;
 using System.Collections.Generic;
-using UnityEngine;
 using static EventBus;
 
 public class Executor : ListDataBase
@@ -72,7 +71,7 @@ public class Executor : ListDataBase
     //Найдем и отдадим объекты-Enemys в списке
     private Construction[] SetEnemys()
     {
-        Masiv<Construction> tempMassiv=new Masiv<Construction>();
+        Masiv<Construction> tempMassiv = new Masiv<Construction>();
         listData = GetData();
         for (int i = 0; i < listData.Count; i++)
         {

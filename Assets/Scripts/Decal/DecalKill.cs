@@ -21,8 +21,8 @@ public class DecalKill : MonoBehaviour
         }
         else
         {
-            IsReternBull(this.gameObject.GetHashCode(),hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance, _damage, hit);
-            time = 0; 
+            IsReternBull(this.gameObject.GetHashCode(), hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance, _damage, hit);
+            time = 0;
         }
     }
 }

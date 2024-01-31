@@ -3,7 +3,6 @@ using static EventBus;
 
 public class AudioControllerShoot : MonoBehaviour
 {
-    //êýø
     [SerializeField] private AudioSetting audioSetting;
     [SerializeField] private AudioGunSetting audioGunSetting;
     public AudioGunSetting AudioGunSetting { get { return audioGunSetting; } set { value = audioGunSetting; } }
@@ -41,11 +40,9 @@ public class AudioControllerShoot : MonoBehaviour
     }
     public virtual void SetEventOnEneble()
     {
-        //
     }
     public virtual void SetEventOnDisable()
     {
-        //
     }
     private void GetIsRun()
     {

@@ -29,7 +29,7 @@ public class ParticleDead : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             if (partDead != null) { isRun = true; }
             else { isRun = false; print($"ParticleDead не получила Particle"); }
@@ -63,12 +63,12 @@ public class ParticleDead : MonoBehaviour
                 isPart = true;
             }
         }
-        
+
     }
     private void FixedUpdate()
     {
 
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

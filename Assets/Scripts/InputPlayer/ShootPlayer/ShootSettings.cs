@@ -12,8 +12,8 @@ public class ShootSettings : ScriptableObject
 
     [Header("Тип управления(Player - true)")]
     public bool IsInputPlayer = false;
-    
+
     [Header("Обновить")]
     public bool IsUpDate = false;
-    
+
 }

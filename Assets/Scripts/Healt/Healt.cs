@@ -36,11 +36,9 @@ public abstract class Healt : MonoBehaviour
     }
     public virtual void SetEventsEnable()
     {
-        //
     }
     public virtual void SetEventsDisable()
     {
-        //
     }
     private void GetSetting()
     {
@@ -51,7 +49,7 @@ public abstract class Healt : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             thisObject = GetObjectHash(thisHash);
             if (settingsHealt != null & thisObject.Hash != 0) { isRun = true; }
@@ -74,7 +72,7 @@ public abstract class Healt : MonoBehaviour
         }
 
     }
-    public void ControlDamage(int getHash, int damage, TypeBullet typeBullet)//проблема
+    public void ControlDamage(int getHash, int damage, TypeBullet typeBullet)
     {
         if (isDead) { return; }
         if (thisObjects == null) { thisObjects = SetChildrensObject(); }
@@ -82,9 +80,9 @@ public abstract class Healt : MonoBehaviour
         for (int y = 0; y < typeBullets.Length; y++)
         {
 
-            if (typeBullets[y] == typeBullet)//ограничем по типу пули
+            if (typeBullets[y] == typeBullet)
             {
-                tempHash= ExecutorDamage(getHash, damage);
+                tempHash = ExecutorDamage(getHash, damage);
                 ControlHashDamage(tempHash);
             }
         }
@@ -97,7 +95,7 @@ public abstract class Healt : MonoBehaviour
             {
                 healtCount -= damage;
                 GetUIDamage(thisHash, healtCount);
-                if (healtCount <= 0){isDead = true;IsDead(thisHash, isDead, costObject);return thisHash;}
+                if (healtCount <= 0) { isDead = true; IsDead(thisHash, isDead, costObject); return thisHash; }
             }
         }
         return 0;
@@ -121,7 +119,7 @@ public abstract class Healt : MonoBehaviour
     void Update()
     {
         if (isDead) { return; }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

@@ -3,7 +3,6 @@ using static EventBus;
 
 public class ParticleControllerShoot : MonoBehaviour
 {
-    //кэш
     [SerializeField] private ParticleSystem partShoot;
     public ParticleSystem PartSht { get { return partShoot; } set { value = partShoot; } }
 
@@ -26,12 +25,9 @@ public class ParticleControllerShoot : MonoBehaviour
     }
     public virtual void SetEventOnEneble()
     {
-        //OnIsActivGunPlayerShoot += PartShoot;
-        //partShoot.Stop();
     }
     public virtual void SetEventOnDisable()
     {
-        //OnIsActivGunPlayerShoot -= PartShoot;
     }
 
     private void GetIsRun()
@@ -56,7 +52,6 @@ public class ParticleControllerShoot : MonoBehaviour
     }
     private void RunParticle()
     {
-
     }
     private void FixedUpdate()
     {

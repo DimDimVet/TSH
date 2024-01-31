@@ -7,7 +7,6 @@ public class LogicButtonMenu : MonoBehaviour
 {
     [SerializeField] private AudioSetting audioSetting;
     [SerializeField] private SceneSetting sceneSetting;
-    //
     [Header("Кнопка Игра")]
     [SerializeField] private Button gameButton;
     [Header("Указать индекс сцены игры")]
@@ -24,7 +23,7 @@ public class LogicButtonMenu : MonoBehaviour
 
     private void Start()
     {
-        if (sceneSetting!=null & gameButton != null & settButton != null &
+        if (sceneSetting != null & gameButton != null & settButton != null &
             rezultButton != null & exitButton != null)
         {
             SetEventButton();
@@ -39,7 +38,7 @@ public class LogicButtonMenu : MonoBehaviour
             audioSource.volume = (audioSetting.EfectVol);
         }
         if (sceneSetting != null) { gameSceneIndex = sceneSetting.GameSceneIndex; }
-        else { print($"Не заполнен индекс сцены");}
+        else { print($"Не заполнен индекс сцены"); }
     }
     private void OnEnable()
     {

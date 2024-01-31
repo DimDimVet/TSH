@@ -54,7 +54,7 @@ public class LogicSettLvlPanel : LogicPanel
     private void AudioSet()
     {
         //Audio
-        AudioSetting.GetAudioParametr(/*out muzVol, out effectVol*/);
+        AudioSetting.GetAudioParametr();
         muzVol = AudioSetting.MuzVol;
         effectVol = AudioSetting.EfectVol;
 
@@ -90,7 +90,6 @@ public class LogicSettLvlPanel : LogicPanel
         AudioSetting.SetAudioParametr(newMuz, newEffect);
         UpDateAudioParametr();
     }
-    //
     private Resolution[] CreatResolution(Resolution intObject, Resolution[] massivObject)
     {
         if (massivObject != null)
@@ -106,7 +105,6 @@ public class LogicSettLvlPanel : LogicPanel
             return massivObject;
         }
     }
-    //
     private void Update()
     {
         if (muzSlider.value != muzVol || effectSlider.value != effectVol)

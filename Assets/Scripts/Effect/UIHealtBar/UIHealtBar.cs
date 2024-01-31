@@ -19,7 +19,6 @@ public class UIHealtBar : MonoBehaviour
         cameraObject = GetCamera();
         currentCamera = cameraObject.CameraComponent;
         canvas.worldCamera = currentCamera;
-        //
         thisHash = trackingObject.GetHashCode();
         thisObject = GetObjectHash(thisHash);
         if (thisObject.HealtEnemy != null)
@@ -51,7 +50,7 @@ public class UIHealtBar : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             if (slider != null & currentCamera != null & trackingObject != null) { isRun = true; }
             else { isRun = false; GetSet(); }
@@ -59,7 +58,7 @@ public class UIHealtBar : MonoBehaviour
     }
     void Update()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

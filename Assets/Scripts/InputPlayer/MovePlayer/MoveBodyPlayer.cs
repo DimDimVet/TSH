@@ -1,19 +1,14 @@
 using UnityEngine;
-using static EventBus;
 
 public class MoveBodyPlayer : GetInputPlayer
 {
     [SerializeField] private MoveSettings moveSettings;
-    //кэш движений
-    private float speedForward, speedBack/*, speedTurn*/;
+    private float speedForward, speedBack;
     private float weight;
     private Rigidbody rigidbodyGameObject;
-    //private Vector3 newPosition;
     private Vector3 eulerAngleVelocity;
     private Quaternion deltaRotation;
     private bool isRun = false;
-
-    //float kof;
 
     void Start()
     {
@@ -50,17 +45,17 @@ public class MoveBodyPlayer : GetInputPlayer
 
     private void Move()
     {
-        
+
         if (isRun)
         {
             //кнопки и канвас
-            if (InputData.Move.y > 0 )
+            if (InputData.Move.y > 0)
             {
                 rigidbodyGameObject.velocity = transform.forward * speedForward;
                 //newPosition = transform.position + (transform.forward) * speedForward * Time.deltaTime;
                 //gameObject.transform.position = newPosition;
             }
-            if (InputData.Move.y < 0 )
+            if (InputData.Move.y < 0)
             {
                 rigidbodyGameObject.velocity = -transform.forward * speedBack;
                 //newPosition = transform.position + (-transform.forward) * speedBack * Time.deltaTime;

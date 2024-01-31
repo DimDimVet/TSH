@@ -4,7 +4,6 @@ using static EventBus;
 public class MoveTurnEnemy : TargetRotateEnemy
 {
     [SerializeField] private TurnSettings turnSettings;
-    //кэш
     private Vector3 targetDirection;
     private Quaternion targetRotation;
     private float speedTurn, maxOffSetX;
@@ -18,11 +17,11 @@ public class MoveTurnEnemy : TargetRotateEnemy
     private void GetSetting()
     {
         speedTurn = turnSettings.SpeedTurn;
-        maxOffSetX= turnSettings.MaxOffSetX;
+        maxOffSetX = turnSettings.MaxOffSetX;
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             if (ThisObject.NavMeshAgent != null) { isRun = true; }
             else { isRun = false; SetTargetDefault(); }
@@ -32,14 +31,14 @@ public class MoveTurnEnemy : TargetRotateEnemy
     {
         this.gameObject.transform.rotation =
             Quaternion.Lerp(gameObject.transform.rotation, DefaultTransform.rotation, Time.deltaTime * speedTurn);
-        IsReadinessShoot(ThisHash,false);
+        IsReadinessShoot(ThisHash, false);
     }
     private void StepTarget()
     {
         if (Target == null) { DefaultPosition(); return; }
         targetDirection = Target.position - gameObject.transform.position;
         targetRotation = Quaternion.LookRotation(targetDirection);
-        if (targetRotation.x> maxOffSetX){targetRotation.x = maxOffSetX;}
+        if (targetRotation.x > maxOffSetX) { targetRotation.x = maxOffSetX; }
         targetRotation.z = 0;
         this.gameObject.transform.rotation =
             Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * speedTurn);
@@ -61,7 +60,7 @@ public class MoveTurnEnemy : TargetRotateEnemy
             GetSetting();
             turnSettings.IsUpDate = false;
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

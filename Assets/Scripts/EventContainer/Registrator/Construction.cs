@@ -2,7 +2,7 @@ using Processing;
 using UnityEngine;
 using UnityEngine.AI;
 
-public struct Construction: IConstructor
+public struct Construction : IConstructor
 {
     public int Hash { get; set; }
     public int ParentHashObject;

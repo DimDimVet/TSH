@@ -5,6 +5,6 @@ public class BullEnemyTankSleeve : Bullet
     private bool isKillObjectAcceptance = false;
     public override void ShootSleeve()
     {
-        IsReternBull(this.gameObject.GetHashCode(), hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance,_damage, Hit);
+        IsReternBull(this.gameObject.GetHashCode(), hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance, _damage, Hit);
     }
 }

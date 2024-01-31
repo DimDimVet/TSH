@@ -1,30 +1,24 @@
 using UnityEngine;
-using static EventBus;
 
 public class Shoot : GetInputPlayer
 {
     [SerializeField] private ShootSettings shootSettings;
-    //кэш
-    //private int thisHash;
     public bool IsClipReLoad { get { return isClipReLoad; } }
     public int CurrentCountClip { get { return currentCountClip; } set { currentCountClip = value; } }
-
     private float currentTime, defaultTime, currentTimeClip, defaultTimeClip;
     private int maxCountClip, currentCountClip;
-    private bool isBullReLoad = false, isClipReLoad=false, isTrigerSleeve = true, isInputPlayer,isScriptAction=false;
+    private bool isBullReLoad = false, isClipReLoad = false, isTrigerSleeve = true, isInputPlayer, isScriptAction = false;
     public bool IsScriptAction { get { return isScriptAction; } set { isScriptAction = value; } }
     private bool isRun = false;
 
     void Start()
     {
-        if (shootSettings == null) { print($"Не установлен Settings в ShootPlayer");}
-        //GetIsRun();
+        if (shootSettings == null) { print($"Не установлен Settings в ShootPlayer"); }
         GetSetting();
         Set();
     }
     public virtual void Set()
     {
-        //
     }
     private void GetSetting()
     {
@@ -38,7 +32,7 @@ public class Shoot : GetInputPlayer
             currentTimeClip = defaultTime;
             defaultTimeClip = currentTimeClip;
         }
-        else 
+        else
         {
             currentTimeClip = shootSettings.CurrentTimeClip;
             defaultTimeClip = currentTimeClip;
@@ -49,9 +43,9 @@ public class Shoot : GetInputPlayer
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
-            if (ThisHash != 0) { isRun = true;  }
+            if (ThisHash != 0) { isRun = true; }
             else { ThisHash = this.gameObject.GetHashCode(); }
         }
     }
@@ -76,7 +70,7 @@ public class Shoot : GetInputPlayer
     }
     private bool ReLoadClip()
     {
-        if (currentCountClip<=0)
+        if (currentCountClip <= 0)
         {
             currentTimeClip -= Time.deltaTime;
             if (currentTimeClip <= 0)
@@ -84,7 +78,7 @@ public class Shoot : GetInputPlayer
                 currentTimeClip = defaultTimeClip; isClipReLoad = false; currentCountClip = maxCountClip;
                 return true;
             }
-            isClipReLoad=true;
+            isClipReLoad = true;
             return false;
         }
         return true;
@@ -113,11 +107,9 @@ public class Shoot : GetInputPlayer
     }
     public virtual void ShootBullet()
     {
-        //
     }
     public virtual void ShootBulletSleeve()
     {
-        //
     }
     private void FixedUpdate()
     {
@@ -127,7 +119,7 @@ public class Shoot : GetInputPlayer
         {
             GetSetting();
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

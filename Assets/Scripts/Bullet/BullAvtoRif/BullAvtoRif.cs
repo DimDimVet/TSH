@@ -9,7 +9,7 @@ public class BullAvtoRif : Bullet
     private int hashTarget;
     private int tempHash;
     private bool isDeadTarget;
-    
+
     public override void ReternBullet()
     {
         IsReternBull(this.gameObject.GetHashCode(), hashObjectDamagAcceptance, costTargetObject, isKillObjectAcceptance, _damage, Hit);
@@ -17,7 +17,7 @@ public class BullAvtoRif : Bullet
     public override void SetDamage(int hash)
     {
         _damage = DamagRandom();
-        GetDamage(hash, _damage,TypeBullet);
+        GetDamage(hash, _damage, TypeBullet);
         tempHash = ControlHash;
 
         if (tempHash != 0) { hashObjectDamagAcceptance = tempHash; }

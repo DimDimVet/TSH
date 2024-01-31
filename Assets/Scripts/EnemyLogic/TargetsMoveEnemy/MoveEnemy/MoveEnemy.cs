@@ -4,7 +4,6 @@ public class MoveEnemy : TargetsMoveEnemy
 {
     [SerializeField] private MoveEnemySettings moveEnemySettings;
     private bool NotActionClass = false;
-    //кэш
     private float speedMove, speedAngle, acceleration, stopDistance;
     private int countTarget = 0, countTargetDefault = 0;
     private Vector3 currentTarget;
@@ -13,9 +12,8 @@ public class MoveEnemy : TargetsMoveEnemy
     void Start()
     {
         if (moveEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); NotActionClass = true; }
-        if (NotActionClass) { return; }//Проверка разрешнения
+        if (NotActionClass) { return; }
         GetSetting();
-        //GetIsRun();
         SetTargetDefault();
     }
     private void GetSetting()
@@ -27,7 +25,7 @@ public class MoveEnemy : TargetsMoveEnemy
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             if (ThisObject.NavMeshAgent != null) { isRun = true; SetNavComponent(); }
             else { isRun = false; SetTargetDefault(); }
@@ -86,14 +84,14 @@ public class MoveEnemy : TargetsMoveEnemy
     }
     private void FixedUpdate()
     {
-        if (IsDead) { ThisObject.NavMeshAgent.isStopped = true; return; }//Проверка разрешнения
+        if (IsDead) { ThisObject.NavMeshAgent.isStopped = true; return; }
 
         if (moveEnemySettings.IsUpDate)
         {
             GetSetting();
             moveEnemySettings.IsUpDate = false;
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

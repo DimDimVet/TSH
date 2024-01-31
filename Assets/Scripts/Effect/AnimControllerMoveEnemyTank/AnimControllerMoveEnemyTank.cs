@@ -4,7 +4,6 @@ using static EventBus;
 public class AnimControllerMoveEnemyTank : MonoBehaviour
 {
     [SerializeField] private AnimControllerMoveEnemyTankSettings animSettings;
-    //кэш
     private Animator animator;
     private float currentVelocity;
     private float speedAnim;
@@ -15,7 +14,7 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
     private bool isRun = false, isDead = false;
     void Start()
     {
-        if (animSettings == null) { print($"Не установлен Settings в AnimControllerMoveEnemyTank");}
+        if (animSettings == null) { print($"Не установлен Settings в AnimControllerMoveEnemyTank"); }
         GetIsRun();
         GetSetting();
     }
@@ -42,14 +41,14 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             animator = gameObject.GetComponent<Animator>();
             if (animator != null) { isRun = true; }
             else { isRun = false; print($"{gameObject.name} не получила Animator"); }
 
             thisHash = this.gameObject.GetHashCode();
-            thisObject = GetObjectHash(thisHash);//получаем данные из листа
+            thisObject = GetObjectHash(thisHash);
             if (thisObject.NavMeshAgent != null) { isRun = true; }
             else { isRun = false; print($"{gameObject.name} не получил LogicMoveEnemy"); }
         }
@@ -60,7 +59,7 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
         {
             if (isDead) { currentVelocity = 0f; }
             else { currentVelocity = Mathf.Abs(thisObject.NavMeshAgent.velocity.magnitude); }
-            
+
             if (currentVelocity > 0.1f)
             {
                 animator.SetFloat(tankEnemyTrackForward, 1);
@@ -73,12 +72,11 @@ public class AnimControllerMoveEnemyTank : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //if (isDead) { return; }
         if (animSettings.IsUpDate)
         {
             GetSetting();
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

@@ -13,7 +13,7 @@ public class BulletSettings : ScriptableObject
     public float KillTime = 5f;
     [Header("Дамаг")]
     public float Damage = 1f;
-    [Header("Процент критического дамага"), Range(0,100)]
+    [Header("Процент критического дамага"), Range(0, 100)]
     public float PercentDamage = 50f;
 
     [Header("Обновить")]

@@ -3,7 +3,6 @@ using static EventBus;
 
 public class ParticleControllerMoveEnemyTank : MonoBehaviour
 {
-    //кэш
     [SerializeField] private ParticleSystem partDinamic, partIdle;
     private Construction thisObject;
     private int thisHash;
@@ -32,14 +31,14 @@ public class ParticleControllerMoveEnemyTank : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             if (partIdle != null) { isRun = true; }
             else if (partDinamic != null) { isRun = true; }
             else { isRun = false; print($"ParticleControllerPlayer не получила Particle"); }
 
             thisHash = this.gameObject.GetHashCode();
-            thisObject = GetObjectHash(thisHash);//получаем данные из листа
+            thisObject = GetObjectHash(thisHash);
             if (thisObject.NavMeshAgent != null) { isRun = true; }
             else { isRun = false; print($"{gameObject.name} не получил LogicMoveEnemy"); }
         }
@@ -92,7 +91,7 @@ public class ParticleControllerMoveEnemyTank : MonoBehaviour
     {
         if (isDead) { return; }
 
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

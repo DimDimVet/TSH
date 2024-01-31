@@ -12,7 +12,6 @@ public class SceneSetting : ScriptableObject
     public int VictorySceneIndex = 2;
     [Header("OverSceneIndex")]
     public int OverSceneIndex = 3;
-    //
     public void ReturnMainMenu()
     {
         SceneManager.LoadScene(MenuSceneIndex);

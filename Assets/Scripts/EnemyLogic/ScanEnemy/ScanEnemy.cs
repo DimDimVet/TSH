@@ -1,12 +1,10 @@
 using Processing.Masiv;
-using System;
 using UnityEngine;
 using static EventBus;
 
 public class ScanEnemy : MonoBehaviour
 {
     [SerializeField] private ScanEnemySettings scanEnemySettings;
-    //кэш
     private int thisHash;
     private Construction thisObject;
     private float diametrCollider, kfCollider;
@@ -18,13 +16,12 @@ public class ScanEnemy : MonoBehaviour
     private Construction[] players, enemys;
     private Masiv<Construction> _masiv = new Masiv<Construction>();
 
-    private bool isRun = false,isDead = false;
+    private bool isRun = false, isDead = false;
 
     void Start()
     {
         if (scanEnemySettings == null) { print($"Не установлен Settings в {gameObject.name}"); }
         GetSetting();
-        //GetIsRun();
         SetThisObject();
     }
     private void OnEnable()
@@ -47,9 +44,9 @@ public class ScanEnemy : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
-            if (scanEnemySettings != null) { isRun = true;  }
+            if (scanEnemySettings != null) { isRun = true; }
             else { isRun = false; print($"Не установлен scanEnemySettings в {gameObject.name}"); }
         }
     }
@@ -63,7 +60,7 @@ public class ScanEnemy : MonoBehaviour
     private void DetectObject()
     {
         hitColl = Physics.OverlapSphere(this.gameObject.transform.position, diametrCollider);
-        if (refLength == hitColl.Length) { return; }
+        if (refLength == hitColl.Length ) { return; }
         ScanObject(hitColl);
         refLength = hitColl.Length;
     }
@@ -106,7 +103,6 @@ public class ScanEnemy : MonoBehaviour
                 _masiv.Clean(players);
             }
         }
-        //
         for (int i = 0; i < objects.Length; i++)
         {
             if (objects[i].HealtEnemy != null)
@@ -120,45 +116,6 @@ public class ScanEnemy : MonoBehaviour
         }
         EventTarget();
     }
-    //private void Clean(Construction[] massivObject)
-    //{
-    //    if (massivObject != null)
-    //    {
-    //        Array.Clear(massivObject, 0, massivObject.Length);
-    //        return;
-    //    }
-    //}
-    //private Construction[] Creat(Construction intObject, Construction[] massivObject)
-    //{
-    //    bool isStop = false;
-    //    if (massivObject != null)
-    //    {
-    //        for (int i = 0; i < massivObject.Length; i++)
-    //        {
-    //            if (!isStop)
-    //            {
-    //                if (massivObject[i].Hash == 0)
-    //                {
-    //                    massivObject[i] = intObject;
-    //                    isStop = true;
-    //                }
-    //            }
-    //        }
-    //        if (!isStop)
-    //        {
-    //            int newLength = massivObject.Length + 1;
-    //            Array.Resize(ref massivObject, newLength);
-    //            massivObject[newLength - 1] = intObject;
-    //            return massivObject;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        massivObject = new Construction[] { intObject };
-    //        return massivObject;
-    //    }
-    //    return massivObject;
-    //}
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -176,7 +133,7 @@ public class ScanEnemy : MonoBehaviour
             GetSetting();
             scanEnemySettings.IsUpDate = false;
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

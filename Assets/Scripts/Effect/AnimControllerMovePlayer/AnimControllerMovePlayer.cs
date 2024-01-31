@@ -3,7 +3,6 @@ using UnityEngine;
 public class AnimControllerPlayer : GetInputPlayer
 {
     [SerializeField] private AnimControllerMovePlayerSettings animSettings;
-    //кэш
     private Animator animator;
     private float speedAnim;
     private string tankPlayerTrackRight, tankPlayerTrackForward, tankPlayerTrackLeft, tankPlayerTrackBack;
@@ -11,7 +10,6 @@ public class AnimControllerPlayer : GetInputPlayer
     void Start()
     {
         if (animSettings == null) { print($"Не установлен Settings в MoveTurnPlayer"); }
-        //GetIsRun();
         GetSetting();
     }
     private void GetSetting()
@@ -24,7 +22,7 @@ public class AnimControllerPlayer : GetInputPlayer
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             animator = gameObject.GetComponent<Animator>();
             if (animator != null) { isRun = true; }
@@ -35,7 +33,6 @@ public class AnimControllerPlayer : GetInputPlayer
     {
         if (isRun)
         {
-            //кнопки и канвас
             if (InputData.Move.y > 0)
             {
                 animator.SetFloat(tankPlayerTrackForward, speedAnim);
@@ -79,7 +76,7 @@ public class AnimControllerPlayer : GetInputPlayer
         {
             GetSetting();
         }
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

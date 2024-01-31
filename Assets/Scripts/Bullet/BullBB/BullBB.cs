@@ -16,11 +16,11 @@ public class BullBB : Bullet
     public override void SetDamage(int hash)
     {
         _damage = DamagRandom();
-         GetDamage(hash, _damage, TypeBullet);
+        GetDamage(hash, _damage, TypeBullet);
         tempHash = ControlHash;
 
-        if (tempHash != 0) { hashObjectDamagAcceptance = tempHash;  }
-        else { hashObjectDamagAcceptance = hash;  }//
+        if (tempHash != 0) { hashObjectDamagAcceptance = tempHash; }
+        else { hashObjectDamagAcceptance = hash; }
         isKillObjectAcceptance = KillObjectAcceptance(hashObjectDamagAcceptance);
     }
     private bool KillObjectAcceptance(int hashObjectDamagAcceptance)

@@ -43,15 +43,15 @@ public class SceneSelector : MonoBehaviour
     }
     private void GetIsRun()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             if (thisObject.Hash != 0) { isRun = true; }
-            else { isRun = false; GetSet();  }
+            else { isRun = false; GetSet(); }
         }
     }
     private void FixedUpdate()
     {
-        if (!isRun)//если общее разрешение на запуск false
+        if (!isRun)
         {
             GetIsRun();
             return;

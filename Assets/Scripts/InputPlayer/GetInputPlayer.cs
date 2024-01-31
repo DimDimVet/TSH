@@ -8,14 +8,13 @@ public enum Mode
 }
 public class GetInputPlayer : MonoBehaviour
 {
-    //Назначим в массив вариации режимов
     private Mode[] modes = { Mode.Turn, Mode.AvtoRif };
     private int countMode = 0;
     private bool isTrigerClick = true;
 
-    private InputData inputData;//кэш структура хранения всех данных ввода
-    public InputData InputData { get { return inputData; } /*set { inputData = value; }*/ }
-    private InputPlayer inputActions;//кэш MapInput
+    private InputData inputData;
+    public InputData InputData { get { return inputData; } }
+    private InputPlayer inputActions;
     public int ThisHash { get { return thisHash; } set { thisHash = value; } }
     public bool IsDead { get { return isDead; } set { isDead = value; } }
     private int thisHash;
@@ -65,7 +64,6 @@ public class GetInputPlayer : MonoBehaviour
                 inputActions.UIMap.WASDUI.performed += contex => inputData.Move = contex.ReadValue<Vector2>();
                 inputActions.UIMap.WASDUI.canceled += contex => inputData.Move = contex.ReadValue<Vector2>();
             }
-            //запустим 
             inputActions.Enable();
         }
         else
@@ -75,7 +73,6 @@ public class GetInputPlayer : MonoBehaviour
     }
     private void OnDisable()
     {
-        //остановим 
         inputActions.Disable();
         OnIsDead -= StopRun;
     }
